@@ -108,6 +108,9 @@ Route::group(['middleware' => ['auth', 'adminRole']], function () {
         });
 
         Route::post("/send-paymentRequest", 'Admin\TicketController@sendPaymentRequest');
+
+        Route::get("/invoice", 'Admin\TicketController@invice')->name('invoice');
+
     });
 
 

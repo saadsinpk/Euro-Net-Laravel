@@ -89,7 +89,7 @@
                                                     <tr class="text-start text-gray-400 fw-bolder fs-7 text-uppercase gs-0">
                                                         <th class="min-w-125px">{{__('form.Date') }}</th>
                                                         <th class="min-w-125px">{{__('form.Description') }}</th>
-                                                        <th class="min-w-125px">{{__('form.Status') }}</th>
+                                                        <th class="min-w-125px">{{__('form.status') }}</th>
                                                         <th class="min-w-125px">{{__('form.Amount') }}</th>
                                                     </tr>
                                                     <!--end::Table row-->

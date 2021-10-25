@@ -170,9 +170,13 @@ class TicketController extends Controller
         foreach($request->except('_token') as $key => $value){
             $query[$key] = $value;
         }
-
         $query->save();
 
         return response()->json(200);
+    }
+
+    public function invice() {
+        $invoices = PaymentRequest::with("ticket")->with('user')->orderBy("created_at")->get();
+        return view("admin.invoice", compact("invoices"));
     }
 }

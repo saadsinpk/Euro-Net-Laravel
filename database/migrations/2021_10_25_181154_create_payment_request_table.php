@@ -19,7 +19,7 @@ class CreatePaymentRequestTable extends Migration
             $table->text("description");
             $table->integer("ticket_id");
             $table->integer("user_id");
-            $table->string("status")->nullable();
+            $table->integer("status");
             $table->timestamps();
         });
     }

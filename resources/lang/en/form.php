@@ -43,6 +43,7 @@ return [
     'Search users' => 'Search users',
     'Search tickets' => 'Search tickets',
     'Search categories' => 'Search categories',
+    'Search' => 'Search',
 
     'Administrator' => 'Administrator',
     'User' => 'User',
@@ -68,5 +69,9 @@ return [
     'Pay' => 'Pay',
     'Pay Now' => 'Pay Now',
     'Payment Details' => 'Payment Details',
+    'status' => 'status',
+    'ticket subject' => 'ticket subject',
+    'customer' => 'customer',
+
 ];
 

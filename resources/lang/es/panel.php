@@ -16,6 +16,8 @@ return [
 
     'Admin Panel' => 'Panel de administrador',
   
+    'Invoice' => 'Factura',
+
     'Support' => 'Apoyo',
 
 ];

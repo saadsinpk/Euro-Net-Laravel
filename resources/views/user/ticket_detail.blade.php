@@ -58,14 +58,7 @@
                                     <div class="text-gray-800 fs-6">{{ $ticket->description }}</div>
                                 </div>
                                 <div class="separator separator-dashed mb-7"></div>
-                                
-                                <div>
-                                    <h3>{{__('form.Description') }}</h3>
-                                    <div class="text-gray-800 fs-6">{{ $ticket->description }}</div>
-                                </div>
-                                
-                                <div class="separator separator-dashed mb-7"></div>
-                                
+
                                 <div class="mb-5">
                                     <h3>{{ __('form.Attached files') }}</h3>
                                     @if($ticket->file_name) 
@@ -85,8 +78,8 @@
                                 </div> 
 
                                 <div>
-                                    <h3>{{ __('form.Payment Request') }}</h3>
                                     @if($paymentRequest->count() > 0) 
+                                    <h3>{{ __('form.Payment Request') }}</h3>
                                         <table class="table align-middle table-row-dashed fs-6 gy-5" id="kt_admins_table">
                                             <!--begin::Table head-->
                                             <thead>

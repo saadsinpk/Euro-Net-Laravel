@@ -16,6 +16,8 @@ return [
 
     'Admin Panel' => 'Admin Panel',
 
+    'Invoice' => 'Invoice',
+    
     'Support' => 'Support',
 ];
 
