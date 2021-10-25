@@ -61,5 +61,13 @@ return [
     'Category name' => 'Nombre de la categoría',
     'Attached files' => 'Archivos adjuntos',
     'Attachments' => 'Archivos adjuntos',
+    'Send payment request' => 'Enviar solicitud de pago',
+    'Amount' => 'Monto',
+    'Payment Request' => 'Solicitud de pago',
+    'Date' => 'Fecha',
+    'Pay' => 'Pagar',
+    'Pay Now' => 'Pagar ahora',
+    'Payment Details' => 'Detalles del pago',
+
 ];
 

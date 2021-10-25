@@ -24,6 +24,11 @@
                             <li class="nav-item my-1">
                                 <a class="btn btn-color-gray-600 btn-active-white btn-active-color-primary fw-boldest fs-8 fs-lg-base nav-link px-3 px-lg-8 mx-1 text-uppercase" data-bs-toggle="tab" href="#ticket_history">{{__('ticket.My ticket history') }}</a>
                             </li>
+                            @if(auth()->user())
+                            <li class="nav-item my-1">
+                                <a class="btn btn-color-gray-600 btn-active-white btn-active-color-primary fw-boldest fs-8 fs-lg-base nav-link px-3 px-lg-8 mx-1 text-uppercase" data-bs-toggle="tab" href="#ticket_history">{{__('ticket.invoice') }}</a>
+                            </li>
+                            @endif
                             <!--end::Nav item-->
                         </ul>
                         <!--end::Nav-->

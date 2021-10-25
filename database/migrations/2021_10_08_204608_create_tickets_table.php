@@ -20,7 +20,9 @@ class CreateTicketsTable extends Migration
             $table->text("description");
             $table->text("attechment")->nullable();
             $table->integer("user_id");
+            $table->string("user_email");
             $table->integer("status");
+            $table->integer("file_name");
             $table->integer("flag");
             $table->timestamps();
         });

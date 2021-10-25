@@ -8,6 +8,7 @@ use App\Models\Ticket;
 use App\Models\Ticket_reply;
 use App\Models\Ticket_status;
 use App\Models\Category;
+use App\Models\PaymentRequest;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\EmailTicket;
 use DataTables;
@@ -56,7 +57,10 @@ class TicketController extends Controller
     {
         $ticket = Ticket::with("user")->with("ticket_status")->with("category")->with("reply")->where("id", $id)->where("show_ticket", '1')->first();
         $ticket_status = Ticket_status::all();
-        return view("admin.ticket.show", compact("ticket", "ticket_status"));
+
+        $paymentRequest = PaymentRequest::where("ticket_id", "=", $id)->get();
+
+        return view("admin.ticket.show", compact("ticket", "ticket_status", "paymentRequest"));
     }
 
 
@@ -73,7 +77,7 @@ class TicketController extends Controller
             'url' => 'https://euronetsupport.com/user/ticket-view/'.$ticket_id
         ];
 
-        Mail::to($ticket->user->email)->send(new EmailTicket($mailData));
+        // Mail::to($ticket->user->email)->send(new EmailTicket($mailData));
         
         foreach($request->except('_token') as $key => $value)
         {
@@ -158,5 +162,17 @@ class TicketController extends Controller
     public function destroyRows(Request $request) {
         Category::whereIn("id", explode(",", $request->ids))->delete();
         return response()->json('200');
+    }
+
+    public function sendPaymentRequest(Request $request)
+    {
+        $query = new PaymentRequest;
+        foreach($request->except('_token') as $key => $value){
+            $query[$key] = $value;
+        }
+
+        $query->save();
+
+        return response()->json(200);
     }
 }

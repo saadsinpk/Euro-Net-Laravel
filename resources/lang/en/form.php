@@ -61,5 +61,12 @@ return [
     'Category name' => 'Category name',
     'Attached files' => 'Attached Files',
     'Attachments' => 'Attahments',
+    'Send payment request' => 'Send payment request',
+    'Amount' => 'Amount',
+    'Payment Request' => 'Payment Request',
+    'Date' => 'Date',
+    'Pay' => 'Pay',
+    'Pay Now' => 'Pay Now',
+    'Payment Details' => 'Payment Details',
 ];
 

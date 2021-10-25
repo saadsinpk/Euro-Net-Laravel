@@ -69,4 +69,10 @@ class DashboardController extends Controller
         }
         return $filename;  
     } 
+
+    public function searchTicket(Request $request)
+    {
+        $tickets = Ticket::with("user")->with("ticket_status")->where('subject', 'like', '%'.$request->searchVal.'%')->where('user_email', 'like', '%'.$request->searchVal.'%')->orWhere('number', 'like', '%'.$request->searchVal.'%')->orWhere('description', 'like', '%'.$request->searchVal.'%')->get();
+        return response()->json($tickets);
+    }
 }

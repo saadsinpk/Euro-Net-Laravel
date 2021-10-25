@@ -28,6 +28,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', 'DashboardController@index')->name('dashboard');
 
 Route::get('/dashboard', 'DashboardController@index')->middleware(['auth', 'adminRole'])->name('dashboard');
+
+Route::post('/search-tickets', 'DashboardController@searchTicket')->middleware(['auth', 'adminRole']);
+
 Route::get('lang/{lang}', ['as' => 'lang.switch', 'uses' => 'LanguageController@switchLang']);
 
 
@@ -44,7 +47,6 @@ Route::group(['middleware' => ['auth', 'adminRole']], function () {
         });
 
         Route::prefix('users')->group(function (){
-
             Route::get('/', 'Admin\UserController@index');
             Route::post('/', 'Admin\UserController@store');
             Route::get('/view/{id}', 'Admin\UserController@details');
@@ -104,6 +106,8 @@ Route::group(['middleware' => ['auth', 'adminRole']], function () {
             Route::get('/delete/{id}', 'Admin\TicketController@destroy');
             Route::post('/delete-rows', 'Admin\TicketController@destroyRows');
         });
+
+        Route::post("/send-paymentRequest", 'Admin\TicketController@sendPaymentRequest');
     });
 
 
@@ -124,4 +128,7 @@ Route::get('/clear-cache', function() {
     $exitCode = Artisan::call('cache:clear');
     // return what you want
 });
+
+Route::post('/stripe-payment', 'StripeController@stripe.payment')->name('stripe.payment');
+
 require __DIR__.'/auth.php';
