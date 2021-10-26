@@ -58,9 +58,7 @@ class TicketController extends Controller
         $ticket = Ticket::with("user")->with("ticket_status")->with("category")->with("reply")->where("id", $id)->where("show_ticket", '1')->first();
         $ticket_status = Ticket_status::all();
 
-        $paymentRequest = PaymentRequest::where("ticket_id", "=", $id)->get();
-
-        return view("admin.ticket.show", compact("ticket", "ticket_status", "paymentRequest"));
+        return view("admin.ticket.show", compact("ticket", "ticket_status"));
     }
 
 
@@ -164,19 +162,8 @@ class TicketController extends Controller
         return response()->json('200');
     }
 
-    public function sendPaymentRequest(Request $request)
-    {
-        $query = new PaymentRequest;
-        foreach($request->except('_token') as $key => $value){
-            $query[$key] = $value;
-        }
-        $query->save();
-
-        return response()->json(200);
-    }
-
     public function invice() {
-        $invoices = PaymentRequest::with("ticket")->with('user')->orderBy("created_at")->get();
+        $invoices = PaymentRequest::with("repairPayment")->with('user')->orderBy("created_at")->get();
         return view("admin.invoice", compact("invoices"));
     }
 }

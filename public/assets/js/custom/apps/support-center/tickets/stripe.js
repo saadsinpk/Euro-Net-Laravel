@@ -27,7 +27,7 @@ var CustomerObj = function() {
                             }
                         }
                     },
-                    'card-num': {
+                    'card_number': {
                         validators: {
                             notEmpty: {
                                 message: 'Card Number is required'
@@ -143,12 +143,13 @@ var CustomerObj = function() {
         // Action buttons
         submitButton.addEventListener('click', function(e) {
             e.preventDefault();
-
-            // Validate form before submit
             if (validator) {
                 validator.validate().then(function(status) {
 
+
                     if (status == 'Valid') {
+                        submitButton.disabled = true;
+                        submitButton.setAttribute('data-kt-indicator', 'on');
                         if (!$(form).data('cc-on-file')) {
                             e.preventDefault();
                             Stripe.setPublishableKey($(form).data('stripe-publishable-key'));
@@ -175,6 +176,78 @@ var CustomerObj = function() {
         });
     }
 
+    var stripeHandleResponse = (status, response) => {
+        if (response.error) {
+            submitButton.removeAttribute('data-kt-indicator');
+            submitButton.disabled = false;
+
+            Swal.fire({
+                text: response.error.message,
+                icon: "error",
+                buttonsStyling: false,
+                confirmButtonText: "Ok, got it!",
+                customClass: {
+                    confirmButton: "btn btn-primary"
+                }
+            });
+        } else {
+            var token = response['id'];
+            $(form).find('input[type=text]').empty();
+            $(form).append("<input type='hidden' name='stripeToken' value='" + token + "'/>");
+            // $(form).get(0).submit();
+            var url = $(form).attr("action");
+            var formdata = $(form).serialize();
+
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+
+            $.ajax({
+                url: url,
+                method: "POST",
+                data: formdata,
+                dataType: "JSON",
+                success: function(res) {
+                    setTimeout(function() {
+                        submitButton.removeAttribute('data-kt-indicator');
+                        submitButton.disabled = false;
+
+                        Swal.fire({
+                            text: "Payment has been successfully processed!",
+                            icon: "success",
+                            buttonsStyling: false,
+                            confirmButtonText: "Ok, got it!",
+                            customClass: {
+                                confirmButton: "btn btn-primary"
+                            }
+                        }).then(function(result) {
+                            if (result.isConfirmed) {
+                                form.reset();
+                                modal.hide();
+                                window.location.reload();
+                            }
+                        });
+                    }, 2000);
+                }
+            }).catch(function(error) {
+                submitButton.removeAttribute('data-kt-indicator');
+                submitButton.disabled = false;
+
+                Swal.fire({
+                    text: "Somethings went wrong. Try again.",
+                    icon: "error",
+                    buttonsStyling: false,
+                    confirmButtonText: "Ok, got it!",
+                    customClass: {
+                        confirmButton: "btn btn-primary"
+                    }
+                });
+            });
+        }
+    }
+
     var handlePayRows = () => {
         // Select all delete buttons
         const paymentMoalButton = document.querySelectorAll('[data-kt-table-filter="pay_modal_button"]');
@@ -190,23 +263,9 @@ var CustomerObj = function() {
 
                 $(form).append("<input type='hidden' name='id' value=" + id + ">");
                 $(form.querySelector("#amount")).text(amonut);
-                $(form.querySelector("[name='amount']")).val(amonut);
+                $(form.querySelector("[name='amount']")).val(amonut.substr(1));
             })
         });
-    }
-
-    var stripeHandleResponse = (status, response) => {
-        if (response.error) {
-            $('.error')
-                .removeClass('hide')
-                .find('.alert')
-                .text(response.error.message);
-        } else {
-            var token = response['id'];
-            $form.find('input[type=text]').empty();
-            $form.append("<input type='hidden' name='stripeToken' value='" + token + "'/>");
-            $form.get(0).submit();
-        }
     }
 
     return {
@@ -232,55 +291,3 @@ var CustomerObj = function() {
 KTUtil.onDOMContentLoaded(function() {
     CustomerObj.init();
 });
-
-// $(function() {
-//     var $form = $(".validation");
-//     $('form.validation').bind('submit', function(e) {
-//         var $form = $(".validation"),
-//             inputVal = ['input[type=email]', 'input[type=password]',
-//                 'input[type=text]', 'input[type=file]',
-//                 'textarea'
-//             ].join(', '),
-//             $inputs = $form.find('.required').find(inputVal),
-//             $errorStatus = $form.find('div.error'),
-//             valid = true;
-//         $errorStatus.addClass('hide');
-
-//         $('.has-error').removeClass('has-error');
-//         $inputs.each(function(i, el) {
-//             var $input = $(el);
-//             if ($input.val() === '') {
-//                 $input.parent().addClass('has-error');
-//                 $errorStatus.removeClass('hide');
-//                 e.preventDefault();
-//             }
-//         });
-
-//         if (!$form.data('cc-on-file')) {
-//             e.preventDefault();
-//             Stripe.setPublishableKey($form.data('stripe-publishable-key'));
-//             Stripe.createToken({
-//                 number: $('.card-num').val(),
-//                 cvc: $('.card-cvc').val(),
-//                 exp_month: $('.card-expiry-month').val(),
-//                 exp_year: $('.card-expiry-year').val()
-//             }, stripeHandleResponse);
-//         }
-
-//     });
-
-//     function stripeHandleResponse(status, response) {
-//         if (response.error) {
-//             $('.error')
-//                 .removeClass('hide')
-//                 .find('.alert')
-//                 .text(response.error.message);
-//         } else {
-//             var token = response['id'];
-//             $form.find('input[type=text]').empty();
-//             $form.append("<input type='hidden' name='stripeToken' value='" + token + "'/>");
-//             $form.get(0).submit();
-//         }
-//     }
-
-// });

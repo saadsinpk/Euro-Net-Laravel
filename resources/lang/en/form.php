@@ -37,6 +37,7 @@ return [
     'Add a admin' => 'Add a admin',
     'Add a user' => 'Add a user',
     'Add a category' => 'Add a category',
+    'Add a Bitmain' => 'Add a Bitmain',
     'Selected' => 'Selected',
     'Delete Selected' => 'Delete Selected',
     'Search admins' => 'Search admins',
@@ -72,6 +73,11 @@ return [
     'status' => 'status',
     'ticket subject' => 'ticket subject',
     'customer' => 'customer',
-
+    'Phone number' => 'Phone number',
+    'Problem' => 'problem',
+    'Serial number' => 'Serial number',
+    'Bitmain' => 'Bitmain',
+    'Select a bitmain' => 'Select a bitmain',
+    'Type your problem' => 'Type your problem',
 ];
 

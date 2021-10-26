@@ -20,10 +20,19 @@
                             <li class="nav-item my-1">
                                 <a class="btn btn-color-gray-600 btn-active-white btn-active-color-primary fw-boldest fs-8 fs-lg-base nav-link px-3 px-lg-8 mx-1 text-uppercase" data-bs-toggle="tab" href="#ticket">{{__('ticket.New Ticket') }}</a>
                             </li>
+                            @if(auth()->user())
+                            <li class="nav-item my-1">
+                                <a class="btn btn-color-gray-600 btn-active-white btn-active-color-primary fw-boldest fs-8 fs-lg-base nav-link px-3 px-lg-8 mx-1 text-uppercase" data-bs-toggle="tab" href="#repair_payment">{{__('ticket.Repair Payment') }}</a>
+                            </li>
 
                             <li class="nav-item my-1">
                                 <a class="btn btn-color-gray-600 btn-active-white btn-active-color-primary fw-boldest fs-8 fs-lg-base nav-link px-3 px-lg-8 mx-1 text-uppercase" data-bs-toggle="tab" href="#ticket_history">{{__('ticket.My ticket history') }}</a>
                             </li>
+
+                            <li class="nav-item my-1">
+                                <a class="btn btn-color-gray-600 btn-active-white btn-active-color-primary fw-boldest fs-8 fs-lg-base nav-link px-3 px-lg-8 mx-1 text-uppercase" data-bs-toggle="tab" href="#repair_payment_history">{{__('ticket.My repair payment history') }}</a>
+                            </li>
+                            @endif
                             <!--end::Nav item-->
                         </ul>
                         <!--end::Nav-->
@@ -215,7 +224,99 @@
                         </div>
 
                     </div>
+                    @if(auth()->user())
+                    <div class="tab-pane fade" id="repair_payment">
+                        <div class="card">
+                            <div class="card-body">
+                                <form id="repair_payment_form" class="form" action="{{ url('user/repair_payment/create') }}">
+                                    <!--begin::Heading-->
+                                    <div class="mb-13 text-center">
+                                        <!--begin::Title-->
+                                        <h1 class="mb-3">{{__('ticket.Create Repair Request') }}</h1>
+                                        <!--end::Title-->
+                                    </div>
 
+                                    <div class="fv-row mb-7">
+                                        <!--begin::Label-->
+                                        <label class="required fs-6 fw-bold mb-2">{{__('form.Name') }}</label>
+                                        <!--end::Label-->
+                                        <!--begin::Input-->
+                                        <input type="text" class="form-control form-control-solid" placeholder="" name="name" value="{{ auth()->user()->name }}" />
+                                        <!--end::Input-->
+                                    </div>
+                                    <!--end::Input group-->
+                                    <!--begin::Input group-->
+                                    <div class="fv-row mb-7">
+                                        <!--begin::Label-->
+                                        <label class="fs-6 fw-bold mb-2">
+                                            <span class="required">{{__('form.Email') }}</span>
+                                            <i class="fas fa-exclamation-circle ms-1 fs-7" data-bs-toggle="tooltip" title="Email address must be active"></i>
+                                        </label>
+                                        <!--end::Label-->
+                                        <!--begin::Input-->
+                                        <input type="email" class="form-control form-control-solid" placeholder="" name="email" value="{{ auth()->user()->email }}" />
+                                        <!--end::Input-->
+                                    </div>
+                                    <!--end::Input group-->
+
+                                     <!--begin::Input group-->
+                                     <div class="fv-row mb-7">
+                                        <!--begin::Label-->
+                                        <label class="fs-6 fw-bold mb-2">
+                                            <span class="required">{{__('form.Phone number') }}</span>
+                                        </label>
+                                        <!--end::Label-->
+                                        <!--begin::Input-->
+                                        <input type="number" class="form-control form-control-solid" placeholder="" name="phone" value="" />
+                                        <!--end::Input-->
+                                    </div>
+                                    <!--end::Input group-->
+                                    
+                                    <div class="fv-row mb-7">
+                                        <!--begin::Label-->
+                                        <label class="fs-6 fw-bold mb-2">
+                                            <span class="required">{{__('form.Serial number') }}</span>
+                                        </label>
+                                        <!--end::Label-->
+                                        <!--begin::Input-->
+                                        <input type="text" class="form-control form-control-solid" placeholder="" name="serial_num" value="" />
+                                        <!--end::Input-->
+                                    </div>
+
+                                    <!--begin::Input group-->
+                                    <div class="d-flex flex-column mb-8 fv-row">
+                                        <label class="required fs-6 fw-bold mb-2">{{__('form.Bitmain') }}</label>
+                                        <select class="form-select form-select-solid" data-control="select2" data-hide-search="true" data-placeholder="{{__('form.Select a bitmain') }}" name="bitmain_id">
+                                                <option value=""></option>
+                                                @foreach($bitmain as $bit)
+                                                    <option value="{{ $bit->id }}">{{ $bit->name }}</option>
+                                                @endforeach
+                                            </select>
+                                    </div>
+                                    <!--end::Input group-->
+                                    <!--begin::Input group-->
+                                    <div class="d-flex flex-column mb-8 fv-row">
+                                        <label class="fs-6 fw-bold mb-2">{{__('form.Problem') }}</label>
+                                        <textarea class="form-control form-control-solid" rows="4" name="problem" placeholder="{{__('form.Type your problem') }}"></textarea>
+                                    </div>
+                                    <!--end::Input group-->
+                                    <input type="hidden" name="user_id" value="{{ auth()->user()->id }}">
+                                    <!--begin::Actions-->
+                                    <div class="text-center">
+                                        <button type="reset" class="btn btn-light me-3">{{__('form.Cancel') }}</button>
+                                        <button type="submit" class="btn btn-primary">
+                                                <span class="indicator-label">{{__('form.Submit') }}</span>
+                                                <span class="indicator-progress">{{__('form.Please wait...') }}
+                                                <span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
+                                            </button>
+                                    </div>
+                                    <!--end::Actions-->
+                                </form>
+                            </div>
+                        </div>
+
+                    </div>
+                    @endif
                     <div class="tab-pane fade" id="ticket_history">
 
                         @if(auth()->user())
@@ -234,6 +335,31 @@
                         @endif
 
                     </div>
+
+                    <div class="tab-pane fade" id="repair_payment_history">
+
+                        <div class="card">
+                            <div class="card-body">
+                                <table class="table align-middle table-row-dashed gy-5" id="repair_payment_table">
+                                    <!--begin::Table body-->
+                                    <thead>
+                                        <tr class="text-start text-gray-400 fw-bolder fs-7 text-uppercase gs-0">
+                                            <th>Number</th>
+                                            <th>Problem</th>
+                                            <th>status</th>
+                                            <th>DateTime</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="fs-6 fw-bold text-gray-600">
+                                    </tbody>
+                                    <!--end::Table body-->
+                                </table>
+                            </div>
+                        </div>
+
+                    </div>
+
                 </div>
               
             </div>
@@ -244,4 +370,5 @@
 
 @section('after_script')
     <script src="{{ asset('public/assets/js/custom/apps/support-center/tickets/ticket.js') }}"></script>
+    <script src="{{ asset('public/assets/js/custom/apps/support-center/tickets/repair_payment.js') }}"></script>
 @endsection

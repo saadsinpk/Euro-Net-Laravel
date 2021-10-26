@@ -20,5 +20,8 @@ return [
 
     'Support' => 'Apoyo',
 
+    'Repair Payments' => 'Pagos de reparación',
+    'Bitmain' => 'Bit principal',
+
 ];
 

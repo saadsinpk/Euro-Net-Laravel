@@ -47,7 +47,7 @@
                     <tbody class="fw-bold text-gray-600">
                         @foreach ($invoices as $invoice)
                             <tr>
-                                <td>{{ $invoice->ticket->number }}</td>
+                                <td>{{ $invoice->repairPayment->number }}</td>
                                 <td>
                                     @if($invoice->status == 0)
                                         <span class="badge badge-light-danger">Unpaid</span>

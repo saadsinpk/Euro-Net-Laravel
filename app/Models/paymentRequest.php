@@ -5,14 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class paymentRequest extends Model
+class PaymentRequest extends Model
 {
     use HasFactory;
     protected $table = "payment_request";
     protected $primaryKey = 'id';
 
-    public function ticket() {
-        return $this->belongsTo(Ticket::class, 'ticket_id');
+    public function repairPayment() {
+        return $this->belongsTo(RepairPayment::class, 'repair_id');
     }
 
     public function user() {

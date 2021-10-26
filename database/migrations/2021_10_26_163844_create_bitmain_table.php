@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePaymentRequestTable extends Migration
+class CreateBitmainTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,9 @@ class CreatePaymentRequestTable extends Migration
      */
     public function up()
     {
-        Schema::create('payment_request', function (Blueprint $table) {
+        Schema::create('bitmain', function (Blueprint $table) {
             $table->id();
-            $table->decimal("amount");
-            $table->text("description");
-            $table->integer("repair_id");
-            $table->integer("user_id");
-            $table->integer("status");
+            $table->text("name");
             $table->timestamps();
         });
     }
@@ -31,6 +27,6 @@ class CreatePaymentRequestTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('payment_request');
+        Schema::dropIfExists('bitmain');
     }
 }

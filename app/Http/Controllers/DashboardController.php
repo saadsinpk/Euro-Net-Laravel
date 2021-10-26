@@ -9,6 +9,7 @@ use App\Models\Category;
 use App\Models\Ticket;
 use App\Models\Fileupload;
 use App\Models\Ticket_status;
+use App\Models\BitMain;
 
 class DashboardController extends Controller
 {
@@ -30,15 +31,16 @@ class DashboardController extends Controller
         $tickets_pending = $tickets_pending->count();
         $tickets_complete = Ticket::where("status", "=", "5")->where("show_ticket", "=", "1")->get();
         $tickets_complete = $tickets_complete->count();
+        $bitmain = BitMain::all();
 
         if(auth()->user()) {
             if(auth()->user()->hasRole("admin")) {
                 return view("dashboard", compact("users", "tickets_new", "tickets_opening", "tickets_reply", "tickets_processing", "tickets_pending", "tickets_complete"));
             }else {
-                return view("user.ticket", compact("categories"));
+                return view("user.ticket", compact("categories", "bitmain"));
             }
         }else {
-            return view("user.ticket", compact("categories"));
+            return view("user.ticket", compact("categories", "bitmain"));
         }
     }
 

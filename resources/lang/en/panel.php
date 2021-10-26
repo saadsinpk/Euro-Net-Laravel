@@ -19,5 +19,8 @@ return [
     'Invoice' => 'Invoice',
     
     'Support' => 'Support',
+
+    'Repair Payments' => 'Repair Payments',
+    'Bitmain' => 'Bitmain',
 ];
 

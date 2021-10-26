@@ -36,7 +36,9 @@ return [
 
     'Add a admin' => 'Agregar un administrador',
     'Add a user' => 'Agregar un usuario',
-    'Add a category' => 'Add a categoría',
+    'Add a category' => 'Agregar a categoría',
+    'Add a Bitmain' => 'Agregar un Bitmain',
+
     'Selected' => 'Seleccionado',
     'Delete Selected' => 'Eliminar seleccionado',
     'Search admins' => 'Administradores de búsqueda',
@@ -72,5 +74,13 @@ return [
     'status' => 'estado',
     'ticket subject' => 'asunto del boleto',
     'customer' => 'cliente',
+
+    'Phone number' => 'Número de teléfono',
+    'Problem' => 'Problema',
+    'Serial number' => 'Número de serie',
+    'Bitmain' => 'Bit principal',
+    'Select a bitmain' => 'Seleccione un bitmain.',
+    'Type your problem' => 'Escriba su problema.',
+
 ];
 

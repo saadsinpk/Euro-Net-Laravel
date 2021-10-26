@@ -11,6 +11,7 @@ use App\Models\PaymentRequest;
 use DataTables;
 use Illuminate\Support\Facades\Validator;
 use App\Models\User;
+use App\Models\BitMain;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\EmailTicket;
@@ -22,7 +23,8 @@ class TicketController extends Controller
     public function index()
     {
         $categories = Category::all();
-        return view("user.ticket", compact("categories"));
+        $bitmain = BitMain::all();
+        return view("user.ticket", compact("categories", 'bitmain'));
     }
 
     public function verifyuser($id) {
@@ -69,6 +71,7 @@ class TicketController extends Controller
             }
         return view("auth.login", compact("message_to_display"));
     }
+
     public function store(Request $request)
     {   
         $ticket = new Ticket;
@@ -215,9 +218,8 @@ class TicketController extends Controller
     public function ticketDetail($id) {
         if(isset(auth()->user()->id)) {
             $ticket = Ticket::with("category")->with("reply")->where("id", "=", $id)->where("user_id","=", auth()->user()->id)->first();
-            $paymentRequest = PaymentRequest::where("ticket_id", "=", $id)->get();
             if($ticket) {
-                return view("user.ticket_detail", compact("ticket", "paymentRequest"));
+                return view("user.ticket_detail", compact("ticket"));
             } else {
                 return abort('404');
             }

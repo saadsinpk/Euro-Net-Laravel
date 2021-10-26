@@ -107,9 +107,18 @@ Route::group(['middleware' => ['auth', 'adminRole']], function () {
             Route::post('/delete-rows', 'Admin\TicketController@destroyRows');
         });
 
-        Route::post("/send-paymentRequest", 'Admin\TicketController@sendPaymentRequest');
-
+        
         Route::get("/invoice", 'Admin\TicketController@invice')->name('invoice');
+        
+        Route::get("/repair/payment", 'Admin\RepairPaymentController@index');
+        Route::post("/repair/paymentRequest", 'Admin\RepairPaymentController@sendPaymentRequest');
+
+        Route::prefix('bitmain')->group(function (){
+            Route::get("/", 'Admin\BitmainController@index');
+            Route::post("/create", 'Admin\BitmainController@store');
+            Route::get("/delete/{id}", 'Admin\BitmainController@destroy');
+            Route::post("/delete-row", 'Admin\BitmainController@destroyRows');
+        });
 
     });
 
@@ -124,6 +133,12 @@ Route::prefix('user')->group(function (){
     Route::post("create-ticket", 'User\TicketController@Store');
     Route::get("ticket-history", 'User\TicketController@ticketHistory');
     Route::get("ticket-view/{id}", 'User\TicketController@ticketDetail');
+
+    Route::prefix('repair_payment')->group(function (){
+        Route::get("/", 'User\RepairPaymentController@history');
+        Route::post("/create", 'User\RepairPaymentController@store');
+        Route::get("/view/{id}", 'User\RepairPaymentController@detail');
+    });
 });
 Route::get('/login/{id}', 'User\TicketController@verifyuser');
 
@@ -132,6 +147,6 @@ Route::get('/clear-cache', function() {
     // return what you want
 });
 
-Route::post('/stripe-payment', 'StripeController@stripe.payment')->name('stripe.payment');
+Route::post('/stripe-payment', 'StripeController@handlePost')->name('stripe.payment');
 
 require __DIR__.'/auth.php';

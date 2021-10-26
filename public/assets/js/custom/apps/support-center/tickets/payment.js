@@ -196,6 +196,26 @@ var KTModalPayment = function() {
         })
     }
 
+    var handleSendRequest = () => {
+        // Select all delete buttons
+        const sendButton = document.querySelectorAll('[data-action ="send_payment"]');
+        sendButton.forEach(d => {
+            // Delete button on click
+            d.addEventListener('click', function(e) {
+                e.preventDefault();
+                $(form.querySelector("[name='repair_id']")).remove();
+                $(form.querySelector("[name='user_id']")).remove();
+
+                const repair_id = $(this).attr("data-id")
+                const user_id = $(this).attr("data-user-id")
+                console.log(repair_id);
+                console.log(user_id);
+                $(form).append("<input type='hidden' name='repair_id' value=" + repair_id + ">");
+                $(form).append("<input type='hidden' name='user_id' value=" + user_id + ">");
+            })
+        });
+    }
+
     return {
         // Public functions
         init: function() {
@@ -209,6 +229,8 @@ var KTModalPayment = function() {
             url = $(form).attr("action");
             handleForm();
             closeForm();
+            handleSendRequest();
+
         }
     };
 }();

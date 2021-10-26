@@ -19,4 +19,7 @@ return [
     'Date' => 'Date',
     'Ticket Reply From support' => 'Ticket Reply From support',
     'number' => 'Number',    
+    'Repair Payment' => 'Repair Payment',
+    'Create Repair Request' => 'Create Repair Request', 
+    'My repair payment history' => 'My repair payment history',
 ];

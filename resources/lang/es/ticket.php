@@ -19,4 +19,8 @@ return [
     'Date' => 'Fecha',
     'Ticket Reply From support' => 'Billete Responder del soporte',
     'number' => 'Número',
+    'Repair Payment' => 'Pago de reparación',
+    'Create Repair Request' => 'Pago de reparación',
+    'My repair payment history' => 'Mi historial de pago de reparaciones',
+
 ];

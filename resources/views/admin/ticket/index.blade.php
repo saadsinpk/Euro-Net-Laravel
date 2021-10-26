@@ -28,53 +28,53 @@
                 <!--begin::Layout-->
                 <div class="d-flex flex-xl-row" data-select2-id="select2-data-94-ui9n">
                     <div class="w-100">
-                            <table class="table align-middle table-row-dashed gy-5" id="ticket_table">
-                                <thead>
-                                    <th></th>
-                                    <th></th>
-                                </thead>
-                                <tbody class="fs-6 fw-bold text-gray-600">
-                                    @foreach ($tickets as $ticket)
-                                    <tr>
-                                        <td class="mw-250px">
-                                            <div class="d-flex align-items-center f">
-                                                <!--begin::Author-->
-                                                <div class="symbol symbol-50px me-5">
-                                                    <div class="symbol-label fs-1 fw-bolder bg-white text-primary border">{{ substr($ticket->user->name, 0, 1) }}</div>    
+                        <table class="table align-middle table-row-dashed gy-5" id="ticket_table">
+                            <thead>
+                                <th></th>
+                                <th></th>
+                            </thead>
+                            <tbody class="fs-6 fw-bold text-gray-600">
+                                @foreach ($tickets as $ticket)
+                                <tr>
+                                    <td class="mw-250px">
+                                        <div class="d-flex align-items-center f">
+                                            <!--begin::Author-->
+                                            <div class="symbol symbol-50px me-5">
+                                                <div class="symbol-label fs-1 fw-bolder bg-white text-primary border">{{ substr($ticket->user->name, 0, 1) }}</div>    
+                                            </div>
+                                            <!--end::Author-->
+                                            <!--begin::Info-->
+                                            <div class="d-flex flex-column fw-bold fs-5 text-gray-600 text-dark">
+                                                <!--begin::Text-->
+                                                <div class="d-flex align-items-center">
+                                                    <!--begin::Username-->
+                                                    <a href="{{ url("admin/users/view/".$ticket->user->id."") }}" class="text-gray-800 fw-bolder text-hover-primary fs-5 me-3">{{ $ticket->user->name }}</a>
+                                                    <!--end::Username-->
+                                                    <span class="m-0"></span>
                                                 </div>
-                                                <!--end::Author-->
-                                                <!--begin::Info-->
-                                                <div class="d-flex flex-column fw-bold fs-5 text-gray-600 text-dark">
-                                                    <!--begin::Text-->
-                                                    <div class="d-flex align-items-center">
-                                                        <!--begin::Username-->
-                                                        <a href="{{ url("admin/users/view/".$ticket->user->id."") }}" class="text-gray-800 fw-bolder text-hover-primary fs-5 me-3">{{ $ticket->user->name }}</a>
-                                                        <!--end::Username-->
-                                                        <span class="m-0"></span>
-                                                    </div>
-                                                    <!--end::Text-->
-                                                    <!--begin::Date-->
-                                                    <span class="text-muted fw-bold fs-6">{{ $ticket->created_at->format("d M Y, g:i A") }}</span>
-                                                    <!--end::Date-->
-                                                </div>
-                                                <!--end::Info-->
+                                                <!--end::Text-->
+                                                <!--begin::Date-->
+                                                <span class="text-muted fw-bold fs-6">{{ $ticket->created_at->format("d M Y, g:i A") }}</span>
+                                                <!--end::Date-->
                                             </div>
-                                            <p class="fw-normal fs-5 text-gray-700 m-0 overflow-hidden mh-sm-45px text-truncate mt-5 px-10">{{ $ticket->description }}</p>
-                                        </td>
-                                        <td class="vertical-align-end text-end" style="vertical-align: baseline">
-                                            <div>
-                                                <a href="{{ url("admin/ticket/view/".$ticket->id."") }}" class="btn btn-color-gray-400 btn-active-color-primary p-0 fw-bolder">{{__('form.Reply') }}</a>|
-                                                <a href="{{ url("admin/ticket/delete/".$ticket->id."") }}" class="btn btn-color-gray-400 btn-active-color-primary p-0 fw-bolder">{{__('form.Delete') }}</a>
-                                            </div>
-                                            <div class="badge badge-light-danger mt-10" style="top: -1rem; left: 1rem;">{{ $ticket->ticket_status->option }}</div>
-                                            <div>
-                                                <sub style="top: 1rem">{{ $ticket->number }}</sub>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
+                                            <!--end::Info-->
+                                        </div>
+                                        <p class="fw-normal fs-5 text-gray-700 m-0 overflow-hidden mh-sm-45px text-truncate mt-5 px-10">{{ $ticket->description }}</p>
+                                    </td>
+                                    <td class="vertical-align-end text-end" style="vertical-align: baseline">
+                                        <div>
+                                            <a href="{{ url("admin/ticket/view/".$ticket->id."") }}" class="btn btn-color-gray-400 btn-active-color-primary p-0 fw-bolder">{{__('form.Reply') }}</a>|
+                                            <a href="{{ url("admin/ticket/delete/".$ticket->id."") }}" class="btn btn-color-gray-400 btn-active-color-primary p-0 fw-bolder">{{__('form.Delete') }}</a>
+                                        </div>
+                                        <div class="badge badge-light-danger mt-10" style="top: -1rem; left: 1rem;">{{ $ticket->ticket_status->option }}</div>
+                                        <div>
+                                            <sub style="top: 1rem">{{ $ticket->number }}</sub>
+                                        </div>
+                                    </td>
+                                </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
                     </div>
                 </div>
                 <!--end::Layout-->
