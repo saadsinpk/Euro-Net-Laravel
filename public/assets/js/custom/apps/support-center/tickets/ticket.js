@@ -257,11 +257,11 @@ var KTModalNewTicket = function() {
 
         // Action buttons
         submitButton.addEventListener('click', function(e) {
-            console.log("SSSSSSSS");
             e.preventDefault();
             var formdata = $(form).serialize();
             // Validate form before submit
-            console.log($("#user_id").val())
+            console.log($("#user_id").val());
+
             if ($("#user_id").val()) {
                 validator = validator2
             } else {

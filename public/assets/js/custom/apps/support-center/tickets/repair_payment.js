@@ -7,7 +7,8 @@ var KTModalNewPayment = function() {
     var form;
     var datatable;
     var table
-
+    var validator2;
+    var validator1;
 
     var database = function() {
         // Set date data order
@@ -63,7 +64,43 @@ var KTModalNewPayment = function() {
     // Handle form validation and submittion
     var handleForm = function() {
 
-        validator = FormValidation.formValidation(
+        validator2 = FormValidation.formValidation(
+            form, {
+                fields: {
+                    'bitmain_id': {
+                        validators: {
+                            notEmpty: {
+                                message: 'Category is required'
+                            }
+                        }
+                    },
+                    'problem': {
+                        validators: {
+                            notEmpty: {
+                                message: 'Target description is required'
+                            }
+                        }
+                    },
+                    'serial_num': {
+                        validators: {
+                            notEmpty: {
+                                message: 'Name is required'
+                            }
+                        }
+                    },
+                },
+                plugins: {
+                    trigger: new FormValidation.plugins.Trigger(),
+                    bootstrap: new FormValidation.plugins.Bootstrap5({
+                        rowSelector: '.fv-row',
+                        eleInvalidClass: '',
+                        eleValidClass: ''
+                    })
+                }
+            }
+        );
+
+        validator1 = FormValidation.formValidation(
             form, {
                 fields: {
                     'bitmain_id': {
@@ -120,6 +157,38 @@ var KTModalNewPayment = function() {
                             }
                         }
                     },
+                    'password': {
+                        validators: {
+                            notEmpty: {
+                                message: 'The password is required'
+                            },
+                            stringLength: {
+                                min: 6,
+                                message: 'The Password must be greater than 6 characters'
+                            },
+                            callback: {
+                                message: 'Please enter valid password',
+                                callback: function(input) {
+                                    if (input.value.length > 0) {
+                                        return validatePassword();
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    'confirm-password': {
+                        validators: {
+                            notEmpty: {
+                                message: 'The password confirmation is required'
+                            },
+                            identical: {
+                                compare: function() {
+                                    return form.querySelector('[name="password"]').value;
+                                },
+                                message: 'The password and its confirm are not the same'
+                            }
+                        }
+                    },
                 },
                 plugins: {
                     trigger: new FormValidation.plugins.Trigger(),
@@ -134,12 +203,19 @@ var KTModalNewPayment = function() {
 
         // Action buttons
         submitButton.addEventListener('click', function(e) {
+
             e.preventDefault();
             var formdata = $(form).serialize();
             $(form.querySelector('[name="bitmain_id"]')).on('change', function() {
                 validator.revalidateField('bitmain_id');
             });
-            console.log(validator)
+
+            if ($("#user_id").val()) {
+                validator = validator2
+            } else {
+                validator = validator1
+            }
+
             if (validator) {
 
                 validator.validate().then(function(status) {
@@ -178,26 +254,43 @@ var KTModalNewPayment = function() {
                                         }
                                     }).then(function(result) {
                                         if (result.isConfirmed) {
-                                            form.reset();
-                                            $(form.querySelectorAll("select")).each(function() {
-                                                $(this).val(null).trigger('change');
-                                            })
-                                            $(table).DataTable().ajax.reload();
+
+                                            if ($("#user_id").val()) {
+                                                form.reset();
+                                                $(form.querySelectorAll("select")).each(function() {
+                                                    $(this).val(null).trigger('change');
+                                                })
+                                                $(table).DataTable().ajax.reload();
+                                            } else {
+                                                location.href = "/login";
+                                            }
 
                                         }
                                     });
                                 }, 2000);
                             }
                         }).catch(function(error) {
-                            Swal.fire({
-                                text: "Somethings went wrong. Try again.",
-                                icon: "error",
-                                buttonsStyling: false,
-                                confirmButtonText: "Ok, got it!",
-                                customClass: {
-                                    confirmButton: "btn btn-primary"
-                                }
-                            });
+                            if (error.status == 422) {
+                                Swal.fire({
+                                    text: "The email has already been taken.",
+                                    icon: "error",
+                                    buttonsStyling: false,
+                                    confirmButtonText: "Ok, got it!",
+                                    customClass: {
+                                        confirmButton: "btn btn-primary"
+                                    }
+                                });
+                            } else {
+                                Swal.fire({
+                                    text: "Somethings went wrong. Try again.",
+                                    icon: "error",
+                                    buttonsStyling: false,
+                                    confirmButtonText: "Ok, got it!",
+                                    customClass: {
+                                        confirmButton: "btn btn-primary"
+                                    }
+                                });
+                            }
                         });
                     } else {
                         // Show error message.

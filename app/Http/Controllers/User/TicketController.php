@@ -75,7 +75,6 @@ class TicketController extends Controller
     public function store(Request $request)
     {   
         $ticket = new Ticket;
-
         if($request->name) {
             $validator = Validator::make($request->all(), [
                 'email' => 'required|string|email|unique:users',
@@ -141,40 +140,40 @@ class TicketController extends Controller
         $ticket->save();
         $ticket_id = $ticket->id;
 
-        // if(auth()->user()) {
-        //     $admin_users = User::role('admin')->where("verify", "=", "1")->get();
-        //     if($admin_users->count()) {
-        //         foreach ($admin_users as $adminkey => $adminvalue) {
-        //             // Send to Admin
-        //             $mailData = [
-        //                 'title' => trans('email.ticket_publish_mail_to_admin_title'),
-        //                 'description' => trans('email.ticket_publish_mail_to_admin_description'),
-        //                 'button' => trans('email.ticket_publish_mail_to_admin_button'),
-        //                 'url' => 'https://euronetsupport.com/admin/ticket/view/'.$ticket_id
-        //             ];
-        //             Mail::to($adminvalue->email)->send(new EmailTicket($mailData));
-        //         }
-        //     }
+        if(auth()->user()) {
+            $admin_users = User::role('admin')->where("verify", "=", "1")->get();
+            if($admin_users->count()) {
+                foreach ($admin_users as $adminkey => $adminvalue) {
+                    // Send to Admin
+                    $mailData = [
+                        'title' => trans('email.ticket_publish_mail_to_admin_title'),
+                        'description' => trans('email.ticket_publish_mail_to_admin_description'),
+                        'button' => trans('email.ticket_publish_mail_to_admin_button'),
+                        'url' => 'https://euronetsupport.com/admin/ticket/view/'.$ticket_id
+                    ];
+                    Mail::to($adminvalue->email)->send(new EmailTicket($mailData));
+                }
+            }
 
-        //     // Send to user
-        //     $mailData = [
-        //         'title' => trans('email.ticket_publish_mail_to_user_title'),
-        //         'description' => trans('email.ticket_publish_mail_to_user_description'),
-        //         'button' => trans('email.ticket_publish_mail_to_user_button'),
-        //         'url' => 'https://euronetsupport.com/user/ticket-view/'.$ticket_id
-        //     ];
+            // Send to user
+            $mailData = [
+                'title' => trans('email.ticket_publish_mail_to_user_title'),
+                'description' => trans('email.ticket_publish_mail_to_user_description'),
+                'button' => trans('email.ticket_publish_mail_to_user_button'),
+                'url' => 'https://euronetsupport.com/user/ticket-view/'.$ticket_id
+            ];
 
-        //     Mail::to(auth()->user()->email)->send(new EmailTicket($mailData));
-        // } else {
-        //     $mailData = [
-        //         'title' => trans('email.user_verify_mail_to_user_title'),
-        //         'description' => trans('email.user_verify_mail_to_user_description'),
-        //         'button' => trans('email.user_verify_mail_to_user_button'),
-        //         'url' => 'http://euronetsupport.com/login/'.$verify_token.'/'
-        //     ];
+            Mail::to(auth()->user()->email)->send(new EmailTicket($mailData));
+        } else {
+            $mailData = [
+                'title' => trans('email.user_verify_mail_to_user_title'),
+                'description' => trans('email.user_verify_mail_to_user_description'),
+                'button' => trans('email.user_verify_mail_to_user_button'),
+                'url' => 'http://euronetsupport.com/login/'.$verify_token.'/'
+            ];
 
-        //     Mail::to($request->email)->send(new EmailTicket($mailData));
-        // }
+            Mail::to($request->email)->send(new EmailTicket($mailData));
+        }
         
 
 

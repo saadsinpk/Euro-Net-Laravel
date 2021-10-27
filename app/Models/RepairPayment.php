@@ -17,4 +17,8 @@ class RepairPayment extends Model
         return $this->hasMany(paymentRequest::class, 'repair_id');
     }
 
+    public function user() {
+        return $this->belongsTo(User::class, 'user_id');
+    }
+
 }

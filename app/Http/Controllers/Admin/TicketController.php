@@ -75,7 +75,7 @@ class TicketController extends Controller
             'url' => 'https://euronetsupport.com/user/ticket-view/'.$ticket_id
         ];
 
-        // Mail::to($ticket->user->email)->send(new EmailTicket($mailData));
+        Mail::to($ticket->user->email)->send(new EmailTicket($mailData));
         
         foreach($request->except('_token') as $key => $value)
         {

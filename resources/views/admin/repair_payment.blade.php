@@ -40,7 +40,7 @@
                                         <div class="d-flex align-items-center f">
                                             <!--begin::Author-->
                                             <div class="symbol symbol-50px me-5">
-                                                <div class="symbol-label fs-1 fw-bolder bg-white text-primary border">{{ substr($payment->name, 0, 1) }}</div>    
+                                                <div class="symbol-label fs-1 fw-bolder bg-white text-primary border">{{ substr($payment->user->name, 0, 1) }}</div>    
                                             </div>
                                             <!--end::Author-->
                                             <!--begin::Info-->
@@ -54,13 +54,13 @@
                                                             <path d="M12 22C14.6 22 17 21 18.7 19.4C17.9 16.9 15.2 15 12 15C8.8 15 6.09999 16.9 5.29999 19.4C6.99999 21 9.4 22 12 22Z" fill="black"></path>
                                                         </svg>
                                                     </span>
-                                                    <!--end::Svg Icon-->{{ $payment->name }}</a>
+                                                    <!--end::Svg Icon-->{{ $payment->user->name }}</a>
                                                     <a href="#" class="d-flex align-items-center text-gray-400 text-hover-primary me-5 mb-2">
                                                     <!--begin::Svg Icon | path: icons/duotune/general/gen018.svg-->
                                                     <span class="svg-icon svg-icon-4 me-1">
                                                         <i class="fas fa-phone-alt"></i>
                                                     </span>
-                                                    <!--end::Svg Icon-->{{ $payment->phone }}</a>
+                                                    <!--end::Svg Icon-->{{ $payment->user->phone }}</a>
                                                     <a href="#" class="d-flex align-items-center text-gray-400 text-hover-primary mb-2">
                                                     <!--begin::Svg Icon | path: icons/duotune/communication/com011.svg-->
                                                     <span class="svg-icon svg-icon-4 me-1">
@@ -72,6 +72,7 @@
                                                     <!--end::Svg Icon-->{{ $payment->serial_num }}</a>
                                                 </div>
                                                 <div class="text-muted fw-bold fs-6">{{ $payment->created_at->format("d M Y, g:i A") }}</div>
+                                                <div class="text-muted fs-8">{{ $payment->serial_num }}</div>
                                             </div>
                                         </div>
                                         <p class="fw-normal fs-5 text-gray-700 m-0 overflow-hidden mh-sm-45px mt-5 px-10">{{ $payment->problem }}</p>
@@ -159,9 +160,6 @@
                         <div class="fv-row mb-7">
                             <textarea name="description"  rows="4" class="form-control form-control-solid" placeholder="description"></textarea>
                         </div>
-                        {{-- <input type="hidden" name="ticket_id" value="{{ $ticket->id }}">
-                        <input type="hidden" name="user_id" value="{{ $ticket->user->id }}"> --}}
-                        <!--end::Input group-->
                     </div>
                     <!--end::Scroll-->
                 </div>

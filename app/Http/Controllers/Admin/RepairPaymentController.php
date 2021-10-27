@@ -12,7 +12,7 @@ class RepairPaymentController extends Controller
     //
 
     public function index() {
-        $payments = RepairPayment::orderBy("created_at")->get();
+        $payments = RepairPayment::with('user')->orderBy("created_at", "DESC")->get();
         
         return view("admin.repair_payment", compact('payments'));
     }
@@ -29,6 +29,7 @@ class RepairPaymentController extends Controller
         $repair_payment->save();
         $query->save();
 
+        Mail::to($ticket->user->email)->send(new EmailTicket($mailData));
         return response()->json(200);
     }
 

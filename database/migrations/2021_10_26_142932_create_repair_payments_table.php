@@ -16,9 +16,6 @@ class CreateRepairPaymentsTable extends Migration
         Schema::create('repair_payments', function (Blueprint $table) {
             $table->id();
             $table->string("number");
-            $table->string("name");
-            $table->string("email");
-            $table->text("phone");
             $table->text("serial_num");
             $table->text("problem");
             $table->integer("bitmain_id");

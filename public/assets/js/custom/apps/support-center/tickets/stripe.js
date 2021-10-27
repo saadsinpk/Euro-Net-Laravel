@@ -124,6 +124,7 @@ var CustomerObj = function() {
                 if (result.value) {
                     form.reset(); // Reset form	
                     modal.hide(); // Hide modal				
+                    console.log(modal)
                 } else if (result.dismiss === 'cancel') {
                     Swal.fire({
                         text: "Your form has not been cancelled!.",

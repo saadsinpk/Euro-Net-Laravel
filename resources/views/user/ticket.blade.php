@@ -20,11 +20,11 @@
                             <li class="nav-item my-1">
                                 <a class="btn btn-color-gray-600 btn-active-white btn-active-color-primary fw-boldest fs-8 fs-lg-base nav-link px-3 px-lg-8 mx-1 text-uppercase" data-bs-toggle="tab" href="#ticket">{{__('ticket.New Ticket') }}</a>
                             </li>
-                            @if(auth()->user())
                             <li class="nav-item my-1">
                                 <a class="btn btn-color-gray-600 btn-active-white btn-active-color-primary fw-boldest fs-8 fs-lg-base nav-link px-3 px-lg-8 mx-1 text-uppercase" data-bs-toggle="tab" href="#repair_payment">{{__('ticket.Repair Payment') }}</a>
                             </li>
-
+                            
+                            @if(auth()->user())
                             <li class="nav-item my-1">
                                 <a class="btn btn-color-gray-600 btn-active-white btn-active-color-primary fw-boldest fs-8 fs-lg-base nav-link px-3 px-lg-8 mx-1 text-uppercase" data-bs-toggle="tab" href="#ticket_history">{{__('ticket.My ticket history') }}</a>
                             </li>
@@ -224,7 +224,7 @@
                         </div>
 
                     </div>
-                    @if(auth()->user())
+                    
                     <div class="tab-pane fade" id="repair_payment">
                         <div class="card">
                             <div class="card-body">
@@ -235,13 +235,14 @@
                                         <h1 class="mb-3">{{__('ticket.Create Repair Request') }}</h1>
                                         <!--end::Title-->
                                     </div>
+                                    @if(!auth()->user())
 
                                     <div class="fv-row mb-7">
                                         <!--begin::Label-->
                                         <label class="required fs-6 fw-bold mb-2">{{__('form.Name') }}</label>
                                         <!--end::Label-->
                                         <!--begin::Input-->
-                                        <input type="text" class="form-control form-control-solid" placeholder="" name="name" value="{{ auth()->user()->name }}" />
+                                        <input type="text" class="form-control form-control-solid" placeholder="" name="name" value="" />
                                         <!--end::Input-->
                                     </div>
                                     <!--end::Input group-->
@@ -254,8 +255,45 @@
                                         </label>
                                         <!--end::Label-->
                                         <!--begin::Input-->
-                                        <input type="email" class="form-control form-control-solid" placeholder="" name="email" value="{{ auth()->user()->email }}" />
+                                        <input type="email" class="form-control form-control-solid" placeholder="" name="email" value="" />
                                         <!--end::Input-->
+                                    </div>
+                                    <!--end::Input group-->
+
+                                      <!--begin::Input group-->
+                                      <div class="fv-row mb-7" data-kt-password-meter="true">
+                                        <!--begin::Wrapper-->
+                                        <div class="mb-1">
+                                            <!--begin::Label-->
+                                            <label class="form-label fw-bolder text-dark fs-6">{{__('form.Password') }}</label>
+                                            <!--end::Label-->
+                                            <!--begin::Input wrapper-->
+                                            <div class="position-relative mb-3">
+                                                <input class="form-control form-control-lg form-control-solid" type="password" placeholder="" name="password" autocomplete="off" />
+                                                <span class="btn btn-sm btn-icon position-absolute translate-middle top-50 end-0 me-n2" data-kt-password-meter-control="visibility">
+                                                    <i class="bi bi-eye-slash fs-2"></i>
+                                                    <i class="bi bi-eye fs-2 d-none"></i>
+                                                </span>
+                                            </div>
+                                            <!--end::Input wrapper-->
+                                            <!--begin::Meter-->
+                                            <div class="d-flex align-items-center mb-3" data-kt-password-meter-control="highlight">
+                                                <div class="flex-grow-1 bg-secondary bg-active-success rounded h-5px me-2"></div>
+                                                <div class="flex-grow-1 bg-secondary bg-active-success rounded h-5px me-2"></div>
+                                                <div class="flex-grow-1 bg-secondary bg-active-success rounded h-5px me-2"></div>
+                                                <div class="flex-grow-1 bg-secondary bg-active-success rounded h-5px"></div>
+                                            </div>
+                                            <!--end::Meter-->
+                                        </div>
+                                        <!--end::Wrapper-->
+                                        <!--begin::Hint-->
+                                        <div class="text-muted">{{__('form.Use 8 or more characters with a mix of letters, numbers') }} &amp; symbols.</div>
+                                        <!--end::Hint-->
+                                    </div>
+                                     <!--begin::Input group-->
+                                     <div class="fv-row mb-7">
+                                        <label class="form-label fw-bolder text-dark fs-6">{{__('form.Confirm Password') }}</label>
+                                        <input class="form-control form-control-lg form-control-solid" type="password" placeholder="" name="confirm-password" autocomplete="off" />
                                     </div>
                                     <!--end::Input group-->
 
@@ -272,6 +310,8 @@
                                     </div>
                                     <!--end::Input group-->
                                     
+                                    @endif
+
                                     <div class="fv-row mb-7">
                                         <!--begin::Label-->
                                         <label class="fs-6 fw-bold mb-2">
@@ -300,7 +340,7 @@
                                         <textarea class="form-control form-control-solid" rows="4" name="problem" placeholder="{{__('form.Type your problem') }}"></textarea>
                                     </div>
                                     <!--end::Input group-->
-                                    <input type="hidden" name="user_id" value="{{ auth()->user()->id }}">
+                                    <input type="hidden" name="user_id" value="@if(auth()->user()){{ auth()->user()->id }} @endif">
                                     <!--begin::Actions-->
                                     <div class="text-center">
                                         <button type="reset" class="btn btn-light me-3">{{__('form.Cancel') }}</button>
@@ -316,9 +356,8 @@
                         </div>
 
                     </div>
-                    @endif
-                    <div class="tab-pane fade" id="ticket_history">
 
+                    <div class="tab-pane fade" id="ticket_history">
                         @if(auth()->user())
                         <div class="card">
                             <div class="card-body">
