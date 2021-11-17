@@ -57,7 +57,7 @@
                                 </td>
                                 <td>{{ $invoice->user->name }}</td>
                                 <td>{{ $invoice->created_at->format("d M Y, g:i A"); }}</td>
-                                <td class="text-end"><span>$</span>{{ $invoice->amount }} <span>USD</span></td>
+                                <td class="text-end"><span>$</span>{{ $invoice->amount }} <span class="text-uppercase">{{ $invoice->currency }}</span></td>
                             </tr>
                         @endforeach
                     </tbody>

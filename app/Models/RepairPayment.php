@@ -14,11 +14,22 @@ class RepairPayment extends Model
     protected $primaryKey = 'id';
 
     public function request() {
-        return $this->hasMany(paymentRequest::class, 'repair_id');
+        return $this->hasMany(PaymentRequest::class, 'repair_id');
     }
 
     public function user() {
         return $this->belongsTo(User::class, 'user_id');
     }
 
+    public function reply() {
+        return $this->hasMany(RepairReply::class, 'repair_id');
+    }
+
+    public function bitmain() {
+        return $this->belongsTo(BitMain::class, 'bitmain_id');
+    }
+
+    public function repairStatus() {
+        return $this->belongsTo(RepairStatus::class, 'status');
+    }
 }

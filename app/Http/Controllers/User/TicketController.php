@@ -14,6 +14,7 @@ use App\Models\User;
 use App\Models\BitMain;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
+use App\Models\RepairPayment;
 use App\Mail\EmailTicket;
 
 class TicketController extends Controller
@@ -35,35 +36,70 @@ class TicketController extends Controller
                 $user->save();
                 
                 $ticket = Ticket::where("user_id", "=", $user->id)->first();
-                $ticket->show_ticket = 1;
-                $ticket->save();
+                if(!empty($ticket)) {
+                    $ticket->show_ticket = 1;
+                    $ticket->save();
 
-                $ticket_id = $ticket->id;
+                    $ticket_id = $ticket->id;
+                    $ticket_number = $ticket->number;
 
-                $admin_users = User::role('admin')->where("verify", "=", "1")->get();
-                if($admin_users->count()) {
-                    foreach ($admin_users as $adminkey => $adminvalue) {
-                        // Send to Admin
-                        $mailData = [
-                            'title' => trans('email.ticket_publish_mail_to_admin_title'),
-                            'description' => trans('email.ticket_publish_mail_to_admin_description'),
-                            'button' => trans('email.ticket_publish_mail_to_admin_button'),
-                            'url' => 'https://euronetsupport.com/admin/ticket/view/'.$ticket_id
-                        ];
-                        Mail::to($adminvalue->email)->send(new EmailTicket($mailData));
+                    $admin_users = User::role('admin')->where("verify", "=", "1")->get();
+                    if($admin_users->count()) {
+                        foreach ($admin_users as $adminkey => $adminvalue) {
+                            // Send to Admin
+                            $mailData = [
+                                'title' => trans('email.ticket_publish_mail_to_admin_title'),
+                                'description' => str_replace('{user}',$user->name,trans('email.ticket_publish_mail_to_admin_description')),
+                                'button' => trans('email.ticket_publish_mail_to_admin_button'),
+                                'url' => 'https://euronetsupport.com/admin/ticket/view/'.$ticket_id
+                            ];
+                            Mail::to($adminvalue->email)->send(new EmailTicket($mailData));
+                        }
                     }
+
+                    // Send to user
+                    $mailData = [
+                        'title' => trans('email.ticket_publish_mail_to_user_title'),
+                        'description' => str_replace(array('{user}', '{ticket}'),array($user->name, $ticket_number),trans('email.ticket_publish_mail_to_user_description')),
+                        'button' => trans('email.ticket_publish_mail_to_user_button'),
+                        'url' => 'https://euronetsupport.com/user/ticket-view/'.$ticket_id
+                    ];
+
+                    Mail::to($user->email)->send(new EmailTicket($mailData));
                 }
 
-                // Send to user
-                $mailData = [
-                    'title' => trans('email.ticket_publish_mail_to_user_title'),
-                    'description' => trans('email.ticket_publish_mail_to_user_description'),
-                    'button' => trans('email.ticket_publish_mail_to_user_button'),
-                    'url' => 'https://euronetsupport.com/user/ticket-view/'.$ticket_id
-                ];
+                $ticket = RepairPayment::where("user_id", "=", $user->id)->first();
+                if(!empty($ticket)) {
+                    $ticket->verify = 1;
+                    $ticket->save();
 
-                Mail::to($user->email)->send(new EmailTicket($mailData));
+                    $ticket_id = $ticket->id;
+                    $ticket_number = $ticket->number;
 
+                    $admin_users = User::role('admin')->where("verify", "=", "1")->get();
+                    if($admin_users->count()) {
+                        foreach ($admin_users as $adminkey => $adminvalue) {
+                            // Send to Admin
+                            $mailData = [
+                                'title' => trans('email.repair_publish_mail_to_admin_title'),
+                                'description' => trans('email.repair_publish_mail_to_admin_description'),
+                                'button' => trans('email.ticket_publish_mail_to_admin_button'),
+                                'url' => 'http://euronetsupport.com/admin/repair/payment'
+                            ];
+                            Mail::to($adminvalue->email)->send(new EmailTicket($mailData));
+                        }
+                    }
+
+                    // Send to user
+                    $mailData = [
+                        'title' => trans('email.ticket_publish_mail_to_user_title'),
+                        'description' => str_replace(array('{user}', '{ticket}'),array($user->name, $ticket_number),trans('email.ticket_publish_mail_to_user_description')),
+                        'button' => trans('email.ticket_publish_mail_to_user_button'),
+                        'url' => 'https://euronetsupport.com/user/repair_payment/'.$ticket_id
+                    ];
+
+                    Mail::to($user->email)->send(new EmailTicket($mailData));
+                }
 
                 $message_to_display = 'pass';
             } else {
@@ -139,6 +175,7 @@ class TicketController extends Controller
 
         $ticket->save();
         $ticket_id = $ticket->id;
+        $ticket_number = $ticket->number;
 
         if(auth()->user()) {
             $admin_users = User::role('admin')->where("verify", "=", "1")->get();
@@ -147,7 +184,7 @@ class TicketController extends Controller
                     // Send to Admin
                     $mailData = [
                         'title' => trans('email.ticket_publish_mail_to_admin_title'),
-                        'description' => trans('email.ticket_publish_mail_to_admin_description'),
+                        'description' => str_replace('{user}',auth()->user()->name,trans('email.ticket_publish_mail_to_admin_description')),
                         'button' => trans('email.ticket_publish_mail_to_admin_button'),
                         'url' => 'https://euronetsupport.com/admin/ticket/view/'.$ticket_id
                     ];
@@ -158,7 +195,7 @@ class TicketController extends Controller
             // Send to user
             $mailData = [
                 'title' => trans('email.ticket_publish_mail_to_user_title'),
-                'description' => trans('email.ticket_publish_mail_to_user_description'),
+                'description' => str_replace(array('{user}', '{ticket}'),array(auth()->user()->name, $ticket_number),trans('email.ticket_publish_mail_to_user_description')),
                 'button' => trans('email.ticket_publish_mail_to_user_button'),
                 'url' => 'https://euronetsupport.com/user/ticket-view/'.$ticket_id
             ];
@@ -231,8 +268,10 @@ class TicketController extends Controller
         $ticket_reply = new Ticket_reply;
         
         $ticket = Ticket::where("id", "=", $request->ticket_id)->first();
+        $ticket->ischecked = 0;
 
         $ticket_id = $request->ticket_id; 
+        
         $admin_users = User::role('admin')->where("verify", "=", "1")->get();
         if($admin_users->count()) {
             foreach ($admin_users as $adminkey => $adminvalue) {
@@ -243,7 +282,7 @@ class TicketController extends Controller
                     'button' => trans('email.user_send_reply_to_admin_button_label'),
                     'url' => 'https://euronetsupport.com/admin/ticket/view/'.$ticket_id
                 ];
-                // Mail::to($adminvalue->email)->send(new EmailTicket($mailData)); 
+                Mail::to($adminvalue->email)->send(new EmailTicket($mailData)); 
             }
         }
 

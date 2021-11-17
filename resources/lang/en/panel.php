@@ -20,7 +20,7 @@ return [
     
     'Support' => 'Support',
 
-    'Repair Payments' => 'Repair Payments',
+    'Repair Payments' => 'Repair Requests',
     'Bitmain' => 'Bitmain',
 ];
 

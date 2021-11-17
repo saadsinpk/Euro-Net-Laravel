@@ -58,9 +58,8 @@
                                     <input class="form-check-input" type="checkbox" data-kt-check="true" data-kt-check-target="#kt_admins_table .form-check-input" value="1" />
                                 </div>
                             </th>
-                            <th class="min-w-125px">{{__('form.Admin Name') }}</th>
+                            <th class="min-w-125px">{{__('form.User Name') }}</th>
                             <th class="min-w-125px">{{__('form.Email') }}</th>
-                            <th class="min-w-125px">{{__('form.Created Date') }}</th>
                             <th class="text-end min-w-70px">{{__('form.Actions') }}</th>
                         </tr>
                         <!--end::Table row-->

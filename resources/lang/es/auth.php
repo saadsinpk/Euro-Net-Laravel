@@ -20,6 +20,6 @@ return [
     'Sign Out' => 'Desconectar', 
     'Sign In to Site' => 'Se requiere el nombre',
     'Logout' => 'Cerrar sesión',
-    'You are verified! you can login now' => 'You are verified! you can login now',
-    'Your link is wrong or expired' => 'Your link is wrong or expired',
+    'You are verified! you can login now' => 'Verificado! Ya puedes entrar',
+    'Your link is wrong or expired' => 'Tu enlace es incorrecto o vencido',
 ];

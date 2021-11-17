@@ -35,8 +35,8 @@
                             </thead>
                             <tbody class="fs-6 fw-bold text-gray-600">
                                 @foreach ($payments as $payment)
-                                <tr>
-                                    <td class="mw-250px">
+                                <tr style="@if($payment->ischecked == 0) background: #ebebeb8c; border-color: #009ef7; @endif">
+                                    <td class="mw-250px px-5">
                                         <div class="d-flex align-items-center f">
                                             <!--begin::Author-->
                                             <div class="symbol symbol-50px me-5">
@@ -72,13 +72,33 @@
                                                     <!--end::Svg Icon-->{{ $payment->serial_num }}</a>
                                                 </div>
                                                 <div class="text-muted fw-bold fs-6">{{ $payment->created_at->format("d M Y, g:i A") }}</div>
-                                                <div class="text-muted fs-8">{{ $payment->serial_num }}</div>
+                                                <div class="text-muted fs-7">Address : {{ $payment->address }}</div>
                                             </div>
                                         </div>
                                         <p class="fw-normal fs-5 text-gray-700 m-0 overflow-hidden mh-sm-45px mt-5 px-10">{{ $payment->problem }}</p>
                                     </td>
-                                    <td class="vertical-align-end text-end" style="vertical-align: baseline">
+                                    <td class="vertical-align-end text-end px-5" style="vertical-align: baseline">
                                         <div>
+                                            <a href="{{ url("admin/repair/view/".$payment->id."") }}" class="btn btn-color-gray-400 btn-active-color-primary p-0 fw-bolder">{{__('form.Reply') }}</a>|
+                                            <a href="{{ url("admin/repair/delete/".$payment->id."") }}" class="btn btn-color-gray-400 btn-active-color-primary p-0 fw-bolder delete_this">{{__('form.Delete') }}</a>
+                                        </div>
+
+                                        <div class="mb-3 w-25 d-flex justify-content-end ms-auto mt-3">
+                                            <select data-id="{{ $payment->id }}" class="form-select form-select-sm form-select-solid fw-bolder min-w-150px" name="status" data-kt-select2="true" data-placeholder="Select status">
+                                                <option></option>
+                                                @foreach($repair_status as $status)
+
+                                                @php $selected = ""; @endphp
+                                                @if($status->id == $payment->status)
+                                                    @php echo $selected = "selected"; @endphp
+                                                @endif
+
+                                                <option @php echo $selected; @endphp value="{{ $status->id }}" data-color="{{$status->color}}">{{ $status->option }}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+
+                                        <div class="d-flex gap-5 justify-content-end mt-3">
                                             <div class="">
                                                 <a class="btn btn-light-primary btn-sm" data-action='send_payment' data-id="{{ $payment->id }}" data-user-id="{{ $payment->user_id }}" data-bs-toggle="modal" data-bs-target="#kt_payment_modal">
                                                     <span class="indicator-label">Send Amount</span>
@@ -86,13 +106,16 @@
                                                     <span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
                                                 </a> 
                                             </div>
+
+                                            @if($payment->request->count() >= 1)
+                                                <div>
+                                                    <a href="{{ url('admin/invoice') }}" class="btn btn-light btn-sm">View invoice</a>
+                                                </div>
+                                            @endif
                                         </div>
-                                        @if($payment->status == 1)
-                                            <div class="badge badge-light-success mt-10" style="top: -1rem; left: 1rem;">Sent</div>
-                                            <div>
-                                                <a href="{{ url('admin/invoice') }}" class="btn btn-light btn-sm mt-3">View invoice</a>
-                                            </div>
-                                        @endif
+
+                                        <div class="badge mt-3" style="background:{{ $payment->repairStatus->color }}; top: -1rem; left: 1rem;">{{ $payment->repairStatus->option }}</div>
+
                                         <div>
                                             <sub style="top: 1rem">{{ $payment->number }}</sub>
                                         </div>
@@ -149,9 +172,12 @@
                             <!--end::Label-->
                             <!--begin::Input-->
                             <div class="input-group">
-                                <input type="text" disabled value="$" class="form-control mw-40px bg-light-primary form-control-solid">
                                 <input type="number" class="form-control form-control-solid" placeholder="" name="amount" value="" />
-                                <input type="text" disabled value="USD" class="form-control mw-60px text-white bg-primary form-control-solid">
+                                <div class="min-w-50px">
+                                    <select  class="form-select form-select-solid" name="currency" data-kt-select2="true" data-placeholder="Select currency">
+                                        <option value="eur" class="text-white">EUR</option>
+                                    </select>
+                                </div>
                             </div>
                             
                             <!--end::Input-->
@@ -196,7 +222,7 @@
 
     const filterSearch = document.querySelector('[data-kt-table-filter="search"]');
         filterSearch.addEventListener('keyup', function (e) {
-            datatable.search(e.target.value).draw();
+        datatable.search(e.target.value).draw();
     });
 
 </script>

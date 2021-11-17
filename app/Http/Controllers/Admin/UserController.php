@@ -8,6 +8,9 @@ use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Spatie\Permission\Models\Permission;
+use App\Models\Ticket;
+use App\Models\RepairPayment;
+use App\Models\RepairStatus;
 use DataTables;
 use Lang;
 
@@ -35,6 +38,7 @@ class UserController extends Controller
             ->addColumn('action', function ($data) {
                 $action = "";
                 if(auth()->user()->hasAnyPermission(['edit', 'delete'])) {
+                    $action .=  '<a href="users/view-ticket/'.$data->id.'">Tickets</a> | <a href="users/view-repair/'.$data->id.'">Repair</a>';
                     $action .= 
                         '<a href="#" class="btn btn-sm btn-light btn-active-light-primary btn-action" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">'.Lang::get('form.Actions').'
                             <span class="svg-icon svg-icon-5 m-0">
@@ -90,6 +94,7 @@ class UserController extends Controller
         $user = new User;
         $user->name = $request->name;
         $user->email = $request->email;
+        $user->verify = 1;
         $user->password =  Hash::make($request->password);
 
         $user->assignRole('user');
@@ -125,6 +130,18 @@ class UserController extends Controller
             }
         }
         return response()->json('200');
+    }
+
+    public function view_ticket($id) {
+        $tickets = Ticket::with("user")->with("category")->where("user_id", $id)->where("show_ticket", '1')->orderBy("ischecked", "ASC", "created_at", "DESC")->paginate(10);
+        return view("admin.ticket.index", compact("tickets"));
+    }
+
+    public function view_repair($id) {
+        $payments = RepairPayment::with('user', 'request')->where("user_id", $id)->where("verify", '1')->with('repairStatus')->orderBy("ischecked", "ASC", "created_at", "DESC")->get();
+        $repair_status = RepairStatus::all();
+
+        return view("admin.repair_payment", compact('payments', 'repair_status'));
     }
 
     public function details($id) {

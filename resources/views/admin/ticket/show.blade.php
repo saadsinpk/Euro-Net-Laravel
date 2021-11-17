@@ -87,7 +87,7 @@
                                             <div class="overflow-hidden position-relative card-rounded  @if($reply->user->roles->first()->name == "admin") col-md-5 ms-auto @else col-md-8 @endif">
                                                 <div class="card card-bordered w-100 @if($reply->user->roles->first()->name == "admin") bg-light-success @else bg-light-primary @endif">
                                                     <div class="card-body">
-                                                        {{ $reply->description }}
+                                                        {!! nl2br($reply->description) !!} 
                                                     </div>
                                                 </div>
                                                 <!--end::Card-->
@@ -104,7 +104,7 @@
                                                 </div>
                                             </div>
 
-                                            <div class="text-gray-400 @if($reply->user->roles->first()->name == "admin") text-end @endif mt-2 fs-8">{{ $reply->created_at->format("d M Y, g:i A") }}</div>
+                                            <div class="text-gray-400 @if($reply->user->roles->first()->name == "admin") text-end @endif mt-2 fs-8">{{ $reply->created_at->format("d M Y, g:i A") }} @if($reply->user->roles->first()->name == "admin") <a href="/admin/ticket/view/{{$ticket->id}}/delete/{{$reply->id}}">Delete</a> | <a href="/admin/ticket/view/{{$ticket->id}}/edit/{{$reply->id}}">Edit</a> @endif</div>
                                         </div>
 
                                     @endforeach 
@@ -115,7 +115,12 @@
 
                                 <!--begin::Input group-->
                                     <div class="mb-0 fv-row">
-                                        <form action="{{ url("admin/ticket/send-answer") }}" id="ticket_reply_form">
+                                        @if(isset($ticket_edit))
+                                            <form action="{{ url("admin/ticket/update-answer") }}" id="ticket_reply_form">
+                                                <input type="hidden" name="id" value="{{$ticket_edit->id}}">
+                                        @else
+                                            <form action="{{ url("admin/ticket/send-answer") }}" id="ticket_reply_form">
+                                        @endif
                                             <div class="mb-3 w-25 d-flex justify-content-end ms-auto">
                                                 <select class="form-select form-select-solid fw-bolder" name="status" data-kt-select2="true" data-placeholder="Select status">
                                                     <option></option>
@@ -157,20 +162,25 @@
                                                 <!--end::Dropzone-->
                                             </div>
 
-                                            <textarea class="form-control form-control-solid placeholder-gray-600 fw-bolder fs-4 ps-9 pt-7" rows="6" name="description" placeholder="Send Message"></textarea>
-                                            <!--begin::Submit-->
-                                            <input type="hidden" name="ticket_id" value="{{ $ticket->id }}">
-                                            <input type="hidden" name="user_id" value="{{ auth()->user()->id }}">
 
-                                            <div class="d-flex gap-5 align-items-center justify-content-end">
-                                                <div class="mt-3 text-end">
-                                                    <button data-action="submit" type="submit" class="btn btn-primary">
-                                                        <span class="indicator-label">Send</span>
-                                                        <span class="indicator-progress">Please wait...
-                                                        <span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
-                                                    </button> 
+                                            @if(isset($ticket_edit))
+                                                <textarea class="form-control form-control-solid placeholder-gray-600 fw-bolder fs-4 ps-9 pt-7" rows="6" name="description" placeholder="Send Message">{{$ticket_edit->description}}</textarea>
+                                            @else
+                                                <textarea class="form-control form-control-solid placeholder-gray-600 fw-bolder fs-4 ps-9 pt-7" rows="6" name="description" placeholder="Send Message"></textarea>
+                                            @endif
+                                                <!--begin::Submit-->
+                                                <input type="hidden" name="ticket_id" value="{{ $ticket->id }}">
+                                                <input type="hidden" name="user_id" value="{{ auth()->user()->id }}">
+
+                                                <div class="d-flex gap-5 align-items-center justify-content-end">
+                                                    <div class="mt-3 text-end">
+                                                        <button data-action="submit" type="submit" class="btn btn-primary">
+                                                            <span class="indicator-label">Send</span>
+                                                            <span class="indicator-progress">Please wait...
+                                                            <span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
+                                                        </button> 
+                                                    </div>
                                                 </div>
-                                            </div>
                                         </form>
                                         <!--end::Submit-->
                                     </div>

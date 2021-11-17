@@ -24,8 +24,10 @@ return [
     'There is no any tickets that you sent' => 'There is no any tickets that you sent',
     'Continue' => 'Continue',
     'Forgot your password' => 'Forgot your password?',
+    'Address' => 'Address',
 
     'Admin Name' => 'Admin Name',
+    'User Name' => 'User Name',
     'Created Date' => 'Created Date',
     'Actions' => 'Actions',
     'Edit' => 'Edit',
@@ -71,13 +73,24 @@ return [
     'Pay Now' => 'Pay Now',
     'Payment Details' => 'Payment Details',
     'status' => 'status',
+    'Status' => 'Status',
     'ticket subject' => 'ticket subject',
     'customer' => 'customer',
     'Phone number' => 'Phone number',
     'Problem' => 'problem',
     'Serial number' => 'Serial number',
+    'number' => 'Number',
     'Bitmain' => 'Bitmain',
     'Select a bitmain' => 'Select a bitmain',
     'Type your problem' => 'Type your problem',
+
+    'Repair Reply From support' => 'Repair Reply From support',
+
+    'Payment method' => 'Payment method',
+    'Card' => 'Card',
+    'Bank' => 'Bank',
+    'Visa' => 'Visa/Master Card',
+    'BankTransfer' => 'Bank Transfer',
+    'Crypto' => 'Crypto - BTC/ETH/LTC',
 ];
 

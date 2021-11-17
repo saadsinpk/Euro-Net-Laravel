@@ -26,6 +26,7 @@ return [
     'Forgot your password' => 'Olvidaste tu contraseña?',
 
     'Admin Name' => 'Nombre de administrador',
+    'User Name' => 'Nombre de usuario',
     'Created Date' => 'Fecha de creación',
     'Actions' => 'Comportamiento',
     'Delete' => 'Borrar',
@@ -72,15 +73,23 @@ return [
     'Payment Details' => 'Detalles del pago',
 
     'status' => 'estado',
+    'Status' => 'Estado',
     'ticket subject' => 'asunto del boleto',
     'customer' => 'cliente',
+    'Address' => 'Dirección',
 
     'Phone number' => 'Número de teléfono',
     'Problem' => 'Problema',
     'Serial number' => 'Número de serie',
+    'number' => 'Número',
     'Bitmain' => 'Bit principal',
     'Select a bitmain' => 'Seleccione un bitmain.',
     'Type your problem' => 'Escriba su problema.',
 
+    'Repair Reply From support' => 'Reparar respuesta de soporte',
+
+    'Payment method' => 'Método de pago',
+    'Card' => 'Tarjeta',
+    'Bank' => 'Banco',
 ];
 

@@ -35,8 +35,8 @@
                             </thead>
                             <tbody class="fs-6 fw-bold text-gray-600">
                                 @foreach ($tickets as $ticket)
-                                <tr>
-                                    <td class="mw-250px">
+                                <tr style="@if($ticket->ischecked == 0) background: #ebebeb8c; border-color: #009ef7; @endif">
+                                    <td class="mw-250px px-5">
                                         <div class="d-flex align-items-center f">
                                             <!--begin::Author-->
                                             <div class="symbol symbol-50px me-5">
@@ -61,10 +61,10 @@
                                         </div>
                                         <p class="fw-normal fs-5 text-gray-700 m-0 overflow-hidden mh-sm-45px text-truncate mt-5 px-10">{{ $ticket->description }}</p>
                                     </td>
-                                    <td class="vertical-align-end text-end" style="vertical-align: baseline">
+                                    <td class="vertical-align-end text-end px-5" style="vertical-align: baseline">
                                         <div>
                                             <a href="{{ url("admin/ticket/view/".$ticket->id."") }}" class="btn btn-color-gray-400 btn-active-color-primary p-0 fw-bolder">{{__('form.Reply') }}</a>|
-                                            <a href="{{ url("admin/ticket/delete/".$ticket->id."") }}" class="btn btn-color-gray-400 btn-active-color-primary p-0 fw-bolder">{{__('form.Delete') }}</a>
+                                            <a href="{{ url("admin/ticket/delete/".$ticket->id."") }}" class="btn btn-color-gray-400 btn-active-color-primary p-0 fw-bolder delete_this">{{__('form.Delete') }}</a>
                                         </div>
                                         <div class="badge badge-light-danger mt-10" style="top: -1rem; left: 1rem;">{{ $ticket->ticket_status->option }}</div>
                                         <div>
@@ -100,7 +100,27 @@
         filterSearch.addEventListener('keyup', function (e) {
             datatable.search(e.target.value).draw();
     });
-
+    $(document.body).on('click', '.delete_this' ,function(e){
+        e.preventDefault();
+        var thishref = $(this).attr("href");
+        Swal.fire({
+            text: "Are you sure you want to delete?",
+            icon: "success",
+            buttonsStyling: false,
+            showCancelButton: true,
+            confirmButtonText: "Yes delete it!",
+            cancelButtonText: "Cancel",
+            customClass: {
+                confirmButton: "btn btn-primary",
+                cancelButton: "btn btn-primary"
+            }
+        }).then(function(result) {
+            if (result.isConfirmed) {
+                window.location.replace(thishref);
+            }
+        });
+        return false;
+    });
 </script>
 @endsection
 

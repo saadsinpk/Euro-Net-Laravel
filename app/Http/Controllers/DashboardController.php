@@ -32,7 +32,6 @@ class DashboardController extends Controller
         $tickets_complete = Ticket::where("status", "=", "5")->where("show_ticket", "=", "1")->get();
         $tickets_complete = $tickets_complete->count();
         $bitmain = BitMain::all();
-
         if(auth()->user()) {
             if(auth()->user()->hasRole("admin")) {
                 return view("dashboard", compact("users", "tickets_new", "tickets_opening", "tickets_reply", "tickets_processing", "tickets_pending", "tickets_complete"));

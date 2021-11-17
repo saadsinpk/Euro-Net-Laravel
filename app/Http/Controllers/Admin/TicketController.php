@@ -24,69 +24,117 @@ class TicketController extends Controller
     }
     public function indexnew()
     {
-        $tickets = Ticket::with("user")->with("category")->where("status", '1')->where("show_ticket", '1')->orderBy("created_at", "DESC")->paginate(10);
+        $tickets = Ticket::with("user")->with("category")->where("status", '1')->where("show_ticket", '1')->orderBy("ischecked", "ASC", "created_at", "DESC")->paginate(10);
         return view("admin.ticket.index", compact("tickets"));
     }
     public function indexopen()
     {
-        $tickets = Ticket::with("user")->with("category")->where("status", '2')->where("show_ticket", '1')->orderBy("created_at", "DESC")->paginate(10);
+        $tickets = Ticket::with("user")->with("category")->where("status", '2')->where("show_ticket", '1')->orderBy("ischecked", "ASC", "created_at", "DESC")->paginate(10);
         return view("admin.ticket.index", compact("tickets"));
     }
     public function indexreply()
     {
-        $tickets = Ticket::with("user")->with("category")->where("status", '3')->where("show_ticket", '1')->orderBy("created_at", "DESC")->paginate(10);
+        $tickets = Ticket::with("user")->with("category")->where("status", '3')->where("show_ticket", '1')->orderBy("ischecked", "ASC", "created_at", "DESC")->paginate(10);
         return view("admin.ticket.index", compact("tickets"));
     }
     public function indexpending()
     {
-        $tickets = Ticket::with("user")->with("category")->where("status", '4')->where("show_ticket", '1')->orderBy("created_at", "DESC")->paginate(10);
+        $tickets = Ticket::with("user")->with("category")->where("status", '4')->where("show_ticket", '1')->orderBy("ischecked", "ASC", "created_at", "DESC")->paginate(10);
         return view("admin.ticket.index", compact("tickets"));
     }
     public function indexcomplete()
     {
-        $tickets = Ticket::with("user")->with("category")->where("status", '5')->where("show_ticket", '1')->orderBy("created_at", "DESC")->paginate(10);
+        $tickets = Ticket::with("user")->with("category")->where("status", '5')->where("show_ticket", '1')->orderBy("ischecked", "ASC", "created_at", "DESC")->paginate(10);
         return view("admin.ticket.index", compact("tickets"));
     }
     public function indexprocessing()
     {
-        $tickets = Ticket::with("user")->with("category")->where("status", '6')->where("show_ticket", '1')->orderBy("created_at", "DESC")->paginate(10);
+        $tickets = Ticket::with("user")->with("category")->where("status", '6')->where("show_ticket", '1')->orderBy("ischecked", "ASC", "created_at", "DESC")->paginate(10);
         return view("admin.ticket.index", compact("tickets"));
     }
 
+    public function reply_edit($id,$edit_id) {
+
+        $ticket_edit = Ticket_reply::where("id", $edit_id)->first();
+        $ticket = Ticket::with("user")->with("ticket_status")->with("category")->with("reply")->where("id", $id)->where("show_ticket", '1')->first();
+        $ticket_status = Ticket_status::all();
+        $ticket->ischecked = 1;
+        $ticket->save();
+        
+        return view("admin.ticket.show", compact("ticket", "ticket_status", "ticket_edit"));
+    }
+    public function reply_delete($id,$delete_id)
+    {
+        $ticket_reply = Ticket_reply::find($delete_id);
+        $ticket_reply->delete();
+        return redirect()->back()->with('success', 'Delete comment successfully');   
+    }
     public function show($id)
     {
         $ticket = Ticket::with("user")->with("ticket_status")->with("category")->with("reply")->where("id", $id)->where("show_ticket", '1')->first();
         $ticket_status = Ticket_status::all();
-
+        $ticket->ischecked = 1;
+        $ticket->save();
+        
         return view("admin.ticket.show", compact("ticket", "ticket_status"));
     }
 
 
     public function sendAnswer(Request $request)
     {
-        $ticket_reply = new Ticket_reply;
         $ticket = Ticket::where("id", "=", $request->ticket_id)->first();
-        $ticket_id = $request->ticket_id;
+        if(!empty($request->description)) {
+            $ticket_reply = new Ticket_reply;
+            $ticket_id = $request->ticket_id;
 
-        $mailData = [
-            'title' => trans('email.admin_send_reply_to_user_title'),
-            'description' => $request->description,
-            'button' => trans('email.admin_send_reply_to_user_button_label'),
-            'url' => 'https://euronetsupport.com/user/ticket-view/'.$ticket_id
-        ];
+            $mailData = [
+                'title' => trans('email.admin_send_reply_to_user_title'),
+                'description' => $request->description,
+                'button' => trans('email.admin_send_reply_to_user_button_label'),
+                'url' => 'https://euronetsupport.com/user/ticket-view/'.$ticket_id
+            ];
 
-        Mail::to($ticket->user->email)->send(new EmailTicket($mailData));
-        
-        foreach($request->except('_token') as $key => $value)
-        {
-            if($key == "file_name") {
-                $value = implode(",", $value);
+            Mail::to($ticket->user->email)->send(new EmailTicket($mailData));
+            
+            foreach($request->except('_token') as $key => $value)
+            {
+                if($key == "file_name") {
+                    $value = implode(",", $value);
+                }
+                if($key != "status") {
+                    $ticket_reply[$key] = $value;
+                }
             }
-            if($key != "status") {
-                $ticket_reply[$key] = $value;
-            }
+            $ticket_reply->save();
         }
-        $ticket_reply->save();
+
+
+        $ticket->flag = 0;
+        $ticket->status = $request->status;
+        $ticket->save();
+   
+        return response()->json(200);
+    }
+
+    public function updateAnswer(Request $request)
+    {
+        $ticket = Ticket::where("id", "=", $request->ticket_id)->first();
+        if(!empty($request->description)) {
+            $ticket_reply = Ticket_reply::where("id", $request->id)->first();
+            // $ticket_reply = new Ticket_reply;
+            $ticket_id = $request->ticket_id;
+
+            // foreach($request->except('_token') as $key => $value)
+            // {
+            //     if($key == "file_name") {
+            //         $value = implode(",", $value);
+            //     }
+            //     if($key != "status") {
+            //         $ticket_reply[$key] = $value;
+            //     }
+            // }
+            $ticket_reply->save();
+        }
 
 
         $ticket->flag = 0;
@@ -163,7 +211,7 @@ class TicketController extends Controller
     }
 
     public function invice() {
-        $invoices = PaymentRequest::with("repairPayment")->with('user')->orderBy("created_at")->get();
+        $invoices = PaymentRequest::with("repairPayment")->with('user')->orderBy("created_at", "DESC")->get();
         return view("admin.invoice", compact("invoices"));
     }
 }
