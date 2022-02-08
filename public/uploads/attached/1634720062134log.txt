@@ -1,0 +1,991 @@
+Booting Linux on physical CPU 0x0
+Linux version 4.6.0-xilinx-ge7a4d3a-dirty (lzq@ubuntu) (gcc version 4.8.3 20140320 (prerelease) (Sourcery CodeBench Lite 2014.05-23) ) #38 SMP PREEMPT Fri Aug 24 11:14:38 CST 2018
+CPU: ARMv7 Processor [413fc090] revision 0 (ARMv7), cr=18c5387d
+CPU: PIPT / VIPT nonaliasing data cache, VIPT aliasing instruction cache
+Machine model: Xilinx Zynq
+cma: Reserved 16 MiB at 0x0e000000
+Memory policy: Data cache writealloc
+On node 0 totalpages: 61440
+free_area_init_node: node 0, pgdat c0938d00, node_mem_map cde10000
+  Normal zone: 480 pages used for memmap
+  Normal zone: 0 pages reserved
+  Normal zone: 61440 pages, LIFO batch:15
+percpu: Embedded 12 pages/cpu @cddf1000 s19776 r8192 d21184 u49152
+pcpu-alloc: s19776 r8192 d21184 u49152 alloc=12*4096
+pcpu-alloc: [0] 0 [0] 1 
+Built 1 zonelists in Zone order, mobility grouping on.  Total pages: 60960
+Kernel command line: mem=240M console=ttyPS0,115200 ramdisk_size=33554432 root=/dev/ram rw earlyprintk
+PID hash table entries: 1024 (order: 0, 4096 bytes)
+Dentry cache hash table entries: 32768 (order: 5, 131072 bytes)
+Inode-cache hash table entries: 16384 (order: 4, 65536 bytes)
+Memory: 206004K/245760K available (5317K kernel code, 230K rwdata, 1844K rodata, 1024K init, 222K bss, 23372K reserved, 16384K cma-reserved, 0K highmem)
+Virtual kernel memory layout:
+    vector  : 0xffff0000 - 0xffff1000   (   4 kB)
+    fixmap  : 0xffc00000 - 0xfff00000   (3072 kB)
+    vmalloc : 0xcf800000 - 0xff800000   ( 768 MB)
+    lowmem  : 0xc0000000 - 0xcf000000   ( 240 MB)
+    pkmap   : 0xbfe00000 - 0xc0000000   (   2 MB)
+    modules : 0xbf000000 - 0xbfe00000   (  14 MB)
+      .text : 0xc0008000 - 0xc07fe410   (8154 kB)
+      .init : 0xc0800000 - 0xc0900000   (1024 kB)
+      .data : 0xc0900000 - 0xc0939a60   ( 231 kB)
+       .bss : 0xc0939a60 - 0xc09713e8   ( 223 kB)
+Preemptible hierarchical RCU implementation.
+	Build-time adjustment of leaf fanout to 32.
+	RCU restricting CPUs from NR_CPUS=4 to nr_cpu_ids=2.
+RCU: Adjusting geometry for rcu_fanout_leaf=32, nr_cpu_ids=2
+NR_IRQS:16 nr_irqs:16 16
+efuse mapped to cf800000
+ps7-slcr mapped to cf802000
+L2C: platform modifies aux control register: 0x72360000 -> 0x72760000
+L2C: DT/platform modifies aux control register: 0x72360000 -> 0x72760000
+L2C-310 erratum 769419 enabled
+L2C-310 enabling early BRESP for Cortex-A9
+L2C-310 full line of zeros enabled for Cortex-A9
+L2C-310 ID prefetch enabled, offset 1 lines
+L2C-310 dynamic clock gating enabled, standby mode enabled
+L2C-310 cache controller enabled, 8 ways, 512 kB
+L2C-310: CACHE_ID 0x410000c8, AUX_CTRL 0x76760001
+zynq_clock_init: clkc starts at cf802100
+Zynq clock init
+sched_clock: 64 bits at 333MHz, resolution 3ns, wraps every 4398046511103ns
+clocksource: arm_global_timer: mask: 0xffffffffffffffff max_cycles: 0x4ce07af025, max_idle_ns: 440795209040 ns
+Switching to timer-based delay loop, resolution 3ns
+clocksource: ttc_clocksource: mask: 0xffff max_cycles: 0xffff, max_idle_ns: 537538477 ns
+ps7-ttc #0 at cf80a000, irq=18
+Console: colour dummy device 80x30
+Calibrating delay loop (skipped), value calculated using timer frequency.. 666.66 BogoMIPS (lpj=3333333)
+pid_max: default: 32768 minimum: 301
+Mount-cache hash table entries: 1024 (order: 0, 4096 bytes)
+Mountpoint-cache hash table entries: 1024 (order: 0, 4096 bytes)
+CPU: Testing write buffer coherency: ok
+CPU0: thread -1, cpu 0, socket 0, mpidr 80000000
+Setting up static identity map for 0x100000 - 0x100058
+CPU1: failed to boot: -1
+Brought up 1 CPUs
+SMP: Total of 1 processors activated (666.66 BogoMIPS).
+CPU: All CPU(s) started in SVC mode.
+devtmpfs: initialized
+VFP support v0.3: implementor 41 architecture 3 part 30 variant 9 rev 4
+clocksource: jiffies: mask: 0xffffffff max_cycles: 0xffffffff, max_idle_ns: 19112604462750000 ns
+pinctrl core: initialized pinctrl subsystem
+NET: Registered protocol family 16
+DMA: preallocated 256 KiB pool for atomic coherent allocations
+cpuidle: using governor menu
+hw-breakpoint: found 5 (+1 reserved) breakpoint and 1 watchpoint registers.
+hw-breakpoint: maximum watchpoint size is 4 bytes.
+zynq-ocm f800c000.ps7-ocmc: ZYNQ OCM pool: 256 KiB @ 0xcf880000
+vgaarb: loaded
+SCSI subsystem initialized
+usbcore: registered new interface driver usbfs
+usbcore: registered new interface driver hub
+usbcore: registered new device driver usb
+media: Linux media interface: v0.10
+Linux video capture interface: v2.00
+pps_core: LinuxPPS API ver. 1 registered
+pps_core: Software ver. 5.3.6 - Copyright 2005-2007 Rodolfo Giometti <giometti@linux.it>
+PTP clock support registered
+EDAC MC: Ver: 3.0.0
+Advanced Linux Sound Architecture Driver Initialized.
+clocksource: Switched to clocksource arm_global_timer
+NET: Registered protocol family 2
+TCP established hash table entries: 2048 (order: 1, 8192 bytes)
+TCP bind hash table entries: 2048 (order: 2, 16384 bytes)
+TCP: Hash tables configured (established 2048 bind 2048)
+UDP hash table entries: 256 (order: 1, 8192 bytes)
+UDP-Lite hash table entries: 256 (order: 1, 8192 bytes)
+NET: Registered protocol family 1
+RPC: Registered named UNIX socket transport module.
+RPC: Registered udp transport module.
+RPC: Registered tcp transport module.
+RPC: Registered tcp NFSv4.1 backchannel transport module.
+PCI: CLS 0 bytes, default 64
+Trying to unpack rootfs image as initramfs...
+rootfs image is not initramfs (no cpio magic); looks like an initrd
+Freeing initrd memory: 12380K (cceea000 - cdb01000)
+hw perfevents: enabled with armv7_cortex_a9 PMU driver, 7 counters available
+futex hash table entries: 512 (order: 3, 32768 bytes)
+workingset: timestamp_bits=28 max_order=16 bucket_order=0
+jffs2: version 2.2. (NAND) (SUMMARY)  © 2001-2006 Red Hat, Inc.
+io scheduler noop registered
+io scheduler deadline registered
+io scheduler cfq registered (default)
+dma-pl330 f8003000.ps7-dma: Loaded driver for PL330 DMAC-241330
+dma-pl330 f8003000.ps7-dma: 	DBUFF-128x8bytes Num_Chans-8 Num_Peri-4 Num_Events-16
+e0000000.serial: ttyPS0 at MMIO 0xe0000000 (irq = 158, base_baud = 6249999) is a xuartps
+console [ttyPS0] enabled
+xdevcfg f8007000.ps7-dev-cfg: ioremap 0xf8007000 to cf86e000
+[drm] Initialized drm 1.1.0 20060810
+brd: module loaded
+loop: module loaded
+CAN device driver interface
+gpiod_set_value: invalid GPIO
+libphy: MACB_mii_bus: probed
+macb e000b000.ethernet eth0: Cadence GEM rev 0x00020118 at 0xe000b000 irq 31 (00:0a:35:00:00:00)
+Generic PHY e000b000.etherne:00: attached PHY driver [Generic PHY] (mii_bus:phy_addr=e000b000.etherne:00, irq=-1)
+e1000e: Intel(R) PRO/1000 Network Driver - 3.2.6-k
+e1000e: Copyright(c) 1999 - 2015 Intel Corporation.
+ehci_hcd: USB 2.0 'Enhanced' Host Controller (EHCI) Driver
+ehci-pci: EHCI PCI platform driver
+usbcore: registered new interface driver usb-storage
+mousedev: PS/2 mouse device common for all mice
+i2c /dev entries driver
+Xilinx Zynq CpuIdle Driver started
+sdhci: Secure Digital Host Controller Interface driver
+sdhci: Copyright(c) Pierre Ossman
+sdhci-pltfm: SDHCI platform and OF driver helper
+mmc0: SDHCI controller on e0100000.ps7-sdio [e0100000.ps7-sdio] using ADMA
+ledtrig-cpu: registered to indicate activity on CPUs
+usbcore: registered new interface driver usbhid
+usbhid: USB HID core driver
+nand: device found, Manufacturer ID: 0x2c, Chip ID: 0xda
+nand: Micron MT29F2G08ABAEAWP
+nand: 256 MiB, SLC, erase size: 128 KiB, page size: 2048, OOB size: 64
+nand: NAND_ECC_HW
+nand: NAND_ECC_HW_SYNDROME
+mtd->writesize = 2048
+ecc->strength = 1
+ecc->size = 2048
+mtd->writesize = 2048
+chip->ecc_strength_ds = 4
+chip->ecc_step_ds = 512
+nand: WARNING: pl35x-nand: the ECC used on your system is too weak compared to the one required by the NAND chip
+Bad block table found at page 131008, version 0x01
+Bad block table found at page 130944, version 0x01
+nand_read_bbt: bad block at 0x000002420000
+nand_read_bbt: bad block at 0x000002440000
+nand_read_bbt: bad block at 0x000002460000
+5 ofpart partitions found on MTD device pl35x-nand
+Creating 5 MTD partitions on "pl35x-nand":
+0x000000000000-0x000002800000 : "BOOT.bin-env-dts-kernel"
+0x000002800000-0x000004800000 : "ramfs"
+0x000004800000-0x000005000000 : "configs"
+0x000005000000-0x000006000000 : "reserve"
+0x000006000000-0x000008000000 : "ramfs-bak"
+NET: Registered protocol family 10
+sit: IPv6 over IPv4 tunneling driver
+NET: Registered protocol family 17
+can: controller area network core (rev 20120528 abi 9)
+NET: Registered protocol family 29
+can: raw protocol (rev 20120528)
+can: broadcast manager protocol (rev 20120528 t)
+can: netlink gateway (rev 20130117) max_hops=1
+zynq_pm_ioremap: no compatible node found for 'xlnx,zynq-ddrc-a05'
+zynq_pm_late_init: Unable to map DDRC IO memory.
+Registering SWP/SWPB emulation handler
+hctosys: unable to open rtc device (rtc0)
+ALSA device list:
+  No soundcards found.
+RAMDISK: gzip image found at block 0
+EXT4-fs (ram0): couldn't mount as ext3 due to feature incompatibilities
+EXT4-fs (ram0): mounted filesystem without journal. Opts: (null)
+VFS: Mounted root (ext4 filesystem) on device 1:0.
+devtmpfs: mounted
+Freeing unused kernel memory: 1024K (c0800000 - c0900000)
+EXT4-fs (ram0): re-mounted. Opts: block_validity,delalloc,barrier,user_xattr
+random: dd urandom read with 0 bits of entropy available
+IPv6: ADDRCONF(NETDEV_UP): eth0: link is not ready
+IPv6: ADDRCONF(NETDEV_UP): eth0: link is not ready
+macb e000b000.ethernet eth0: unable to generate target frequency: 25000000 Hz
+macb e000b000.ethernet eth0: link up (100/Full)
+IPv6: ADDRCONF(NETDEV_CHANGE): eth0: link becomes ready
+In axi fpga driver!
+request_mem_region OK!
+AXI fpga dev virtual address is 0xcf99c000
+*base_vir_addr = 0xab002
+In fpga mem driver!
+request_mem_region OK!
+fpga mem virtual address is 0xd2000000
+hrtimer: interrupt took 35799 ns
+Oct 19 18:29:04 (none) local0.err cgminer: Miner compile time: Tue Jul 16 17:51:07 CST 2019 type: Antminer DR5
+Oct 19 18:29:04 (none) local0.warn cgminer: Started cgminer 4.9.0
+Oct 19 18:29:04 (none) local0.notice cgminer[960]: bitmain_dcr_prepare, working in normal mode. frequency 600MHz.
+Oct 19 18:29:04 (none) local0.warn cgminer[960]: mmap axi_fpga_addr = 0xb6f0c000
+Oct 19 18:29:04 (none) local0.warn cgminer[960]: axi_fpga_addr data = 0xb002
+Oct 19 18:29:04 (none) local0.warn cgminer[960]: mmap fpga_mem_addr = 0xb5cb0000
+Oct 19 18:29:04 (none) local0.warn cgminer[960]: bitmain_dcr_init
+Oct 19 18:29:04 (none) local0.notice cgminer[960]: Begain check_fan_speed
+Oct 19 18:29:07 (none) local0.notice cgminer[960]: check_fan_speed, check_fan_speed ok, dev.fan_num = 2
+Oct 19 18:29:07 (none) local0.notice cgminer[960]: detected chain 0
+Oct 19 18:29:07 (none) local0.notice cgminer[960]: detected chain 1
+Oct 19 18:29:07 (none) local0.notice cgminer[960]: detected chain 2
+Oct 19 18:29:07 (none) local0.warn cgminer[960]: detect total chain num 3
+Oct 19 18:29:07 (none) local0.notice cgminer[960]: power check ...
+Oct 19 18:29:07 (none) local0.notice cgminer[960]: power protocal f5, using package cmd
+Oct 19 18:29:07 (none) local0.notice cgminer[960]: power check OK!
+Oct 19 18:29:07 (none) local0.notice cgminer[960]: power on!
+Oct 19 18:29:07 (none) local0.notice cgminer[960]: init gpio907
+Oct 19 18:29:08 (none) local0.notice cgminer[960]: every_chain_reset_PIC16F1704_pic_new
+Oct 19 18:29:09 (none) local0.notice cgminer[960]: reset_PIC16F1704_pic_new ok
+Oct 19 18:29:10 (none) local0.notice cgminer[960]: reset_PIC16F1704_pic_new ok
+Oct 19 18:29:12 (none) local0.notice cgminer[960]: reset_PIC16F1704_pic_new ok
+Oct 19 18:29:12 (none) local0.notice cgminer[960]: every_chain_jump_from_loader_to_app_PIC16F1704_new
+Oct 19 18:29:13 (none) local0.notice cgminer[960]: jump_from_loader_to_app_PIC16F1704_new ok
+Oct 19 18:29:13 (none) local0.notice cgminer[960]: jump_from_loader_to_app_PIC16F1704_new ok
+Oct 19 18:29:14 (none) local0.notice cgminer[960]: jump_from_loader_to_app_PIC16F1704_new ok
+Oct 19 18:29:14 (none) local0.notice cgminer[960]: power_set_da_value, 55, aa, 06, 83, 84, 00, 0d, 01
+Oct 19 18:29:14 (none) local0.notice cgminer[960]: pic_heart_beat_func_new
+Oct 19 18:29:16 (none) local0.notice cgminer[960]: power_send_cmd, reply_buf[0]=55
+Oct 19 18:29:16 (none) local0.notice cgminer[960]: power_send_cmd, reply_buf[1]=aa
+Oct 19 18:29:16 (none) local0.notice cgminer[960]: power_send_cmd, reply_buf[2]=06
+Oct 19 18:29:16 (none) local0.notice cgminer[960]: power_send_cmd, reply_buf[3]=83
+Oct 19 18:29:16 (none) local0.notice cgminer[960]: power_send_cmd, reply_buf[4]=84
+Oct 19 18:29:16 (none) local0.notice cgminer[960]: power_send_cmd, reply_buf[5]=00
+Oct 19 18:29:16 (none) local0.notice cgminer[960]: power_send_cmd, reply_buf[6]=0d
+Oct 19 18:29:16 (none) local0.notice cgminer[960]: power_send_cmd, reply_buf[7]=01
+Oct 19 18:29:16 (none) local0.notice cgminer[960]: bitmain_dcr_init, dev.voltage=870, pic_voltage=132
+Oct 19 18:29:17 (none) local0.notice cgminer[960]: chain 0 eeprom test pass
+Oct 19 18:29:17 (none) local0.notice cgminer[960]: chain 1 eeprom test pass
+Oct 19 18:29:17 (none) local0.notice cgminer[960]: chain 2 eeprom test pass
+Oct 19 18:29:17 (none) local0.notice cgminer[960]: chain 0 eeprom mh(0x55 0xaa) lp vol 80 freq 60 vol 87 crc5 0x1b
+Oct 19 18:29:17 (none) local0.notice cgminer[960]: chain 1 eeprom mh(0x55 0xaa) lp vol 0 freq 60 vol 89 crc5 0x1a
+Oct 19 18:29:17 (none) local0.notice cgminer[960]: chain 2 eeprom mh(0x55 0xaa) lp vol 0 freq 60 vol 89 crc5 0x1a
+Oct 19 18:29:17 (none) local0.notice cgminer[960]: chain 0 read out voltage data 87 voltagge 870
+Oct 19 18:29:17 (none) local0.notice cgminer[960]: chain 1 read out voltage data 89 voltagge 890
+Oct 19 18:29:17 (none) local0.notice cgminer[960]: chain 2 read out voltage data 89 voltagge 890
+Oct 19 18:29:17 (none) local0.notice cgminer[960]: adjust_voltage 8.900000 dev 870 max 890
+Oct 19 18:29:17 (none) local0.notice cgminer[960]: power_set_da_value, 55, aa, 06, 83, 63, 00, ec, 00
+Oct 19 18:29:18 (none) local0.notice cgminer[960]: power_send_cmd, reply_buf[0]=55
+Oct 19 18:29:18 (none) local0.notice cgminer[960]: power_send_cmd, reply_buf[1]=aa
+Oct 19 18:29:19 (none) local0.notice cgminer[960]: power_send_cmd, reply_buf[2]=06
+Oct 19 18:29:19 (none) local0.notice cgminer[960]: power_send_cmd, reply_buf[3]=83
+Oct 19 18:29:19 (none) local0.notice cgminer[960]: power_send_cmd, reply_buf[4]=63
+Oct 19 18:29:19 (none) local0.notice cgminer[960]: power_send_cmd, reply_buf[5]=00
+Oct 19 18:29:19 (none) local0.notice cgminer[960]: power_send_cmd, reply_buf[6]=ec
+Oct 19 18:29:19 (none) local0.notice cgminer[960]: power_send_cmd, reply_buf[7]=00
+Oct 19 18:29:19 (none) local0.notice cgminer[960]: every_chain_enable_PIC16F1704_dc_dc_new
+Oct 19 18:29:19 (none) local0.notice cgminer[960]: enable_PIC16F1704_dc_dc_new ok
+Oct 19 18:29:20 (none) local0.notice cgminer[960]: enable_PIC16F1704_dc_dc_new ok
+Oct 19 18:29:20 (none) local0.notice cgminer[960]: enable_PIC16F1704_dc_dc_new ok
+Oct 19 18:29:21 (none) local0.notice cgminer[960]: tty_init
+Oct 19 18:29:21 (none) local0.notice cgminer[960]: MISC_CONTROL : 7002001
+Oct 19 18:29:21 (none) local0.notice cgminer[960]: MISC_CONTROL : 7002001
+Oct 19 18:29:21 (none) local0.notice cgminer[960]: MISC_CONTROL : 7002001
+Oct 19 18:29:21 (none) local0.notice cgminer[960]: tty_init_chain
+Oct 19 18:29:21 (none) local0.err cgminer[960]: create rx read thread for chain 0
+Oct 19 18:29:21 (none) local0.err cgminer[960]: create rx read thread for chain 0 ok
+Oct 19 18:29:21 (none) local0.notice cgminer[960]: Start A New Asic Response.Chain:[0]
+Oct 19 18:29:21 (none) local0.notice cgminer[960]: open device over
+Oct 19 18:29:21 (none) local0.notice cgminer[960]: tty_init_chain
+Oct 19 18:29:21 (none) local0.err cgminer[960]: create rx read thread for chain 1
+Oct 19 18:29:21 (none) local0.err cgminer[960]: create rx read thread for chain 1 ok
+Oct 19 18:29:21 (none) local0.notice cgminer[960]: Start A New Asic Response.Chain:[1]
+Oct 19 18:29:21 (none) local0.notice cgminer[960]: open device over
+Oct 19 18:29:21 (none) local0.notice cgminer[960]: tty_init_chain
+Oct 19 18:29:21 (none) local0.err cgminer[960]: create rx read thread for chain 2
+Oct 19 18:29:21 (none) local0.err cgminer[960]: create rx read thread for chain 2 ok
+Oct 19 18:29:21 (none) local0.notice cgminer[960]: Start A New Asic Response.Chain:[2]
+Oct 19 18:29:21 (none) local0.notice cgminer[960]: open device over
+Oct 19 18:29:21 (none) local0.notice cgminer[960]: tty_init_chain
+Oct 19 18:29:21 (none) local0.notice cgminer[960]: open device over
+Oct 19 18:29:21 (none) local0.notice cgminer[960]: IO Thread #b38ff470 using high-priority scheduler! 
+Oct 19 18:29:21 (none) local0.notice cgminer[960]: check_every_chain_asic_number
+Oct 19 18:29:21 (none) local0.warn cgminer[960]: check_asic_reg: Chain0 has 54 ASICs
+Oct 19 18:29:22 (none) local0.warn cgminer[960]: check_asic_reg: Chain1 has 54 ASICs
+Oct 19 18:29:22 (none) local0.warn cgminer[960]: check_asic_reg: Chain2 has 54 ASICs
+Oct 19 18:29:23 (none) local0.notice cgminer[960]: power off!
+Oct 19 18:29:24 (none) local0.notice cgminer[960]: power on!
+Oct 19 18:29:26 (none) local0.notice cgminer[960]: tty_init
+Oct 19 18:29:26 (none) local0.notice cgminer[960]: MISC_CONTROL : 7002001
+Oct 19 18:29:26 (none) local0.notice cgminer[960]: MISC_CONTROL : 7002001
+Oct 19 18:29:26 (none) local0.notice cgminer[960]: MISC_CONTROL : 7002001
+Oct 19 18:29:26 (none) local0.notice cgminer[960]: tty_init_chain
+Oct 19 18:29:26 (none) local0.err cgminer[960]: create rx read thread for chain 0
+Oct 19 18:29:26 (none) local0.err cgminer[960]: create rx read thread for chain 0 ok
+Oct 19 18:29:26 (none) local0.notice cgminer[960]: Start A New Asic Response.Chain:[0]
+Oct 19 18:29:26 (none) local0.notice cgminer[960]: open device over
+Oct 19 18:29:26 (none) local0.notice cgminer[960]: tty_init_chain
+Oct 19 18:29:26 (none) local0.err cgminer[960]: create rx read thread for chain 1
+Oct 19 18:29:26 (none) local0.err cgminer[960]: create rx read thread for chain 1 ok
+Oct 19 18:29:26 (none) local0.notice cgminer[960]: Start A New Asic Response.Chain:[1]
+Oct 19 18:29:26 (none) local0.notice cgminer[960]: open device over
+Oct 19 18:29:26 (none) local0.notice cgminer[960]: tty_init_chain
+Oct 19 18:29:26 (none) local0.err cgminer[960]: create rx read thread for chain 2
+Oct 19 18:29:26 (none) local0.err cgminer[960]: create rx read thread for chain 2 ok
+Oct 19 18:29:26 (none) local0.notice cgminer[960]: Start A New Asic Response.Chain:[2]
+Oct 19 18:29:26 (none) local0.notice cgminer[960]: open device over
+Oct 19 18:29:26 (none) local0.notice cgminer[960]: tty_init_chain
+Oct 19 18:29:26 (none) local0.notice cgminer[960]: open device over
+Oct 19 18:29:26 (none) local0.notice cgminer[960]: IO Thread #b28ff470 using high-priority scheduler! 
+Oct 19 18:29:26 (none) local0.notice cgminer[960]: tty_init
+Oct 19 18:29:26 (none) local0.notice cgminer[960]: MISC_CONTROL : 7002001
+Oct 19 18:29:26 (none) local0.notice cgminer[960]: MISC_CONTROL : 7002001
+Oct 19 18:29:26 (none) local0.notice cgminer[960]: MISC_CONTROL : 7002001
+Oct 19 18:29:26 (none) local0.notice cgminer[960]: tty_init_chain
+Oct 19 18:29:26 (none) local0.err cgminer[960]: create rx read thread for chain 0
+Oct 19 18:29:26 (none) local0.err cgminer[960]: create rx read thread for chain 0 ok
+Oct 19 18:29:26 (none) local0.notice cgminer[960]: Start A New Asic Response.Chain:[0]
+Oct 19 18:29:26 (none) local0.notice cgminer[960]: open device over
+Oct 19 18:29:26 (none) local0.notice cgminer[960]: tty_init_chain
+Oct 19 18:29:26 (none) local0.err cgminer[960]: create rx read thread for chain 1
+Oct 19 18:29:26 (none) local0.err cgminer[960]: create rx read thread for chain 1 ok
+Oct 19 18:29:26 (none) local0.notice cgminer[960]: Start A New Asic Response.Chain:[1]
+Oct 19 18:29:27 (none) local0.notice cgminer[960]: open device over
+Oct 19 18:29:27 (none) local0.notice cgminer[960]: tty_init_chain
+Oct 19 18:29:27 (none) local0.err cgminer[960]: create rx read thread for chain 2
+Oct 19 18:29:27 (none) local0.err cgminer[960]: create rx read thread for chain 2 ok
+Oct 19 18:29:27 (none) local0.notice cgminer[960]: Start A New Asic Response.Chain:[2]
+Oct 19 18:29:27 (none) local0.notice cgminer[960]: open device over
+Oct 19 18:29:27 (none) local0.notice cgminer[960]: tty_init_chain
+Oct 19 18:29:27 (none) local0.notice cgminer[960]: open device over
+Oct 19 18:29:27 (none) local0.notice cgminer[960]: IO Thread #b08ff470 using high-priority scheduler! 
+Oct 19 18:29:27 (none) local0.notice cgminer[960]: tty_init
+Oct 19 18:29:27 (none) local0.notice cgminer[960]: MISC_CONTROL : 7002001
+Oct 19 18:29:27 (none) local0.notice cgminer[960]: MISC_CONTROL : 7002001
+Oct 19 18:29:27 (none) local0.notice cgminer[960]: MISC_CONTROL : 7002001
+Oct 19 18:29:27 (none) local0.notice cgminer[960]: tty_init_chain
+Oct 19 18:29:27 (none) local0.err cgminer[960]: create rx read thread for chain 0
+Oct 19 18:29:27 (none) local0.err cgminer[960]: create rx read thread for chain 0 ok
+Oct 19 18:29:27 (none) local0.notice cgminer[960]: Start A New Asic Response.Chain:[0]
+Oct 19 18:29:27 (none) local0.notice cgminer[960]: open device over
+Oct 19 18:29:27 (none) local0.notice cgminer[960]: tty_init_chain
+Oct 19 18:29:27 (none) local0.err cgminer[960]: create rx read thread for chain 1
+Oct 19 18:29:27 (none) local0.err cgminer[960]: create rx read thread for chain 1 ok
+Oct 19 18:29:27 (none) local0.notice cgminer[960]: Start A New Asic Response.Chain:[1]
+Oct 19 18:29:27 (none) local0.notice cgminer[960]: open device over
+Oct 19 18:29:27 (none) local0.notice cgminer[960]: tty_init_chain
+Oct 19 18:29:27 (none) local0.err cgminer[960]: create rx read thread for chain 2
+Oct 19 18:29:27 (none) local0.err cgminer[960]: create rx read thread for chain 2 ok
+Oct 19 18:29:27 (none) local0.notice cgminer[960]: Start A New Asic Response.Chain:[2]
+Oct 19 18:29:27 (none) local0.notice cgminer[960]: open device over
+Oct 19 18:29:27 (none) local0.notice cgminer[960]: tty_init_chain
+Oct 19 18:29:27 (none) local0.notice cgminer[960]: open device over
+Oct 19 18:29:27 (none) local0.notice cgminer[960]: IO Thread #ae8ff470 using high-priority scheduler! 
+Oct 19 18:29:27 (none) local0.notice cgminer[960]: check_every_chain_asic_number
+Oct 19 18:29:27 (none) local0.warn cgminer[960]: check_asic_reg: Chain0 has 54 ASICs
+Oct 19 18:29:28 (none) local0.warn cgminer[960]: check_asic_reg: Chain1 has 54 ASICs
+Oct 19 18:29:28 (none) local0.warn cgminer[960]: check_asic_reg: Chain2 has 54 ASICs
+Oct 19 18:29:28 (none) local0.notice cgminer[960]: recheck_asic_num DONE!
+Oct 19 18:29:28 (none) local0.notice cgminer[960]: power off!
+Oct 19 18:29:30 (none) local0.notice cgminer[960]: power on!
+Oct 19 18:29:32 (none) local0.notice cgminer[960]: tty_init
+Oct 19 18:29:32 (none) local0.notice cgminer[960]: MISC_CONTROL : 7002001
+Oct 19 18:29:32 (none) local0.notice cgminer[960]: MISC_CONTROL : 7002001
+Oct 19 18:29:32 (none) local0.notice cgminer[960]: MISC_CONTROL : 7002001
+Oct 19 18:29:32 (none) local0.notice cgminer[960]: tty_init_chain
+Oct 19 18:29:32 (none) local0.err cgminer[960]: create rx read thread for chain 0
+Oct 19 18:29:32 (none) local0.err cgminer[960]: create rx read thread for chain 0 ok
+Oct 19 18:29:32 (none) local0.notice cgminer[960]: Start A New Asic Response.Chain:[0]
+Oct 19 18:29:32 (none) local0.notice cgminer[960]: open device over
+Oct 19 18:29:32 (none) local0.notice cgminer[960]: tty_init_chain
+Oct 19 18:29:32 (none) local0.err cgminer[960]: create rx read thread for chain 1
+Oct 19 18:29:32 (none) local0.err cgminer[960]: create rx read thread for chain 1 ok
+Oct 19 18:29:32 (none) local0.notice cgminer[960]: Start A New Asic Response.Chain:[1]
+Oct 19 18:29:32 (none) local0.notice cgminer[960]: open device over
+Oct 19 18:29:32 (none) local0.notice cgminer[960]: tty_init_chain
+Oct 19 18:29:32 (none) local0.err cgminer[960]: create rx read thread for chain 2
+Oct 19 18:29:32 (none) local0.err cgminer[960]: create rx read thread for chain 2 ok
+Oct 19 18:29:32 (none) local0.notice cgminer[960]: Start A New Asic Response.Chain:[2]
+Oct 19 18:29:32 (none) local0.notice cgminer[960]: open device over
+Oct 19 18:29:32 (none) local0.notice cgminer[960]: tty_init_chain
+Oct 19 18:29:32 (none) local0.notice cgminer[960]: open device over
+Oct 19 18:29:32 (none) local0.notice cgminer[960]: IO Thread #af0ff470 using high-priority scheduler! 
+Oct 19 18:29:32 (none) local0.notice cgminer[960]: tty_init
+Oct 19 18:29:32 (none) local0.notice cgminer[960]: MISC_CONTROL : 7002001
+Oct 19 18:29:32 (none) local0.notice cgminer[960]: MISC_CONTROL : 7002001
+Oct 19 18:29:32 (none) local0.notice cgminer[960]: MISC_CONTROL : 7002001
+Oct 19 18:29:32 (none) local0.notice cgminer[960]: tty_init_chain
+Oct 19 18:29:32 (none) local0.err cgminer[960]: create rx read thread for chain 0
+Oct 19 18:29:32 (none) local0.err cgminer[960]: create rx read thread for chain 0 ok
+Oct 19 18:29:32 (none) local0.notice cgminer[960]: Start A New Asic Response.Chain:[0]
+Oct 19 18:29:32 (none) local0.notice cgminer[960]: open device over
+Oct 19 18:29:32 (none) local0.notice cgminer[960]: tty_init_chain
+Oct 19 18:29:32 (none) local0.err cgminer[960]: create rx read thread for chain 1
+Oct 19 18:29:32 (none) local0.err cgminer[960]: create rx read thread for chain 1 ok
+Oct 19 18:29:32 (none) local0.notice cgminer[960]: Start A New Asic Response.Chain:[1]
+Oct 19 18:29:32 (none) local0.notice cgminer[960]: open device over
+Oct 19 18:29:32 (none) local0.notice cgminer[960]: tty_init_chain
+Oct 19 18:29:32 (none) local0.err cgminer[960]: create rx read thread for chain 2
+Oct 19 18:29:32 (none) local0.err cgminer[960]: create rx read thread for chain 2 ok
+Oct 19 18:29:32 (none) local0.notice cgminer[960]: Start A New Asic Response.Chain:[2]
+Oct 19 18:29:32 (none) local0.notice cgminer[960]: open device over
+Oct 19 18:29:32 (none) local0.notice cgminer[960]: tty_init_chain
+Oct 19 18:29:32 (none) local0.notice cgminer[960]: open device over
+Oct 19 18:29:32 (none) local0.notice cgminer[960]: IO Thread #b20ff470 using high-priority scheduler! 
+Oct 19 18:29:32 (none) local0.notice cgminer[960]: tty_init
+Oct 19 18:29:32 (none) local0.notice cgminer[960]: MISC_CONTROL : 7002001
+Oct 19 18:29:32 (none) local0.notice cgminer[960]: MISC_CONTROL : 7002001
+Oct 19 18:29:32 (none) local0.notice cgminer[960]: MISC_CONTROL : 7002001
+Oct 19 18:29:32 (none) local0.notice cgminer[960]: tty_init_chain
+Oct 19 18:29:32 (none) local0.err cgminer[960]: create rx read thread for chain 0
+Oct 19 18:29:32 (none) local0.err cgminer[960]: create rx read thread for chain 0 ok
+Oct 19 18:29:32 (none) local0.notice cgminer[960]: Start A New Asic Response.Chain:[0]
+Oct 19 18:29:33 (none) local0.notice cgminer[960]: open device over
+Oct 19 18:29:33 (none) local0.notice cgminer[960]: tty_init_chain
+Oct 19 18:29:33 (none) local0.err cgminer[960]: create rx read thread for chain 1
+Oct 19 18:29:33 (none) local0.err cgminer[960]: create rx read thread for chain 1 ok
+Oct 19 18:29:33 (none) local0.notice cgminer[960]: Start A New Asic Response.Chain:[1]
+Oct 19 18:29:33 (none) local0.notice cgminer[960]: open device over
+Oct 19 18:29:33 (none) local0.notice cgminer[960]: tty_init_chain
+Oct 19 18:29:33 (none) local0.err cgminer[960]: create rx read thread for chain 2
+Oct 19 18:29:33 (none) local0.err cgminer[960]: create rx read thread for chain 2 ok
+Oct 19 18:29:33 (none) local0.notice cgminer[960]: Start A New Asic Response.Chain:[2]
+Oct 19 18:29:33 (none) local0.notice cgminer[960]: open device over
+Oct 19 18:29:33 (none) local0.notice cgminer[960]: tty_init_chain
+Oct 19 18:29:33 (none) local0.notice cgminer[960]: open device over
+Oct 19 18:29:33 (none) local0.notice cgminer[960]: IO Thread #ad0ff470 using high-priority scheduler! 
+Oct 19 18:29:33 (none) local0.notice cgminer[960]: check_every_chain_asic_number
+Oct 19 18:29:33 (none) local0.warn cgminer[960]: check_asic_reg: Chain0 has 54 ASICs
+Oct 19 18:29:34 (none) local0.warn cgminer[960]: check_asic_reg: Chain1 has 54 ASICs
+Oct 19 18:29:34 (none) local0.warn cgminer[960]: check_asic_reg: Chain2 has 54 ASICs
+Oct 19 18:29:34 (none) local0.notice cgminer[960]: recheck_asic_num DONE!
+Oct 19 18:29:34 (none) local0.notice cgminer[960]: power off!
+Oct 19 18:29:36 (none) local0.notice cgminer[960]: power on!
+Oct 19 18:29:38 (none) local0.notice cgminer[960]: tty_init
+Oct 19 18:29:38 (none) local0.notice cgminer[960]: MISC_CONTROL : 7002001
+Oct 19 18:29:38 (none) local0.notice cgminer[960]: MISC_CONTROL : 7002001
+Oct 19 18:29:38 (none) local0.notice cgminer[960]: MISC_CONTROL : 7002001
+Oct 19 18:29:38 (none) local0.notice cgminer[960]: tty_init_chain
+Oct 19 18:29:38 (none) local0.err cgminer[960]: create rx read thread for chain 0
+Oct 19 18:29:38 (none) local0.err cgminer[960]: create rx read thread for chain 0 ok
+Oct 19 18:29:38 (none) local0.notice cgminer[960]: Start A New Asic Response.Chain:[0]
+Oct 19 18:29:38 (none) local0.notice cgminer[960]: open device over
+Oct 19 18:29:38 (none) local0.notice cgminer[960]: tty_init_chain
+Oct 19 18:29:38 (none) local0.err cgminer[960]: create rx read thread for chain 1
+Oct 19 18:29:38 (none) local0.err cgminer[960]: create rx read thread for chain 1 ok
+Oct 19 18:29:38 (none) local0.notice cgminer[960]: Start A New Asic Response.Chain:[1]
+Oct 19 18:29:38 (none) local0.notice cgminer[960]: open device over
+Oct 19 18:29:38 (none) local0.notice cgminer[960]: tty_init_chain
+Oct 19 18:29:38 (none) local0.err cgminer[960]: create rx read thread for chain 2
+Oct 19 18:29:38 (none) local0.err cgminer[960]: create rx read thread for chain 2 ok
+Oct 19 18:29:38 (none) local0.notice cgminer[960]: Start A New Asic Response.Chain:[2]
+Oct 19 18:29:38 (none) local0.notice cgminer[960]: open device over
+Oct 19 18:29:38 (none) local0.notice cgminer[960]: tty_init_chain
+Oct 19 18:29:38 (none) local0.notice cgminer[960]: open device over
+Oct 19 18:29:38 (none) local0.notice cgminer[960]: IO Thread #af8ff470 using high-priority scheduler! 
+Oct 19 18:29:38 (none) local0.notice cgminer[960]: tty_init
+Oct 19 18:29:38 (none) local0.notice cgminer[960]: MISC_CONTROL : 7002001
+Oct 19 18:29:38 (none) local0.notice cgminer[960]: MISC_CONTROL : 7002001
+Oct 19 18:29:38 (none) local0.notice cgminer[960]: MISC_CONTROL : 7002001
+Oct 19 18:29:38 (none) local0.notice cgminer[960]: tty_init_chain
+Oct 19 18:29:38 (none) local0.err cgminer[960]: create rx read thread for chain 0
+Oct 19 18:29:38 (none) local0.err cgminer[960]: create rx read thread for chain 0 ok
+Oct 19 18:29:38 (none) local0.notice cgminer[960]: Start A New Asic Response.Chain:[0]
+Oct 19 18:29:38 (none) local0.notice cgminer[960]: open device over
+Oct 19 18:29:38 (none) local0.notice cgminer[960]: tty_init_chain
+Oct 19 18:29:38 (none) local0.err cgminer[960]: create rx read thread for chain 1
+Oct 19 18:29:38 (none) local0.err cgminer[960]: create rx read thread for chain 1 ok
+Oct 19 18:29:38 (none) local0.notice cgminer[960]: Start A New Asic Response.Chain:[1]
+Oct 19 18:29:38 (none) local0.notice cgminer[960]: open device over
+Oct 19 18:29:38 (none) local0.notice cgminer[960]: tty_init_chain
+Oct 19 18:29:38 (none) local0.err cgminer[960]: create rx read thread for chain 2
+Oct 19 18:29:38 (none) local0.err cgminer[960]: create rx read thread for chain 2 ok
+Oct 19 18:29:38 (none) local0.notice cgminer[960]: Start A New Asic Response.Chain:[2]
+Oct 19 18:29:38 (none) local0.notice cgminer[960]: open device over
+Oct 19 18:29:38 (none) local0.notice cgminer[960]: tty_init_chain
+Oct 19 18:29:38 (none) local0.notice cgminer[960]: open device over
+Oct 19 18:29:38 (none) local0.notice cgminer[960]: IO Thread #b40ff470 using high-priority scheduler! 
+Oct 19 18:29:38 (none) local0.notice cgminer[960]: tty_init
+Oct 19 18:29:38 (none) local0.notice cgminer[960]: MISC_CONTROL : 7002001
+Oct 19 18:29:38 (none) local0.notice cgminer[960]: MISC_CONTROL : 7002001
+Oct 19 18:29:38 (none) local0.notice cgminer[960]: MISC_CONTROL : 7002001
+Oct 19 18:29:38 (none) local0.notice cgminer[960]: tty_init_chain
+Oct 19 18:29:38 (none) local0.err cgminer[960]: create rx read thread for chain 0
+Oct 19 18:29:38 (none) local0.err cgminer[960]: create rx read thread for chain 0 ok
+Oct 19 18:29:38 (none) local0.notice cgminer[960]: Start A New Asic Response.Chain:[0]
+Oct 19 18:29:38 (none) local0.notice cgminer[960]: open device over
+Oct 19 18:29:38 (none) local0.notice cgminer[960]: tty_init_chain
+Oct 19 18:29:38 (none) local0.err cgminer[960]: create rx read thread for chain 1
+Oct 19 18:29:38 (none) local0.err cgminer[960]: create rx read thread for chain 1 ok
+Oct 19 18:29:38 (none) local0.notice cgminer[960]: Start A New Asic Response.Chain:[1]
+Oct 19 18:29:38 (none) local0.notice cgminer[960]: open device over
+Oct 19 18:29:38 (none) local0.notice cgminer[960]: tty_init_chain
+Oct 19 18:29:38 (none) local0.err cgminer[960]: create rx read thread for chain 2
+Oct 19 18:29:38 (none) local0.err cgminer[960]: create rx read thread for chain 2 ok
+Oct 19 18:29:38 (none) local0.notice cgminer[960]: Start A New Asic Response.Chain:[2]
+Oct 19 18:29:39 (none) local0.notice cgminer[960]: open device over
+Oct 19 18:29:39 (none) local0.notice cgminer[960]: tty_init_chain
+Oct 19 18:29:39 (none) local0.notice cgminer[960]: open device over
+Oct 19 18:29:39 (none) local0.notice cgminer[960]: IO Thread #ab8ff470 using high-priority scheduler! 
+Oct 19 18:29:39 (none) local0.notice cgminer[960]: check_every_chain_asic_number
+Oct 19 18:29:39 (none) local0.warn cgminer[960]: check_asic_reg: Chain0 has 54 ASICs
+Oct 19 18:29:39 (none) local0.warn cgminer[960]: check_asic_reg: Chain1 has 54 ASICs
+Oct 19 18:29:40 (none) local0.warn cgminer[960]: check_asic_reg: Chain2 has 54 ASICs
+Oct 19 18:29:40 (none) local0.notice cgminer[960]: recheck_asic_num DONE!
+Oct 19 18:29:40 (none) local0.notice cgminer[960]: calculate_address_interval: temp_asic_number = 128, addrInterval = 1
+Oct 19 18:29:40 (none) local0.notice cgminer[960]: software_set_address_chain: chain 0 has 54 ASIC, and addrInterval is 1
+Oct 19 18:29:40 (none) local0.notice cgminer[960]: Now Set [0] Chain Address
+Oct 19 18:29:41 (none) local0.notice cgminer[960]: software_set_address_chain: chain 1 has 54 ASIC, and addrInterval is 1
+Oct 19 18:29:41 (none) local0.notice cgminer[960]: Now Set [1] Chain Address
+Oct 19 18:29:42 (none) local0.notice cgminer[960]: software_set_address_chain: chain 2 has 54 ASIC, and addrInterval is 1
+Oct 19 18:29:42 (none) local0.notice cgminer[960]: Now Set [2] Chain Address
+Oct 19 18:29:42 (none) local0.notice cgminer[960]: check_every_chain_asic_number
+Oct 19 18:29:43 (none) local0.warn cgminer[960]: check_asic_reg: Chain0 has 54 ASICs
+Oct 19 18:29:43 (none) local0.warn cgminer[960]: check_asic_reg: Chain1 has 54 ASICs
+Oct 19 18:29:43 (none) local0.warn cgminer[960]: check_asic_reg: Chain2 has 54 ASICs
+Oct 19 18:29:43 (none) local0.notice cgminer[960]: set_ticket_mask ticket_mask = 0x00000028
+Oct 19 18:29:43 (none) local0.notice cgminer[960]:  set_frequency_chain: chian = 0 freq = 600.000000
+Oct 19 18:29:43 (none) local0.notice cgminer[960]:  set_frequency_chain: pll_param = c0c00211, divider = 03, pll_freq = 2400.000000
+Oct 19 18:29:43 (none) local0.notice cgminer[960]:  set_frequency_chain: chian = 1 freq = 600.000000
+Oct 19 18:29:43 (none) local0.notice cgminer[960]:  set_frequency_chain: pll_param = c0c00211, divider = 03, pll_freq = 2400.000000
+Oct 19 18:29:43 (none) local0.notice cgminer[960]:  set_frequency_chain: chian = 2 freq = 600.000000
+Oct 19 18:29:43 (none) local0.notice cgminer[960]:  set_frequency_chain: pll_param = c0c00211, divider = 03, pll_freq = 2400.000000
+Oct 19 18:29:43 (none) local0.notice cgminer[960]: enable_read_temperature_from_asic_chain: reg_value = 0x07006061
+Oct 19 18:29:43 (none) local0.notice cgminer[960]: enable_read_temperature_from_asic_chain: reg_value = 0x07006061
+Oct 19 18:29:43 (none) local0.notice cgminer[960]: enable_read_temperature_from_asic_chain: reg_value = 0x07006061
+Oct 19 18:29:43 (none) local0.notice cgminer[960]: select_core_to_check_temperature_chain: diode_mux_sel = 1
+Oct 19 18:29:43 (none) local0.notice cgminer[960]: select_core_to_check_temperature_chain: diode_mux_sel = 1
+Oct 19 18:29:43 (none) local0.notice cgminer[960]: select_core_to_check_temperature_chain: diode_mux_sel = 1
+Oct 19 18:29:43 (none) local0.notice cgminer[960]: calibration_sensor_offset
+Oct 19 18:29:43 (none) local0.notice cgminer[960]: 0 calibration_sensor_offset_chain
+Oct 19 18:29:44 (none) local0.notice cgminer[960]: chain:0 local:19 remote:25
+Oct 19 18:29:44 (none) local0.warn cgminer[960]: Chain 0 set_temperature_offset_value_chain_sensor
+Oct 19 18:29:44 (none) local0.notice cgminer[960]: set_temperature_offset_value_chain_sensor: Chain0 Sensor0 temp offset : -6, 
+Oct 19 18:29:44 (none) local0.notice cgminer[960]: chain:0 local:19 remote:19
+Oct 19 18:29:44 (none) local0.warn cgminer[960]: Chain 0 set_temperature_offset_value_chain_sensor
+Oct 19 18:29:45 (none) local0.notice cgminer[960]: set_temperature_offset_value_chain_sensor: Chain0 Sensor0 temp offset : -6, 
+Oct 19 18:29:45 (none) local0.notice cgminer[960]: chain:0 local:19 remote:24
+Oct 19 18:29:45 (none) local0.warn cgminer[960]: Chain 0 set_temperature_offset_value_chain_sensor
+Oct 19 18:29:45 (none) local0.notice cgminer[960]: set_temperature_offset_value_chain_sensor: Chain0 Sensor1 temp offset : -5, 
+Oct 19 18:29:46 (none) local0.notice cgminer[960]: chain:0 local:19 remote:19
+Oct 19 18:29:46 (none) local0.warn cgminer[960]: Chain 0 set_temperature_offset_value_chain_sensor
+Oct 19 18:29:46 (none) local0.notice cgminer[960]: set_temperature_offset_value_chain_sensor: Chain0 Sensor1 temp offset : -5, 
+Oct 19 18:29:46 (none) local0.notice cgminer[960]: chain:0 local:21 remote:25
+Oct 19 18:29:46 (none) local0.warn cgminer[960]: Chain 0 set_temperature_offset_value_chain_sensor
+Oct 19 18:29:46 (none) local0.notice cgminer[960]: set_temperature_offset_value_chain_sensor: Chain0 Sensor2 temp offset : -4, 
+Oct 19 18:29:47 (none) local0.notice cgminer[960]: chain:0 local:21 remote:21
+Oct 19 18:29:47 (none) local0.warn cgminer[960]: Chain 0 set_temperature_offset_value_chain_sensor
+Oct 19 18:29:47 (none) local0.notice cgminer[960]: set_temperature_offset_value_chain_sensor: Chain0 Sensor2 temp offset : -4, 
+Oct 19 18:29:48 (none) local0.notice cgminer[960]: chain:0 local:0 remote:0
+Oct 19 18:29:48 (none) local0.warn cgminer[960]: Chain 0 set_temperature_offset_value_chain_sensor
+Oct 19 18:29:48 (none) local0.notice cgminer[960]: set_temperature_offset_value_chain_sensor: Chain0 Sensor3 temp offset : 00, 
+Oct 19 18:29:48 (none) local0.notice cgminer[960]: 1 calibration_sensor_offset_chain
+Oct 19 18:29:49 (none) local0.notice cgminer[960]: chain:1 local:20 remote:27
+Oct 19 18:29:49 (none) local0.warn cgminer[960]: Chain 1 set_temperature_offset_value_chain_sensor
+Oct 19 18:29:49 (none) local0.notice cgminer[960]: set_temperature_offset_value_chain_sensor: Chain1 Sensor0 temp offset : -7, 
+Oct 19 18:29:49 (none) local0.notice cgminer[960]: chain:1 local:20 remote:20
+Oct 19 18:29:49 (none) local0.warn cgminer[960]: Chain 1 set_temperature_offset_value_chain_sensor
+Oct 19 18:29:50 (none) local0.notice cgminer[960]: set_temperature_offset_value_chain_sensor: Chain1 Sensor0 temp offset : -7, 
+Oct 19 18:29:50 (none) local0.notice cgminer[960]: chain:1 local:19 remote:25
+Oct 19 18:29:50 (none) local0.warn cgminer[960]: Chain 1 set_temperature_offset_value_chain_sensor
+Oct 19 18:29:50 (none) local0.notice cgminer[960]: set_temperature_offset_value_chain_sensor: Chain1 Sensor1 temp offset : -6, 
+Oct 19 18:29:51 (none) local0.notice cgminer[960]: chain:1 local:19 remote:19
+Oct 19 18:29:51 (none) local0.warn cgminer[960]: Chain 1 set_temperature_offset_value_chain_sensor
+Oct 19 18:29:51 (none) local0.notice cgminer[960]: set_temperature_offset_value_chain_sensor: Chain1 Sensor1 temp offset : -6, 
+Oct 19 18:29:51 (none) local0.notice cgminer[960]: chain:1 local:20 remote:26
+Oct 19 18:29:51 (none) local0.warn cgminer[960]: Chain 1 set_temperature_offset_value_chain_sensor
+Oct 19 18:29:51 (none) local0.notice cgminer[960]: set_temperature_offset_value_chain_sensor: Chain1 Sensor2 temp offset : -6, 
+Oct 19 18:29:52 (none) local0.notice cgminer[960]: chain:1 local:20 remote:20
+Oct 19 18:29:52 (none) local0.warn cgminer[960]: Chain 1 set_temperature_offset_value_chain_sensor
+Oct 19 18:29:52 (none) local0.notice cgminer[960]: set_temperature_offset_value_chain_sensor: Chain1 Sensor2 temp offset : -6, 
+Oct 19 18:29:53 (none) local0.notice cgminer[960]: chain:1 local:0 remote:0
+Oct 19 18:29:53 (none) local0.warn cgminer[960]: Chain 1 set_temperature_offset_value_chain_sensor
+Oct 19 18:29:53 (none) local0.notice cgminer[960]: set_temperature_offset_value_chain_sensor: Chain1 Sensor3 temp offset : 00, 
+Oct 19 18:29:53 (none) local0.notice cgminer[960]: 2 calibration_sensor_offset_chain
+Oct 19 18:29:54 (none) local0.notice cgminer[960]: chain:2 local:19 remote:26
+Oct 19 18:29:54 (none) local0.warn cgminer[960]: Chain 2 set_temperature_offset_value_chain_sensor
+Oct 19 18:29:54 (none) local0.notice cgminer[960]: set_temperature_offset_value_chain_sensor: Chain2 Sensor0 temp offset : -7, 
+Oct 19 18:29:54 (none) local0.notice cgminer[960]: chain:2 local:19 remote:19
+Oct 19 18:29:54 (none) local0.warn cgminer[960]: Chain 2 set_temperature_offset_value_chain_sensor
+Oct 19 18:29:55 (none) local0.notice cgminer[960]: set_temperature_offset_value_chain_sensor: Chain2 Sensor0 temp offset : -7, 
+Oct 19 18:29:55 (none) local0.notice cgminer[960]: chain:2 local:19 remote:26
+Oct 19 18:29:55 (none) local0.warn cgminer[960]: Chain 2 set_temperature_offset_value_chain_sensor
+Oct 19 18:29:55 (none) local0.notice cgminer[960]: set_temperature_offset_value_chain_sensor: Chain2 Sensor1 temp offset : -7, 
+Oct 19 18:29:56 (none) local0.notice cgminer[960]: chain:2 local:19 remote:20
+Oct 19 18:29:56 (none) local0.warn cgminer[960]: Chain 2 set_temperature_offset_value_chain_sensor
+Oct 19 18:29:56 (none) local0.notice cgminer[960]: set_temperature_offset_value_chain_sensor: Chain2 Sensor1 temp offset : -8, 
+Oct 19 18:29:56 (none) local0.notice cgminer[960]: chain:2 local:20 remote:27
+Oct 19 18:29:56 (none) local0.warn cgminer[960]: Chain 2 set_temperature_offset_value_chain_sensor
+Oct 19 18:29:56 (none) local0.notice cgminer[960]: set_temperature_offset_value_chain_sensor: Chain2 Sensor2 temp offset : -7, 
+Oct 19 18:29:57 (none) local0.notice cgminer[960]: chain:2 local:20 remote:20
+Oct 19 18:29:57 (none) local0.warn cgminer[960]: Chain 2 set_temperature_offset_value_chain_sensor
+Oct 19 18:29:57 (none) local0.notice cgminer[960]: set_temperature_offset_value_chain_sensor: Chain2 Sensor2 temp offset : -7, 
+Oct 19 18:29:58 (none) local0.notice cgminer[960]: chain:2 local:0 remote:0
+Oct 19 18:29:58 (none) local0.warn cgminer[960]: Chain 2 set_temperature_offset_value_chain_sensor
+Oct 19 18:29:58 (none) local0.notice cgminer[960]: set_temperature_offset_value_chain_sensor: Chain2 Sensor3 temp offset : 00, 
+Oct 19 18:29:58 (none) local0.notice cgminer[960]: bitmain_dcr_init: fan_eft: 0  fan_pwm : 30
+Oct 19 18:29:58 (none) local0.notice cgminer[960]: frequency = '600 timeout 9786'
+Oct 19 18:30:03 (none) local0.notice cgminer[960]: chain 0 Chip 48 unkown reg = 0x7352136d
+Oct 19 18:30:04 (none) local0.notice cgminer[960]: chain 0 Chip 52 unkown reg = 0x2e6b9c7e
+Oct 19 18:30:05 (none) local0.notice cgminer[960]: chain 0 Chip 25 unkown reg = 0xa3c72b80
+Oct 19 18:30:06 (none) local0.notice cgminer[960]: chain 0 Chip 28 unkown reg = 0xd557fcb3
+Oct 19 18:30:06 (none) local0.notice cgminer[960]: chain 0 Chip 28 unkown reg = 0x0bbdf992
+Oct 19 18:30:06 (none) local0.notice cgminer[960]: chain 0 Chip 28 unkown reg = 0xd557fcb3
+Oct 19 18:30:06 (none) local0.notice cgminer[960]: chain 0 Chip 28 unkown reg = 0x0bbdf992
+Oct 19 18:30:06 (none) local0.notice cgminer[960]: chain 0 Chip 23 unkown reg = 0x7de46765
+Oct 19 18:30:06 (none) local0.notice cgminer[960]: chain 0 Chip 28 unkown reg = 0xd557fcb3
+Oct 19 18:30:06 (none) local0.notice cgminer[960]: chain 0 Chip 28 unkown reg = 0x0bbdf992
+Oct 19 18:30:08 (none) local0.notice cgminer[960]: chain 0 Chip 53 unkown reg = 0x51ed94fb
+Oct 19 18:30:09 (none) local0.notice cgminer[960]: chain 0 Chip 32 unkown reg = 0xf9154846
+Oct 19 18:30:09 (none) local0.notice cgminer[960]: chain 0 Chip 14 unkown reg = 0xec174026
+Oct 19 18:30:09 (none) local0.notice cgminer[960]: chain 0 Chip 32 unkown reg = 0xf9154846
+Oct 19 18:30:09 (none) local0.notice cgminer[960]: chain 0 Chip 19 unkown reg = 0xf9755227
+Oct 19 18:30:09 (none) local0.notice cgminer[960]: chain 0 Chip 32 unkown reg = 0x9f80beed
+Oct 19 18:30:09 (none) local0.notice cgminer[960]: chain 0 Chip 14 unkown reg = 0xec169508
+Oct 19 18:30:09 (none) local0.notice cgminer[960]: chain 0 Chip 32 unkown reg = 0x578028a2
+Oct 19 18:30:10 (none) local0.notice cgminer[960]: chain 0 Chip 14 unkown reg = 0xec169508
+Oct 19 18:30:11 (none) local0.notice cgminer[960]: chain 0 Chip 37 unkown reg = 0xc7faa669
+Oct 19 18:30:11 (none) local0.notice cgminer[960]: chain 0 Chip 16 unkown reg = 0xdd97fd6c
+Oct 19 18:30:11 (none) local0.notice cgminer[960]: chain 0 Chip 53 unkown reg = 0xb536e74a
+Oct 19 18:30:18 (none) local0.notice cgminer[960]: chain 1 Chip 28 unkown reg = 0x753c0a52
+Oct 19 18:30:21 (none) local0.notice cgminer[960]: chain 1 Chip 26 unkown reg = 0xb6d76b74
+Oct 19 18:30:25 (none) local0.notice cgminer[960]: chain 1 Chip 22 unkown reg = 0xe98e6d6b
+Oct 19 18:30:25 (none) local0.notice cgminer[960]: chain 1 Chip 22 unkown reg = 0xa7f758fe
+Oct 19 18:30:25 (none) local0.notice cgminer[960]: chain 1 Chip 22 unkown reg = 0xe98e6d6b
+Oct 19 18:30:34 (none) local0.notice cgminer[960]: chain 2 Chip 19 unkown reg = 0xee2334ed
+Oct 19 18:30:34 (none) local0.notice cgminer[960]: chain 2 Chip 27 unkown reg = 0xb2d9eeef
+Oct 19 18:30:34 (none) local0.notice cgminer[960]: chain 1 Chip 23 unkown reg = 0x9bae3fe0
+Oct 19 18:30:39 (none) local0.notice cgminer[960]: chain 2 Chip 5 unkown reg = 0x18e006f7
+Oct 19 18:30:39 (none) local0.notice cgminer[960]: chain 2 Chip 5 unkown reg = 0x18e006f7
+Oct 19 18:30:39 (none) local0.notice cgminer[960]: chain 2 Chip 5 unkown reg = 0x18e006f7
+Oct 19 18:30:39 (none) local0.notice cgminer[960]: chain 2 Chip 24 unkown reg = 0xefecab03
+Oct 19 18:30:40 (none) local0.notice cgminer[960]: chain 2 Chip 24 unkown reg = 0xefecab03
+Oct 19 18:30:42 (none) local0.notice cgminer[960]: read_temp_func: can't read all sensor's temperature, close PIC and need reboot!!!
+Oct 19 18:30:43 (none) local0.err cgminer[960]: cgminer time error total_secs = 1634668243.571300 last_total_secs = 1.000000
+Oct 19 18:30:44 (none) local0.notice cgminer[960]: initiate_stratum, pool->n2size 8
+Oct 19 18:30:44 (none) local0.notice cgminer[960]: initiate_stratum, pool->n2size 8
+Oct 19 18:30:44 (none) local0.notice cgminer[960]: pool diff: 48, sdiff: 65536.0000
+Oct 19 18:30:44 (none) local0.warn cgminer[960]: Pool 1 stratum+tcp://cn-dcr.ss.btc.com:443 alive, testing stability
+Oct 19 18:30:44 (none) local0.warn cgminer[960]: Switching to pool 1 stratum+tcp://cn-dcr.ss.btc.com:443
+Oct 19 18:30:44 (none) local0.notice cgminer[960]: pool diff: 48, sdiff: 65536.0000
+Oct 19 18:30:44 (none) local0.notice cgminer[960]: initiate_stratum, pool->n2size 8
+Oct 19 18:30:44 (none) local0.warn cgminer[960]: Pool 0 stratum+tcp://dcr.ss.poolin.com:443 alive, testing stability
+Oct 19 18:30:44 (none) local0.warn cgminer[960]: Switching to pool 0 stratum+tcp://dcr.ss.poolin.com:443
+Oct 19 18:30:44 (none) local0.notice cgminer[960]: pool diff: 46, sdiff: 16384.0000
+Oct 19 18:30:46 (none) local0.notice cgminer[960]: chain 2 Chip 29 unkown reg = 0x1362bbe0
+Oct 19 18:30:49 (none) local0.warn cgminer[960]: API running in IP access mode on port 4028 (12)
+Oct 19 18:30:53 (none) local0.notice cgminer[960]: chain 1 Chip 18 unkown reg = 0x6d1cdf6e
+Oct 19 18:30:53 (none) local0.notice cgminer[960]: chain 1 Chip 18 unkown reg = 0x766f93b2
+Oct 19 18:30:53 (none) local0.notice cgminer[960]: chain 1 Chip 18 unkown reg = 0xc1f68026
+Oct 19 18:30:53 (none) local0.notice cgminer[960]: chain 1 Chip 18 unkown reg = 0x6d1cdf6e
+Oct 19 18:30:56 (none) local0.notice cgminer[960]: chain 1 Chip 5 unkown reg = 0x5a3df7e6
+Oct 19 18:30:59 (none) local0.notice cgminer[960]: chain 1 Chip 39 unkown reg = 0xbdc5424a
+Oct 19 18:31:00 (none) local0.notice cgminer[960]: chain 2 Chip 9 unkown reg = 0xece5dafd
+Oct 19 18:31:02 (none) local0.notice cgminer[960]: chain 1 Chip 30 unkown reg = 0x7df68cf7
+Oct 19 18:31:03 (none) local0.notice cgminer[960]: chain 1 Chip 52 unkown reg = 0xff55ac48
+Oct 19 18:31:03 (none) local0.notice cgminer[960]: chain 2 Chip 39 unkown reg = 0xd554477d
+Oct 19 18:31:04 (none) local0.notice cgminer[960]: chain 1 Chip 48 unkown reg = 0x7897ab6d
+Oct 19 18:31:04 (none) local0.notice cgminer[960]: chain 1 Chip 14 unkown reg = 0x751f1377
+Oct 19 18:31:05 (none) local0.notice cgminer[960]: chain 2 Chip 26 unkown reg = 0x8feffb8a
+Oct 19 18:31:06 (none) local0.notice cgminer[960]: chain 1 Chip 23 unkown reg = 0x7f266fe3
+Oct 19 18:31:06 (none) local0.notice cgminer[960]: chain 1 Chip 3 unkown reg = 0xff20b356
+Oct 19 18:31:06 (none) local0.notice cgminer[960]: chain 2 Chip 9 unkown reg = 0x970bfa79
+Oct 19 18:31:07 (none) local0.notice cgminer[960]: chain 2 Chip 7 unkown reg = 0xb898d777
+Oct 19 18:31:08 (none) local0.notice cgminer[960]: chain 2 Chip 39 unkown reg = 0x7beffdff
+Oct 19 18:31:08 (none) local0.notice cgminer[960]: chain 2 Chip 0 unkown reg = 0xfbf4dce8
+Oct 19 18:31:09 (none) local0.notice cgminer[960]: chain 1 Chip 12 unkown reg = 0xdd9ba28e
+Oct 19 18:31:10 (none) local0.notice cgminer[960]: chain 1 Chip 7 unkown reg = 0x2dfdaa87
+Oct 19 18:31:10 (none) local0.notice cgminer[960]: chain 1 Chip 25 unkown reg = 0xf9ec78c1
+Oct 19 18:31:10 (none) local0.notice cgminer[960]: chain 2 Chip 0 unkown reg = 0x5de3b7fc
+Oct 19 18:31:10 (none) local0.notice cgminer[960]: chain 2 Chip 42 unkown reg = 0xd3c3fcd6
+Oct 19 18:31:11 (none) local0.notice cgminer[960]: chain 2 Chip 53 unkown reg = 0xddb53aaf
+Oct 19 18:31:11 (none) local0.notice cgminer[960]: chain 1 Chip 22 unkown reg = 0x2e5e0f75
+Oct 19 18:31:11 (none) local0.notice cgminer[960]: chain 1 Chip 52 unkown reg = 0xafe53fb7
+Oct 19 18:31:11 (none) local0.notice cgminer[960]: chain 1 Chip 48 unkown reg = 0x545fa8fc
+Oct 19 18:31:11 (none) local0.notice cgminer[960]: chain 1 Chip 50 unkown reg = 0xfeec690a
+Oct 19 18:31:11 (none) local0.notice cgminer[960]: chain 1 Chip 25 unkown reg = 0xd6e68cfc
+Oct 19 18:31:12 (none) local0.notice cgminer[960]: chain 1 Chip 37 unkown reg = 0xa4f74fe5
+Oct 19 18:31:12 (none) local0.notice cgminer[960]: chain 1 Chip 27 unkown reg = 0xf7beeea4
+Oct 19 18:31:12 (none) local0.notice cgminer[960]: chain 2 Chip 26 unkown reg = 0xe7f4cb31
+Oct 19 18:31:12 (none) local0.notice cgminer[960]: chain 1 Chip 38 unkown reg = 0xb5fe684c
+Oct 19 18:31:13 (none) local0.notice cgminer[960]: chain 2 Chip 7 unkown reg = 0x2cc3c8f0
+Oct 19 18:31:13 (none) local0.notice cgminer[960]: chain 2 Chip 50 unkown reg = 0x87d490e5
+Oct 19 18:31:13 (none) local0.notice cgminer[960]: chain 1 Chip 52 unkown reg = 0xeea87061
+Oct 19 18:31:13 (none) local0.notice cgminer[960]: chain 1 Chip 11 unkown reg = 0x358870aa
+Oct 19 18:31:14 (none) local0.notice cgminer[960]: chain 2 Chip 20 unkown reg = 0xdd618240
+Oct 19 18:31:14 (none) local0.notice cgminer[960]: chain 2 Chip 53 unkown reg = 0xc6976d70
+Oct 19 18:31:14 (none) local0.notice cgminer[960]: chain 2 Chip 3 unkown reg = 0xcb3f4058
+Oct 19 18:31:15 (none) local0.notice cgminer[960]: chain 1 Chip 11 unkown reg = 0xffa36a88
+Oct 19 18:31:15 (none) local0.notice cgminer[960]: chain 2 Chip 8 unkown reg = 0x76db6153
+Oct 19 18:31:15 (none) local0.notice cgminer[960]: chain 1 Chip 39 unkown reg = 0xeec1d117
+Oct 19 18:31:15 (none) local0.notice cgminer[960]: chain 1 Chip 22 unkown reg = 0xc6bff796
+Oct 19 18:31:15 (none) local0.notice cgminer[960]: chain 2 Chip 42 unkown reg = 0xae50cd85
+Oct 19 18:31:15 (none) local0.notice cgminer[960]: chain 1 Chip 24 unkown reg = 0x4f97faa4
+Oct 19 18:31:15 (none) local0.notice cgminer[960]: chain 1 Chip 44 unkown reg = 0xa426bb5a
+Oct 19 18:31:16 (none) local0.notice cgminer[960]: chain 2 Chip 29 unkown reg = 0xed73dacb
+Oct 19 18:31:16 (none) local0.notice cgminer[960]: chain 2 Chip 23 unkown reg = 0xdd9adc30
+Oct 19 18:31:16 (none) local0.notice cgminer[960]: chain 2 Chip 39 unkown reg = 0xeb8e8a74
+Oct 19 18:31:16 (none) local0.notice cgminer[960]: chain 2 Chip 30 unkown reg = 0x7df8b5ec
+Oct 19 18:31:16 (none) local0.notice cgminer[960]: chain 1 Chip 26 unkown reg = 0xda5fda54
+Oct 19 18:31:16 (none) local0.notice cgminer[960]: chain 2 Chip 30 unkown reg = 0xecb126a4
+Oct 19 18:31:17 (none) local0.notice cgminer[960]: chain 1 Chip 39 unkown reg = 0xf8f61030
+Oct 19 18:31:17 (none) local0.notice cgminer[960]: chain 2 Chip 9 unkown reg = 0x5bea6e8d
+Oct 19 18:31:17 (none) local0.notice cgminer[960]: chain 2 Chip 34 unkown reg = 0x61f80894
+Oct 19 18:31:17 (none) local0.notice cgminer[960]: chain 1 Chip 5 unkown reg = 0xc45f4fd9
+Oct 19 18:31:18 (none) local0.notice cgminer[960]: chain 1 Chip 12 unkown reg = 0x5db322d1
+Oct 19 18:31:18 (none) local0.notice cgminer[960]: chain 1 Chip 5 unkown reg = 0xcf02de36
+Oct 19 18:31:18 (none) local0.notice cgminer[960]: chain 1 Chip 19 unkown reg = 0x4fb50828
+Oct 19 18:31:18 (none) local0.notice cgminer[960]: chain 1 Chip 16 unkown reg = 0x82660a37
+Oct 19 18:31:18 (none) local0.notice cgminer[960]: chain 1 Chip 19 unkown reg = 0xfaf77b7d
+Oct 19 18:31:18 (none) local0.notice cgminer[960]: chain 2 Chip 47 unkown reg = 0xb736606b
+Oct 19 18:31:18 (none) local0.notice cgminer[960]: chain 2 Chip 3 unkown reg = 0x3fe316ec
+Oct 19 18:31:18 (none) local0.notice cgminer[960]: chain 1 Chip 37 unkown reg = 0xec8fecae
+Oct 19 18:31:18 (none) local0.notice cgminer[960]: chain 1 Chip 30 unkown reg = 0xfd2ace31
+Oct 19 18:31:18 (none) local0.notice cgminer[960]: chain 2 Chip 39 unkown reg = 0xafef5e17
+Oct 19 18:31:18 (none) local0.notice cgminer[960]: chain 2 Chip 30 unkown reg = 0xecdeaab3
+Oct 19 18:31:19 (none) local0.notice cgminer[960]: chain 1 Chip 12 unkown reg = 0x7553bcbc
+Oct 19 18:31:19 (none) local0.notice cgminer[960]: chain 2 Chip 3 unkown reg = 0x8e2cfdc9
+Oct 19 18:31:19 (none) local0.notice cgminer[960]: chain 1 Chip 18 unkown reg = 0xfdd6e2a3
+Oct 19 18:31:19 (none) local0.notice cgminer[960]: chain 1 Chip 37 unkown reg = 0x9a925e44
+Oct 19 18:31:19 (none) local0.notice cgminer[960]: chain 2 Chip 3 unkown reg = 0xe78dbbae
+Oct 19 18:31:19 (none) local0.notice cgminer[960]: chain 2 Chip 36 unkown reg = 0xa1107090
+Oct 19 18:31:20 (none) local0.notice cgminer[960]: chain 1 Chip 27 unkown reg = 0x7ff60edf
+Oct 19 18:31:20 (none) local0.notice cgminer[960]: chain 1 Chip 48 unkown reg = 0xf5a8d7cd
+Oct 19 18:31:20 (none) local0.notice cgminer[960]: chain 2 Chip 39 unkown reg = 0xeffabffc
+Oct 19 18:31:20 (none) local0.notice cgminer[960]: chain 2 Chip 36 unkown reg = 0x62ffd5eb
+Oct 19 18:31:20 (none) local0.notice cgminer[960]: chain 1 Chip 21 unkown reg = 0x64f558ac
+Oct 19 18:31:22 (none) local0.notice cgminer[960]: chain 2 Chip 36 unkown reg = 0xc8494b35
+Oct 19 18:31:22 (none) local0.notice cgminer[960]: chain 2 Chip 35 unkown reg = 0x5499740f
+Oct 19 18:31:22 (none) local0.notice cgminer[960]: chain 1 Chip 17 unkown reg = 0x5b01920b
+Oct 19 18:31:22 (none) local0.notice cgminer[960]: chain 2 Chip 4 unkown reg = 0x2bae434a
+Oct 19 18:31:22 (none) local0.notice cgminer[960]: chain 2 Chip 16 unkown reg = 0xf320ae01
+Oct 19 18:31:23 (none) local0.notice cgminer[960]: chain 1 Chip 14 unkown reg = 0x5d32930d
+Oct 19 18:31:23 (none) local0.notice cgminer[960]: chain 1 Chip 29 unkown reg = 0x47cb2c86
+Oct 19 18:31:23 (none) local0.notice cgminer[960]: chain 1 Chip 22 unkown reg = 0x7ca079ae
+Oct 19 18:31:23 (none) local0.notice cgminer[960]: chain 1 Chip 11 unkown reg = 0x07fc142c
+Oct 19 18:31:23 (none) local0.notice cgminer[960]: chain 1 Chip 5 unkown reg = 0x6633dad6
+Oct 19 18:31:23 (none) local0.notice cgminer[960]: chain 1 Chip 48 unkown reg = 0x2b3ea66e
+Oct 19 18:31:23 (none) local0.notice cgminer[960]: chain 1 Chip 12 unkown reg = 0xefe78655
+Oct 19 18:31:23 (none) local0.notice cgminer[960]: chain 1 Chip 27 unkown reg = 0xa44540d5
+Oct 19 18:31:24 (none) local0.notice cgminer[960]: chain 2 Chip 3 unkown reg = 0xb3ffdff4
+Oct 19 18:31:24 (none) local0.notice cgminer[960]: chain 2 Chip 39 unkown reg = 0xacd3c8b4
+Oct 19 18:31:24 (none) local0.notice cgminer[960]: chain 2 Chip 37 unkown reg = 0x55e29e92
+Oct 19 18:31:24 (none) local0.notice cgminer[960]: chain 1 Chip 5 unkown reg = 0xb59c5732
+Oct 19 18:31:24 (none) local0.notice cgminer[960]: chain 2 Chip 34 unkown reg = 0x592bf955
+Oct 19 18:31:24 (none) local0.notice cgminer[960]: chain 1 Chip 29 unkown reg = 0xbca3b9fe
+Oct 19 18:31:25 (none) local0.notice cgminer[960]: chain 1 Chip 38 unkown reg = 0x2b53e977
+Oct 19 18:31:25 (none) local0.notice cgminer[960]: chain 1 Chip 2 unkown reg = 0xefb0b62b
+Oct 19 18:31:25 (none) local0.notice cgminer[960]: chain 1 Chip 52 unkown reg = 0xedf49640
+Oct 19 18:31:25 (none) local0.notice cgminer[960]: chain 2 Chip 37 unkown reg = 0x3f1febb7
+Oct 19 18:31:25 (none) local0.notice cgminer[960]: chain 1 Chip 52 unkown reg = 0x40e314c3
+Oct 19 18:31:25 (none) local0.notice cgminer[960]: chain 2 Chip 32 unkown reg = 0xcff71fd7
+Oct 19 18:31:25 (none) local0.notice cgminer[960]: chain 2 Chip 39 unkown reg = 0xc6e727f3
+Oct 19 18:31:26 (none) local0.notice cgminer[960]: chain 2 Chip 32 unkown reg = 0xdf76f69b
+Oct 19 18:31:26 (none) local0.notice cgminer[960]: chain 1 Chip 2 unkown reg = 0xcbf248b1
+Oct 19 18:31:26 (none) local0.notice cgminer[960]: chain 1 Chip 18 unkown reg = 0x766f93b2
+Oct 19 18:31:26 (none) local0.notice cgminer[960]: chain 1 Chip 52 unkown reg = 0x9a77f9d9
+Oct 19 18:31:26 (none) local0.notice cgminer[960]: chain 1 Chip 12 unkown reg = 0xe7a4dcfd
+Oct 19 18:31:26 (none) local0.notice cgminer[960]: chain 2 Chip 34 unkown reg = 0xc5955ca4
+Oct 19 18:31:26 (none) local0.notice cgminer[960]: chain 2 Chip 39 unkown reg = 0xe94ab4d0
+Oct 19 18:31:27 (none) local0.notice cgminer[960]: chain 2 Chip 20 unkown reg = 0x9449faef
+Oct 19 18:31:27 (none) local0.notice cgminer[960]: chain 2 Chip 8 unkown reg = 0xef57f575
+Oct 19 18:31:27 (none) local0.notice cgminer[960]: chain 1 Chip 18 unkown reg = 0xc1f68026
+Oct 19 18:31:27 (none) local0.notice cgminer[960]: chain 1 Chip 40 unkown reg = 0xd98e5476
+Oct 19 18:31:27 (none) local0.notice cgminer[960]: chain 2 Chip 8 unkown reg = 0xa0dfd62b
+Oct 19 18:31:27 (none) local0.notice cgminer[960]: chain 2 Chip 27 unkown reg = 0x7bcdfe6e
+Oct 19 18:31:28 (none) local0.notice cgminer[960]: chain 2 Chip 22 unkown reg = 0x1e7ebb25
+Oct 19 18:31:28 (none) local0.notice cgminer[960]: chain 1 Chip 12 unkown reg = 0x72b4d5f6
+Oct 19 18:31:28 (none) local0.notice cgminer[960]: chain 2 Chip 14 unkown reg = 0xef71884c
+Oct 19 18:31:28 (none) local0.notice cgminer[960]: chain 1 Chip 5 unkown reg = 0xcb7ee6a1
+Oct 19 18:31:28 (none) local0.notice cgminer[960]: chain 2 Chip 29 unkown reg = 0xfa3e3d60
+Oct 19 18:31:29 (none) local0.notice cgminer[960]: chain 2 Chip 15 unkown reg = 0x5f7419d1
+Oct 19 18:31:29 (none) local0.notice cgminer[960]: chain 2 Chip 33 unkown reg = 0x06667c1f
+Oct 19 18:31:29 (none) local0.notice cgminer[960]: chain 2 Chip 34 unkown reg = 0x0c625ad7
+Oct 19 18:31:29 (none) local0.notice cgminer[960]: chain 2 Chip 44 unkown reg = 0x9f1c8aba
+Oct 19 18:31:29 (none) local0.notice cgminer[960]: chain 1 Chip 27 unkown reg = 0xfb703cc7
+Oct 19 18:31:30 (none) local0.notice cgminer[960]: chain 1 Chip 38 unkown reg = 0x0acde2ef
+Oct 19 18:31:30 (none) local0.notice cgminer[960]: chain 2 Chip 30 unkown reg = 0x0bad3627
+Oct 19 18:31:30 (none) local0.notice cgminer[960]: chain 2 Chip 33 unkown reg = 0xfbb2e743
+Oct 19 18:31:30 (none) local0.notice cgminer[960]: chain 2 Chip 49 unkown reg = 0x0f235a92
+Oct 19 18:31:30 (none) local0.notice cgminer[960]: chain 1 Chip 31 unkown reg = 0x73bf48cf
+Oct 19 18:31:30 (none) local0.notice cgminer[960]: chain 2 Chip 0 unkown reg = 0xddbd7209
+Oct 19 18:31:31 (none) local0.notice cgminer[960]: chain 2 Chip 20 unkown reg = 0xff3e57ed
+Oct 19 18:31:31 (none) local0.notice cgminer[960]: chain 1 Chip 23 unkown reg = 0x6aee3c54
+Oct 19 18:31:31 (none) local0.notice cgminer[960]: chain 2 Chip 23 unkown reg = 0x6bdb443e
+Oct 19 18:31:31 (none) local0.notice cgminer[960]: chain 2 Chip 34 unkown reg = 0x5cd12656
+Oct 19 18:31:31 (none) local0.notice cgminer[960]: chain 2 Chip 30 unkown reg = 0xb6d86c40
+Oct 19 18:31:31 (none) local0.notice cgminer[960]: chain 2 Chip 50 unkown reg = 0x41b053f4
+Oct 19 18:31:31 (none) local0.notice cgminer[960]: chain 1 Chip 25 unkown reg = 0x5e936ae8
+Oct 19 18:31:31 (none) local0.notice cgminer[960]: chain 2 Chip 39 unkown reg = 0x85f7431f
+Oct 19 18:31:31 (none) local0.notice cgminer[960]: chain 1 Chip 22 unkown reg = 0x4249e62d
+Oct 19 18:31:32 (none) local0.notice cgminer[960]: chain 2 Chip 34 unkown reg = 0x6a163e53
+Oct 19 18:31:32 (none) local0.notice cgminer[960]: chain 2 Chip 20 unkown reg = 0xdf8ffd5f
+Oct 19 18:31:32 (none) local0.notice cgminer[960]: chain 2 Chip 12 unkown reg = 0x7fcbdbad
+Oct 19 18:31:33 (none) local0.notice cgminer[960]: chain 2 Chip 5 unkown reg = 0xb6787c9f
+Oct 19 18:31:33 (none) local0.notice cgminer[960]: chain 2 Chip 3 unkown reg = 0xe78dbbae
+Oct 19 18:31:33 (none) local0.notice cgminer[960]: chain 2 Chip 17 unkown reg = 0xf8fa6ef1
+Oct 19 18:31:33 (none) local0.notice cgminer[960]: chain 1 Chip 5 unkown reg = 0xb7e2dc58
+Oct 19 18:31:33 (none) local0.notice cgminer[960]: chain 1 Chip 3 unkown reg = 0x29d1606a
+Oct 19 18:31:33 (none) local0.notice cgminer[960]: chain 2 Chip 3 unkown reg = 0x9777da35
+Oct 19 18:31:33 (none) local0.notice cgminer[960]: chain 1 Chip 27 unkown reg = 0x7ff60edf
+Oct 19 18:31:33 (none) local0.notice cgminer[960]: chain 1 Chip 14 unkown reg = 0xfd34d2ce
+Oct 19 18:31:33 (none) local0.notice cgminer[960]: chain 2 Chip 44 unkown reg = 0x69b93eea
+Oct 19 18:31:33 (none) local0.notice cgminer[960]: chain 1 Chip 43 unkown reg = 0x7ff9a9f4
+Oct 19 18:31:34 (none) local0.notice cgminer[960]: chain 1 Chip 28 unkown reg = 0xcfe70a7d
+Oct 19 18:31:34 (none) local0.notice cgminer[960]: chain 1 Chip 35 unkown reg = 0xb58c444d
+Oct 19 18:31:34 (none) local0.notice cgminer[960]: chain 2 Chip 16 unkown reg = 0xfdd3d033
+Oct 19 18:31:34 (none) local0.notice cgminer[960]: chain 1 Chip 25 unkown reg = 0x9a79febf
+Oct 19 18:31:34 (none) local0.notice cgminer[960]: chain 1 Chip 25 unkown reg = 0x9e9e2ce5
+Oct 19 18:31:34 (none) local0.notice cgminer[960]: chain 2 Chip 50 unkown reg = 0x1f42723f
+Oct 19 18:31:34 (none) local0.notice cgminer[960]: chain 1 Chip 37 unkown reg = 0xe9fd8e54
+Oct 19 18:31:35 (none) local0.notice cgminer[960]: chain 2 Chip 14 unkown reg = 0x685610da
+Oct 19 18:31:35 (none) local0.notice cgminer[960]: chain 1 Chip 52 unkown reg = 0xedf5da2f
+Oct 19 18:31:35 (none) local0.notice cgminer[960]: chain 2 Chip 53 unkown reg = 0x1ba30eb8
+Oct 19 18:31:35 (none) local0.notice cgminer[960]: chain 2 Chip 34 unkown reg = 0xe84276b9
+Oct 19 18:31:35 (none) local0.notice cgminer[960]: chain 2 Chip 26 unkown reg = 0x7e1ef232
+Oct 19 18:31:35 (none) local0.notice cgminer[960]: chain 0 Chip 49 unkown reg = 0xb1ed193a
+Oct 19 18:31:35 (none) local0.notice cgminer[960]: chain 0 Chip 13 unkown reg = 0x7eef9ca8
+Oct 19 18:31:35 (none) local0.notice cgminer[960]: chain 1 Chip 42 unkown reg = 0x9ff207a3
+Oct 19 18:31:35 (none) local0.notice cgminer[960]: chain 2 Chip 12 unkown reg = 0xe2977357
+Oct 19 18:31:36 (none) local0.notice cgminer[960]: chain 1 Chip 2 unkown reg = 0x7989f864
+Oct 19 18:31:36 (none) local0.notice cgminer[960]: chain 2 Chip 33 unkown reg = 0xd7075d3c
+Oct 19 18:31:36 (none) local0.notice cgminer[960]: chain 1 Chip 26 unkown reg = 0xa9ecc397
+Oct 19 18:31:36 (none) local0.notice cgminer[960]: chain 2 Chip 11 unkown reg = 0xfdf5b504
+Oct 19 18:31:36 (none) local0.notice cgminer[960]: chain 2 Chip 16 unkown reg = 0xaac83bb7
+Oct 19 18:31:36 (none) local0.notice cgminer[960]: chain 2 Chip 39 unkown reg = 0xafeff27a
+Oct 19 18:31:37 (none) local0.notice cgminer[960]: chain 1 Chip 42 unkown reg = 0xefe1c0c0
+Oct 19 18:31:37 (none) local0.notice cgminer[960]: chain 2 Chip 19 unkown reg = 0x8fcdf47f
+Oct 19 18:31:37 (none) local0.notice cgminer[960]: chain 1 Chip 44 sweep reg = 0x1bf0003a
+Oct 19 18:31:37 (none) local0.notice cgminer[960]: chain 2 Chip 29 unkown reg = 0x6f9ac871
+Oct 19 18:31:37 (none) local0.notice cgminer[960]: chain 2 Chip 34 unkown reg = 0x73741d87
+Oct 19 18:31:37 (none) local0.notice cgminer[960]: chain 1 Chip 4 unkown reg = 0xab2b69f7
+Oct 19 18:31:37 (none) local0.notice cgminer[960]: chain 2 Chip 32 unkown reg = 0x7efae7f8
+Oct 19 18:31:38 (none) local0.notice cgminer[960]: chain 2 Chip 36 unkown reg = 0x62ffd5eb
+Oct 19 18:31:38 (none) local0.notice cgminer[960]: chain 2 Chip 52 unkown reg = 0xd915b256
+Oct 19 18:31:38 (none) local0.notice cgminer[960]: chain 2 Chip 41 unkown reg = 0xb566e984
+Oct 19 18:31:39 (none) local0.notice cgminer[960]: chain 2 Chip 8 unkown reg = 0xe5f33240
+Oct 19 18:31:39 (none) local0.notice cgminer[960]: chain 2 Chip 11 unkown reg = 0xc5d55098
+Oct 19 18:31:39 (none) local0.notice cgminer[960]: chain 2 Chip 42 unkown reg = 0xa52059cd
+Oct 19 18:31:39 (none) local0.notice cgminer[960]: chain 1 Chip 40 unkown reg = 0x73dcfada
+Oct 19 18:31:39 (none) local0.notice cgminer[960]: chain 1 Chip 46 unkown reg = 0x4798a711
+Oct 19 18:31:39 (none) local0.notice cgminer[960]: chain 2 Chip 16 unkown reg = 0xfbf4fbec
+Oct 19 18:31:40 (none) local0.notice cgminer[960]: chain 1 Chip 22 unkown reg = 0xda8e3d18
+Oct 19 18:31:41 (none) local0.notice cgminer[960]: chain 2 Chip 27 unkown reg = 0x57e3ca25
+Oct 19 18:31:41 (none) local0.notice cgminer[960]: chain 1 Chip 37 unkown reg = 0x02efc082
+Oct 19 18:31:41 (none) local0.notice cgminer[960]: chain 2 Chip 50 unkown reg = 0x6f0c5ac2
+Oct 19 18:31:41 (none) local0.notice cgminer[960]: chain 0 Chip 49 unkown reg = 0xb3c0a84f
+Oct 19 18:31:41 (none) local0.notice cgminer[960]: chain 2 Chip 8 unkown reg = 0x09449884
+Oct 19 18:31:42 (none) local0.notice cgminer[960]: chain 2 Chip 19 unkown reg = 0xaaa5764e
+Oct 19 18:31:42 (none) local0.notice cgminer[960]: chain 1 Chip 25 unkown reg = 0xff13fff8
+Oct 19 18:31:42 (none) local0.notice cgminer[960]: chain 1 Chip 53 unkown reg = 0x2bae9397
+Oct 19 18:31:43 (none) local0.notice cgminer[960]: chain 1 Chip 38 unkown reg = 0x0acd5ed6
+Oct 19 18:31:43 (none) local0.notice cgminer[960]: chain 1 Chip 52 unkown reg = 0x7bcf443f
+Oct 19 18:31:44 (none) local0.notice cgminer[960]: chain 2 Chip 28 unkown reg = 0xea2cb9f9
+Oct 19 18:31:44 (none) local0.notice cgminer[960]: chain 2 Chip 34 unkown reg = 0xb6bdf044
+Oct 19 18:31:44 (none) local0.notice cgminer[960]: chain 0 Chip 47 unkown reg = 0xae7efb9d
+Oct 19 18:31:44 (none) local0.notice cgminer[960]: chain 2 Chip 27 unkown reg = 0x3da9e10b
+Oct 19 18:31:45 (none) local0.notice cgminer[960]: chain 2 Chip 8 unkown reg = 0xa193b668
+Oct 19 18:31:45 (none) local0.notice cgminer[960]: chain 1 Chip 5 unkown reg = 0x5a3cba06
+Oct 19 18:31:45 (none) local0.notice cgminer[960]: chain 1 Chip 3 unkown reg = 0xc9dffffa
+Oct 19 18:31:45 (none) local0.notice cgminer[960]: chain 2 Chip 38 unkown reg = 0xe5c05521
+Oct 19 18:31:45 (none) local0.notice cgminer[960]: chain 2 Chip 38 unkown reg = 0xb5c375df
+Oct 19 18:31:46 (none) local0.notice cgminer[960]: chain 2 Chip 22 unkown reg = 0x569d0efe
+Oct 19 18:31:46 (none) local0.notice cgminer[960]: chain 2 Chip 39 unkown reg = 0x1f612d1d
+Oct 19 18:31:46 (none) local0.notice cgminer[960]: chain 1 Chip 27 unkown reg = 0xa444060f
+Oct 19 18:31:47 (none) local0.notice cgminer[960]: chain 1 Chip 7 unkown reg = 0x7d524057
+Oct 19 18:31:47 (none) local0.notice cgminer[960]: chain 1 Chip 48 unkown reg = 0x8ed9e820
+Oct 19 18:31:47 (none) local0.notice cgminer[960]: chain 2 Chip 10 unkown reg = 0xc4dbac7f
+Oct 19 18:31:47 (none) local0.notice cgminer[960]: chain 1 Chip 48 unkown reg = 0xff318cf6
+Oct 19 18:31:48 (none) local0.notice cgminer[960]: chain 1 Chip 2 unkown reg = 0xefb0b62b
+Oct 19 18:31:48 (none) local0.notice cgminer[960]: chain 2 Chip 38 unkown reg = 0x6324f086
+Oct 19 18:31:48 (none) local0.notice cgminer[960]: chain 2 Chip 12 unkown reg = 0x7fcb2fcf
+Oct 19 18:31:48 (none) local0.notice cgminer[960]: chain 2 Chip 34 unkown reg = 0x6a163e53
+Oct 19 18:31:48 (none) local0.notice cgminer[960]: chain 1 Chip 4 unkown reg = 0xebf940fb
+Oct 19 18:31:49 (none) local0.notice cgminer[960]: chain 1 Chip 47 unkown reg = 0xb30873af
+Oct 19 18:31:49 (none) local0.notice cgminer[960]: chain 1 Chip 39 unkown reg = 0xecd8d518
+Oct 19 18:31:49 (none) local0.notice cgminer[960]: chain 2 Chip 22 unkown reg = 0x569d0efe
+Oct 19 18:31:49 (none) local0.notice cgminer[960]: chain 2 Chip 24 unkown reg = 0x4afe7258
+Oct 19 18:31:49 (none) local0.notice cgminer[960]: chain 2 Chip 12 unkown reg = 0x5f2e38d8
+Oct 19 18:31:50 (none) local0.notice cgminer[960]: chain 1 Chip 38 unkown reg = 0x0acda6d6
+Oct 19 18:31:50 (none) local0.notice cgminer[960]: chain 2 Chip 33 unkown reg = 0x3de37578
+Oct 19 18:31:50 (none) local0.notice cgminer[960]: chain 2 Chip 32 unkown reg = 0xa7eae036
+Oct 19 18:31:50 (none) local0.notice cgminer[960]: chain 2 Chip 39 unkown reg = 0x6ee7c8db
+Oct 19 18:31:50 (none) local0.notice cgminer[960]: chain 1 Chip 28 unkown reg = 0x753c0a52
+Oct 19 18:31:51 (none) local0.notice cgminer[960]: chain 2 Chip 44 unkown reg = 0x646495ec
+Oct 19 18:31:51 (none) local0.notice cgminer[960]: chain 2 Chip 44 unkown reg = 0xfec95395
+Oct 19 18:31:51 (none) local0.notice cgminer[960]: chain 2 Chip 12 unkown reg = 0xf8be923e
+Oct 19 18:31:51 (none) local0.notice cgminer[960]: chain 1 Chip 25 unkown reg = 0xaed354c8
+Oct 19 18:31:52 (none) local0.notice cgminer[960]: chain 1 Chip 31 unkown reg = 0xa934da55
+Oct 19 18:31:52 (none) local0.notice cgminer[960]: chain 2 Chip 6 unkown reg = 0x55ae6ae6
+Oct 19 18:31:52 (none) local0.notice cgminer[960]: chain 2 Chip 8 unkown reg = 0xdcd68840
+Oct 19 18:31:53 (none) local0.notice cgminer[960]: chain 2 Chip 34 unkown reg = 0xe84276b9
+Oct 19 18:31:53 (none) local0.notice cgminer[960]: chain 1 Chip 43 unkown reg = 0xefd46e10
+Oct 19 18:31:53 (none) local0.notice cgminer[960]: chain 1 Chip 46 unkown reg = 0x57f87adb
+Oct 19 18:31:54 (none) local0.notice cgminer[960]: chain 1 Chip 25 unkown reg = 0x6bf579ea
+Oct 19 18:31:55 (none) local0.notice cgminer[960]: chain 0 Chip 49 unkown reg = 0x551dc0ee
+Oct 19 18:31:55 (none) local0.notice cgminer[960]: chain 1 Chip 7 unkown reg = 0xf6f288b5
+Oct 19 18:31:55 (none) local0.notice cgminer[960]: chain 1 Chip 32 unkown reg = 0xeb982857
+Oct 19 18:31:55 (none) local0.notice cgminer[960]: chain 2 Chip 43 unkown reg = 0xafd9c9bc
+Oct 19 18:31:55 (none) local0.notice cgminer[960]: chain 2 Chip 22 unkown reg = 0xfcb0d012
+Oct 19 18:31:55 (none) local0.notice cgminer[960]: chain 1 Chip 10 unkown reg = 0x6d2d988f
+Oct 19 18:31:55 (none) local0.notice cgminer[960]: chain 2 Chip 34 unkown reg = 0xaef50ffa
+Oct 19 18:31:56 (none) local0.notice cgminer[960]: chain 2 Chip 31 unkown reg = 0xff2b9dd1
+Oct 19 18:31:57 (none) local0.notice cgminer[960]: chain 1 Chip 1 unkown reg = 0xff4a9b64
+Oct 19 18:31:57 (none) local0.notice cgminer[960]: chain 2 Chip 34 unkown reg = 0xb6bdf044
+Oct 19 18:31:58 (none) local0.notice cgminer[960]: chain 1 Chip 25 unkown reg = 0xc7fdb655
+Oct 19 18:31:58 (none) local0.notice cgminer[960]: chain 2 Chip 37 unkown reg = 0x7e7df086
+Oct 19 18:31:58 (none) local0.notice cgminer[960]: chain 1 Chip 25 unkown reg = 0xe6c6fe51
+Oct 19 18:31:58 (none) local0.notice cgminer[960]: chain 1 Chip 32 unkown reg = 0x9381e0b5
+Oct 19 18:31:58 (none) local0.notice cgminer[960]: chain 1 Chip 8 unkown reg = 0xf7b3b824
+Oct 19 18:31:59 (none) local0.notice cgminer[960]: chain 1 Chip 46 unkown reg = 0xcf5f1fa6
+Oct 19 18:32:01 (none) local0.notice cgminer[960]: chain 2 Chip 34 unkown reg = 0xf669fe56
+Oct 19 18:32:01 (none) local0.notice cgminer[960]: chain 0 Chip 40 unkown reg = 0xa92db725
+Oct 19 18:32:01 (none) local0.notice cgminer[960]: chain 0 Chip 33 unkown reg = 0x93d8b79b
+Oct 19 18:32:02 (none) local0.notice cgminer[960]: chain 2 Chip 37 unkown reg = 0xd17d3b72
+Oct 19 18:32:02 (none) local0.notice cgminer[960]: chain 1 Chip 10 unkown reg = 0x3ec1ed74
+Oct 19 18:32:02 (none) local0.notice cgminer[960]: chain 1 Chip 3 unkown reg = 0x676de7be
+Oct 19 18:32:02 (none) local0.notice cgminer[960]: chain 1 Chip 47 unkown reg = 0x7f310844
+Oct 19 18:32:03 (none) local0.notice cgminer[960]: chain 2 Chip 6 unkown reg = 0x375fe642
+Oct 19 18:32:04 (none) local0.notice cgminer[960]: chain 0 Chip 28 unkown reg = 0xeb70a3b8
+Oct 19 18:32:04 (none) local0.notice cgminer[960]: chain 0 Chip 53 unkown reg = 0x51ed94fb
+Oct 19 18:32:05 (none) local0.notice cgminer[960]: chain 1 Chip 10 unkown reg = 0x7c3f7da8
+Oct 19 18:32:05 (none) local0.notice cgminer[960]: chain 1 Chip 31 unkown reg = 0xfcb3ffa6
+Oct 19 18:32:06 (none) local0.notice cgminer[960]: chain 1 Chip 31 unkown reg = 0xfeaeb813
+Oct 19 18:32:06 (none) local0.notice cgminer[960]: chain 1 Chip 43 unkown reg = 0xe7fff8ed
+Oct 19 18:32:06 (none) local0.notice cgminer[960]: chain 2 Chip 9 unkown reg = 0x4bc06ec2
+Oct 19 18:32:07 (none) local0.notice cgminer[960]: chain 1 Chip 35 unkown reg = 0x2e216974
+Oct 19 18:32:08 (none) local0.notice cgminer[960]: chain 1 Chip 7 unkown reg = 0xf719842b
+Oct 19 18:32:08 (none) local0.notice cgminer[960]: pool diff: 45, sdiff: 8192.0000
+Oct 19 18:32:08 (none) local0.notice cgminer[960]: chain 1 Chip 34 unkown reg = 0xc74618f4
+Oct 19 18:32:09 (none) local0.notice cgminer[960]: chain 2 Chip 5 unkown reg = 0xe6feaf0e
+Oct 19 18:32:10 (none) local0.notice cgminer[960]: chain 2 Chip 46 pm reg = 0x7dbe0367
+Oct 19 18:32:10 (none) local0.notice cgminer[960]: chain 2 Chip 5 unkown reg = 0x6f14ce7f
+Oct 19 18:32:11 (none) local0.notice cgminer[960]: chain 2 Chip 40 unkown reg = 0x77a09259
+Oct 19 18:32:11 (none) local0.notice cgminer[960]: chain 2 Chip 44 unkown reg = 0x6464fc83
+Oct 19 18:32:11 (none) local0.notice cgminer[960]: chain 0 Chip 42 unkown reg = 0x15f5c8dd
+Oct 19 18:32:12 (none) local0.notice cgminer[960]: chain 2 Chip 5 unkown reg = 0x152c303d
+Oct 19 18:32:14 (none) local0.notice cgminer[960]: chain 1 Chip 46 unkown reg = 0x47986c3b
+Oct 19 18:32:15 (none) local0.notice cgminer[960]: chain 2 Chip 37 unkown reg = 0xff032872
+Oct 19 18:32:15 (none) local0.notice cgminer[960]: chain 2 Chip 37 unkown reg = 0x7e7df086
+Oct 19 18:32:17 (none) local0.notice cgminer[960]: chain 1 Chip 1 unkown reg = 0xcd75b29f
+Oct 19 18:32:18 (none) local0.notice cgminer[960]: chain 1 Chip 39 unkown reg = 0xb7f63bd2
+Oct 19 18:32:18 (none) local0.notice cgminer[960]: chain 1 Chip 5 unkown reg = 0xf3f1bfbe
+Oct 19 18:32:19 (none) local0.notice cgminer[960]: chain 1 Chip 1 unkown reg = 0x62f85786
+Oct 19 18:32:19 (none) local0.notice cgminer[960]: chain 1 Chip 1 unkown reg = 0xde7f63ce
+Oct 19 18:32:19 (none) local0.notice cgminer[960]: chain 2 Chip 43 unkown reg = 0x769d720b
+Oct 19 18:32:20 (none) local0.notice cgminer[960]: chain 2 Chip 37 unkown reg = 0xb6c8726f
+Oct 19 18:32:20 (none) local0.notice cgminer[960]: chain 2 Chip 43 unkown reg = 0xf9cb92f8
+Oct 19 18:32:21 (none) local0.notice cgminer[960]: chain 2 Chip 36 unkown reg = 0xba635db6
+Oct 19 18:32:23 (none) local0.notice cgminer[960]: chain 2 Chip 40 unkown reg = 0x6e85c606
+Oct 19 18:32:23 (none) local0.notice cgminer[960]: chain 0 Chip 40 unkown reg = 0x17fc2bf2
+Oct 19 18:32:24 (none) local0.notice cgminer[960]: chain 0 Chip 51 unkown reg = 0xab5b6309
+Oct 19 18:32:24 (none) local0.notice cgminer[960]: chain 2 Chip 9 unkown reg = 0x5492a8a4
+Oct 19 18:32:25 (none) local0.notice cgminer[960]: chain 1 Chip 35 unkown reg = 0x2e216974
+Oct 19 18:32:25 (none) local0.notice cgminer[960]: chain 2 Chip 44 unkown reg = 0xa8038e57
+Oct 19 18:32:26 (none) local0.notice cgminer[960]: chain 1 Chip 20 unkown reg = 0xffe56660
+Oct 19 18:32:26 (none) local0.notice cgminer[960]: chain 1 Chip 1 unkown reg = 0xff2fb38f
+Oct 19 18:32:26 (none) local0.notice cgminer[960]: chain 1 Chip 20 unkown reg = 0xaff507ed
+Oct 19 18:32:27 (none) local0.notice cgminer[960]: chain 0 Chip 34 unkown reg = 0xfe4a3456
+Oct 19 18:32:27 (none) local0.notice cgminer[960]: chain 2 Chip 39 unkown reg = 0x7e9ee746
+Oct 19 18:32:28 (none) local0.notice cgminer[960]: chain 0 Chip 40 unkown reg = 0xf3c060e6
+Oct 19 18:32:28 (none) local0.notice cgminer[960]: chain 0 Chip 14 unkown reg = 0xf35c0cbb
+Oct 19 18:32:28 (none) local0.notice cgminer[960]: chain 0 Chip 12 unkown reg = 0xa7ddeeef
+Oct 19 18:32:30 (none) local0.notice cgminer[960]: chain 2 Chip 6 unkown reg = 0x7b788dcf
+Oct 19 18:32:32 (none) local0.notice cgminer[960]: chain 0 Chip 12 unkown reg = 0xebe623af
+Oct 19 18:32:33 (none) local0.notice cgminer[960]: chain 1 Chip 29 unkown reg = 0xdffef7d6
+Oct 19 18:32:36 (none) local0.notice cgminer[960]: chain 2 Chip 38 unkown reg = 0xd07fb6e1
+Oct 19 18:32:38 (none) local0.notice cgminer[960]: chain 1 Chip 31 unkown reg = 0xfcb27082
+Oct 19 18:32:40 (none) local0.notice cgminer[960]: chain 1 Chip 0 unkown reg = 0x1065bf7b
+Oct 19 18:32:41 (none) local0.notice cgminer[960]: chain 2 Chip 5 unkown reg = 0x18e006f7
+Oct 19 18:32:42 (none) local0.notice cgminer[960]: chain 1 Chip 41 unkown reg = 0x3e58313d
+Oct 19 18:32:42 (none) local0.notice cgminer[960]: chain 1 Chip 13 unkown reg = 0xab806008
+Oct 19 18:32:43 (none) local0.notice cgminer[960]: chain 0 Chip 49 unkown reg = 0xb3c0a212
+Oct 19 18:32:44 (none) local0.notice cgminer[960]: chain 2 Chip 5 unkown reg = 0xbefaef3f
+Oct 19 18:32:45 (none) local0.notice cgminer[960]: chain 1 Chip 15 unkown reg = 0xb772a842
+Oct 19 18:32:47 (none) local0.notice cgminer[960]: chain 2 Chip 38 unkown reg = 0xd07fb6e1
+Oct 19 18:32:48 (none) local0.notice cgminer[960]: chain 1 Chip 15 unkown reg = 0xa49ab78a
+Oct 19 18:32:48 (none) local0.notice cgminer[960]: chain 0 Chip 47 unkown reg = 0x2d962a53
+Oct 19 18:32:49 (none) local0.notice cgminer[960]: pool diff: 44, sdiff: 4096.0000
+Oct 19 18:32:50 (none) local0.notice cgminer[960]: chain 1 Chip 13 unkown reg = 0xab806008
+Oct 19 18:32:51 (none) local0.notice cgminer[960]: chain 1 Chip 20 unkown reg = 0x87faf7da
+Oct 19 18:32:55 (none) local0.notice cgminer[960]: chain 2 Chip 32 unkown reg = 0x652e84b7
+Oct 19 18:32:56 (none) local0.notice cgminer[960]: chain 0 Chip 47 unkown reg = 0xcd571548
+Oct 19 18:32:58 (none) local0.notice cgminer[960]: chain 1 Chip 35 core enable reg = 0xb700020b
+Oct 19 18:33:03 (none) local0.notice cgminer[960]: chain 0 Chip 44 unkown reg = 0xef7f3afe
+Oct 19 18:33:03 (none) local0.notice cgminer[960]: chain 0 Chip 50 unkown reg = 0x9b7da19f
+Oct 19 18:33:10 (none) local0.notice cgminer[960]: chain 2 Chip 44 unkown reg = 0xe68b7244
+Oct 19 18:33:10 (none) local0.notice cgminer[960]: chain 0 Chip 49 unkown reg = 0x9c129c83
+Oct 19 18:33:12 (none) local0.notice cgminer[960]: chain 0 Chip 42 unkown reg = 0x9ec4fdf8
+Oct 19 18:33:19 (none) local0.notice cgminer[960]: chain 0 Chip 49 unkown reg = 0xb3c0a212
+Oct 19 18:33:22 (none) local0.notice cgminer[960]: chain 1 Chip 44 unkown reg = 0x3f6ef74b
+Oct 19 18:33:29 (none) local0.notice cgminer[960]: pool diff: 43, sdiff: 2048.0000

@@ -43,4 +43,12 @@ return [
     'payment_paid_to_admin_description' => 'El usuario ha pagado {amount} que puede ver en el panel',
     'payment_paid_to_admin_button' => 'Ver solicitud de reparación',
 
+    'user_reset_mail_to_user_title' => 'Ha solicitado restablecer la contraseña',
+    'user_reset_mail_to_user_description' => 'Haga clic en el botón de abajo para cambiar la contraseña',
+    'user_reset_mail_to_user_button' => 'Crear contraseña',
+
+    'user_reset_successfully_mail_to_user_title' => 'Tu contraseña cambia con éxito',
+    'user_reset_successfully_mail_to_user_description' => 'Felicitaciones, su contraseña se cambió correctamente',
+    'user_reset_successfully_mail_to_user_button' => 'Acceso',
+
 ];

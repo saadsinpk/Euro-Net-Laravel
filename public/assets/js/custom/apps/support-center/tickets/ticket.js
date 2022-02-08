@@ -77,6 +77,12 @@ var KTModalNewTicket = function() {
         // Set date data order
         var url = "/user/ticket-history/"
         datatable = $(table).DataTable({
+
+            createdRow: function( row, data, dataIndex){
+                if( data['last_admin_reply'] ==  `1`){
+                    $(row).addClass('grayClass');
+                }
+            },
             processing: true,
             serverSide: true,
             ajax: {
@@ -390,4 +396,23 @@ var KTModalNewTicket = function() {
 // On document ready
 KTUtil.onDOMContentLoaded(function() {
     KTModalNewTicket.init();
+});
+
+
+
+$( document ).ready(function() {
+    var url=window.location.href;
+    var url_hash=url.split('#');
+    if(!url_hash[1]) {
+        console.log("Test");
+    } else {
+        url_hash = url_hash[1];
+        $('li.nav-item a').removeClass("active");
+        $('a[href="#'+url_hash+'"]').addClass("active");
+        $(".tab-pane.fade").removeClass("active");
+        $(".tab-pane.fade").removeClass("show");
+        $("#"+url_hash).addClass("active");
+        $("#"+url_hash).addClass("show");
+        console.log(url_hash);
+    }
 });

@@ -264,10 +264,6 @@ var KTModalAdmins = function() {
                     name: 'email',
                 },
                 {
-                    data: 'created_at',
-                    name: 'created_at',
-                },
-                {
                     data: 'action',
                     name: 'action',
                     class: 'text-end',
@@ -278,7 +274,7 @@ var KTModalAdmins = function() {
             'order': [],
 
             'columnDefs': [
-                { orderable: false, targets: 0 }, // Disable ordering on column 0 (checkbox)
+                { orderable: false, targets: 0 },
                 { orderable: false, targets: 3 }, // Disable ordering on column 6 (actions)    
             ]
         });

@@ -22,5 +22,15 @@ return [
 
     'Repair Payments' => 'Repair Requests',
     'Bitmain' => 'Bitmain',
+    'All Repair Payments' => 'All Repair Payments',
+    'Incoming Repair' => 'Incoming Repair',
+    'Waiting for shipment' => 'Waiting for shipment',
+    'Pending Diagnostics' => 'Pending Diagnostics',
+    'Pending Client Accept' => 'Pending Client Accept',
+    'Pending Client Payment' => 'Pending Client Payment',
+    'Pending Repair' => 'Pending Repair',
+    'Repair Shipped Return' => 'Repair Shipped Return',
+    'Canceled' => 'Canceled',
+    'Username'=>'Username',
 ];
 

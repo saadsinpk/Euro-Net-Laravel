@@ -1,8 +1,9 @@
 @extends("layouts.user")
 
 @section("content")
-    	<!--begin::Post-->
-        <div class="post d-flex flex-column-fluid" id="kt_post">
+        <!--begin::Post-->
+        <div class="post d-flex flex-column-fluid user_main_background" id="kt_post">
+
             <!--begin::Container-->
             <div id="kt_content_container" class="container-xxl">
                 <!--begin::Hero card-->
@@ -32,6 +33,10 @@
                             <li class="nav-item my-1">
                                 <a class="btn btn-color-gray-600 btn-active-white btn-active-color-primary fw-boldest fs-8 fs-lg-base nav-link px-3 px-lg-8 mx-1 text-uppercase" data-bs-toggle="tab" href="#repair_payment_history">{{__('ticket.My repair payment history') }}</a>
                             </li>
+
+                            <li class="nav-item my-1">
+                                <a class="btn btn-color-gray-600 btn-active-white btn-active-color-primary fw-boldest fs-8 fs-lg-base nav-link px-3 px-lg-8 mx-1 text-uppercase" data-bs-toggle="tab" href="#shipping_detail">{{__('ticket.Shipping Detail') }}</a>
+                            </li>
                             @endif
                             <!--end::Nav item-->
                         </ul>
@@ -53,22 +58,9 @@
                                 <h1 class="fw-bolder fs-4 fs-lg-1 text-gray-800 mb-5 mb-lg-10">
                                     {{__('ticket.Welcome to the Euronet Support Center.')}}
                                 </h1>
-                                <p class="fs-5">
-                                    {{__('ticket.In order to streamline support requests and better serve you, we utilize a support ticket system. Every support request is assigned a unique ticket number which you can use to track the progress and responses online. For your reference we provide complete archives and history of all your support requests. A valid email address is required to submit a ticket.') }}
-                                </p>
+                                
+                                {!! trans('ticket.home_page_text') !!}
 
-                                <p class="fs-5">
-                                    {{__('ticket.For refund requests or RMA Refunds please submit always a valid payment receipt and order number so we can localize your purchase.') }}
-                                </p>
-
-                                <p class="fs-5">
-                                    {{__('ticket.For Website or Server related Issues, please contact our Web-development department.') }}
-                                </p>
-
-                                <p class="fs-5">
-                                    {{__('ticket.For Repair request of NEW repairs, please do NOT use this ticket system.')}} 
-                                    {{__('ticket.This support ticket system is only for pending repairs, or allready received repairs.')}}
-                                </p>
 
                             </div>
                             <!--end::Wrapper-->
@@ -144,9 +136,34 @@
                                             <!--end::Hint-->
                                         </div>
                                          <!--begin::Input group-->
-                                         <div class="fv-row mb-7">
-                                            <label class="form-label fw-bolder text-dark fs-6">{{__('form.Confirm Password') }}</label>
-                                            <input class="form-control form-control-lg form-control-solid" type="password" placeholder="" name="confirm-password" autocomplete="off" />
+                                        <div class="fv-row mb-7" data-kt-password-meter="true">
+                                            <!--begin::Wrapper-->
+                                            <div class="mb-1">
+                                                <!--begin::Label-->
+                                                <label class="form-label fw-bolder text-dark fs-6">{{__('form.Confirm Password') }}</label>
+                                                <!--end::Label-->
+                                                <!--begin::Input wrapper-->
+                                                <div class="position-relative mb-3">
+                                                    <input class="form-control form-control-lg form-control-solid" type="password" placeholder="" name="confirm-password" autocomplete="off" />
+                                                    <span class="btn btn-sm btn-icon position-absolute translate-middle top-50 end-0 me-n2" data-kt-password-meter-control="visibility">
+                                                        <i class="bi bi-eye-slash fs-2"></i>
+                                                        <i class="bi bi-eye fs-2 d-none"></i>
+                                                    </span>
+                                                </div>
+                                                <!--end::Input wrapper-->
+                                                <!--begin::Meter-->
+                                                <div class="d-flex align-items-center mb-3" data-kt-password-meter-control="highlight">
+                                                    <div class="flex-grow-1 bg-secondary bg-active-success rounded h-5px me-2"></div>
+                                                    <div class="flex-grow-1 bg-secondary bg-active-success rounded h-5px me-2"></div>
+                                                    <div class="flex-grow-1 bg-secondary bg-active-success rounded h-5px me-2"></div>
+                                                    <div class="flex-grow-1 bg-secondary bg-active-success rounded h-5px"></div>
+                                                </div>
+                                                <!--end::Meter-->
+                                            </div>
+                                            <!--end::Wrapper-->
+                                            <!--begin::Hint-->
+                                            <div class="text-muted">{{__('form.Use 8 or more characters with a mix of letters, numbers') }} &amp; symbols.</div>
+                                            <!--end::Hint-->
                                         </div>
                                         <!--end::Input group-->
                                     @endif
@@ -291,9 +308,35 @@
                                         <!--end::Hint-->
                                     </div>
                                      <!--begin::Input group-->
-                                     <div class="fv-row mb-7">
-                                        <label class="form-label fw-bolder text-dark fs-6">{{__('form.Confirm Password') }}</label>
-                                        <input class="form-control form-control-lg form-control-solid" type="password" placeholder="" name="confirm-password" autocomplete="off" />
+                                      <!--begin::Input group-->
+                                      <div class="fv-row mb-7" data-kt-password-meter="true">
+                                        <!--begin::Wrapper-->
+                                        <div class="mb-1">
+                                            <!--begin::Label-->
+                                            <label class="form-label fw-bolder text-dark fs-6">{{__('form.Confirm Password') }}</label>
+                                            <!--end::Label-->
+                                            <!--begin::Input wrapper-->
+                                            <div class="position-relative mb-3">
+                                                <input class="form-control form-control-lg form-control-solid" type="password" placeholder="" name="confirm-password" autocomplete="off" />
+                                                <span class="btn btn-sm btn-icon position-absolute translate-middle top-50 end-0 me-n2" data-kt-password-meter-control="visibility">
+                                                    <i class="bi bi-eye-slash fs-2"></i>
+                                                    <i class="bi bi-eye fs-2 d-none"></i>
+                                                </span>
+                                            </div>
+                                            <!--end::Input wrapper-->
+                                            <!--begin::Meter-->
+                                            <div class="d-flex align-items-center mb-3" data-kt-password-meter-control="highlight">
+                                                <div class="flex-grow-1 bg-secondary bg-active-success rounded h-5px me-2"></div>
+                                                <div class="flex-grow-1 bg-secondary bg-active-success rounded h-5px me-2"></div>
+                                                <div class="flex-grow-1 bg-secondary bg-active-success rounded h-5px me-2"></div>
+                                                <div class="flex-grow-1 bg-secondary bg-active-success rounded h-5px"></div>
+                                            </div>
+                                            <!--end::Meter-->
+                                        </div>
+                                        <!--end::Wrapper-->
+                                        <!--begin::Hint-->
+                                        <div class="text-muted">{{__('form.Use 8 or more characters with a mix of letters, numbers') }} &amp; symbols.</div>
+                                        <!--end::Hint-->
                                     </div>
                                     <!--end::Input group-->
 
@@ -315,6 +358,58 @@
                                     <div class="fv-row mb-7">
                                         <!--begin::Label-->
                                         <label class="fs-6 fw-bold mb-2">
+                                            <span class="required">{{__('form.Street') }}</span>
+                                        </label>
+                                        <!--end::Label-->
+                                        <!--begin::Input-->
+                                        <input type="text" class="form-control form-control-solid" placeholder="" name="street" value="" />
+                                        <!--end::Input-->
+                                    </div>
+
+                                    <div class="fv-row mb-7">
+                                        <!--begin::Label-->
+                                        <label class="fs-6 fw-bold mb-2">
+                                            <span class="required">{{__('form.City') }}</span>
+                                        </label>
+                                        <!--end::Label-->
+                                        <!--begin::Input-->
+                                        <input type="text" class="form-control form-control-solid" placeholder="" name="city" value="" />
+                                        <!--end::Input-->
+                                    </div>
+
+                                    <div class="fv-row mb-7">
+                                        <!--begin::Label-->
+                                        <label class="fs-6 fw-bold mb-2">
+                                            <span class="required">{{__('form.Country') }}</span>
+                                        </label>
+                                        <!--end::Label-->
+                                        <!--begin::Input-->
+                                        <input type="text" class="form-control form-control-solid" placeholder="" name="country" value="" />
+                                        <!--end::Input-->
+                                    </div>
+
+                                    <div class="fv-row mb-7">
+                                        <!--begin::Label-->
+                                        <label class="fs-6 fw-bold mb-2">
+                                            <span class="required">{{__('form.Postalcode') }}</span>
+                                        </label>
+                                        <!--end::Label-->
+                                        <!--begin::Input-->
+                                        <input type="text" class="form-control form-control-solid" placeholder="" name="postalcode" value="" />
+                                        <!--end::Input-->
+                                    </div>
+
+                                     <div class="d-flex flex-column mb-8 fv-row">
+                                        <label class="required fs-6 fw-bold mb-2">{{__('form.Payment method') }}</label>
+                                        <select class="form-select form-select-solid" data-hide-search="true" data-placeholder="{{__('form.Select a method') }}" name="payment_method">
+                                            <option value="card">{{__('form.Card') }}</option>
+                                            <option value="bank">{{__('form.Bank') }}</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="fv-row mb-7">
+                                        <!--begin::Label-->
+                                        <label class="fs-6 fw-bold mb-2">
                                             <span class="required">{{__('form.Serial number') }}</span>
                                         </label>
                                         <!--end::Label-->
@@ -326,12 +421,11 @@
                                     <!--begin::Input group-->
                                     <div class="d-flex flex-column mb-8 fv-row">
                                         <label class="required fs-6 fw-bold mb-2">{{__('form.Bitmain') }}</label>
-                                        <select class="form-select form-select-solid" data-control="select2" data-hide-search="true" data-placeholder="{{__('form.Select a bitmain') }}" name="bitmain_id">
-                                                <option value=""></option>
-                                                @foreach($bitmain as $bit)
+                                        <select class="form-select form-select-solid" data-hide-search="true" data-placeholder="{{__('form.Select a bitmain') }}" name="bitmain_id" multiple>
+                                                @foreach($bitmain->sortBy('name') as $bit)
                                                     <option value="{{ $bit->id }}">{{ $bit->name }}</option>
                                                 @endforeach
-                                            </select>
+                                        </select>
                                     </div>
                                     <!--end::Input group-->
                                     <!--begin::Input group-->
@@ -386,6 +480,7 @@
                                             <th>Number</th>
                                             <th>Problem</th>
                                             <th>status</th>
+                                            <th>Payment Method</th>
                                             <th>DateTime</th>
                                             <th>Actions</th>
                                         </tr>
@@ -398,6 +493,30 @@
                         </div>
 
                     </div>
+                    <div class="tab-pane fade" id="shipping_detail">
+
+                        <div class="card">
+                            <div class="card-body">
+                                <table class="table align-middle table-row-dashed gy-5" id="repair_shipping_table">
+                                    <!--begin::Table body-->
+                                    <thead>
+                                        <tr class="text-start text-gray-400 fw-bolder fs-7 text-uppercase gs-0">
+                                            <th>Number</th>
+                                            <th>Tracking Number</th>
+                                            <th>Shipping Company</th>
+                                            <th>Shipping Label</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="fs-6 fw-bold text-gray-600">
+                                    </tbody>
+                                    <!--end::Table body-->
+                                </table>
+                            </div>
+                        </div>
+
+                    </div>
+
 
                 </div>
               

@@ -67,7 +67,7 @@
                                             @foreach (explode(",", $ticket->file_name) as $name)
 
                                                 <div>
-                                                    <a href="{{ asset("public/uploads/attached/".$name. "") }}" download="{{ $name }}"><i class="fas fa-paperclip me-2"></i>{{ $name }}</a>
+                                                    <a href="{{ asset("storage/attached/".$name. "") }}" download="{{ $name }}"><i class="fas fa-paperclip me-2"></i>{{ $name }}</a>
                                                 </div>
                                                 
                                                 @endforeach
@@ -85,21 +85,23 @@
                                 <div class="mb-5">
                                     <div class="overflow-hidden position-relative card-rounded">
                                         <!--begin::Ribbon-->
-                                        @if($reply->user->roles->first()->name == "admin")
-                                            <div class="ribbon ribbon-triangle ribbon-top-start border-success">
-                                                <!--begin::Ribbon icon-->
-                                                <div class="ribbon-icon mt-n5 ms-n6">
-                                                    <i class="bi bi-check2 fs-2 text-white"></i>
+                                        @if(isset($reply->user->roles))
+                                            @if($reply->user->roles->first()->name == "admin")
+                                                <div class="ribbon ribbon-triangle ribbon-top-start border-success">
+                                                    <!--begin::Ribbon icon-->
+                                                    <div class="ribbon-icon mt-n5 ms-n6">
+                                                        <i class="bi bi-check2 fs-2 text-white"></i>
+                                                    </div>
+                                                    <!--end::Ribbon icon-->
                                                 </div>
-                                                <!--end::Ribbon icon-->
-                                            </div>
+                                            @endif
                                         @endif
                                         <!--end::Ribbon-->
                                         <!--begin::Card-->
                                         <div class="card card-bordered w-100">
                                             <!--begin::Body-->
                                             <div class="card-body">
-                                                {{ $reply->description }}
+                                                {!! nl2br($reply->description) !!} 
                                             </div>
                                             <!--end::Body-->
                                         </div>
@@ -109,13 +111,13 @@
                                         @if($name)
 
                                         <div>
-                                            <a href="{{ asset("public/uploads/attached/".$name. "") }}" download="{{ $name }}"><i class="fas fa-paperclip me-2"></i>{{ $name }}</a>
+                                            <a href="{{ asset("storage/attached/".$name. "") }}" download="{{ $name }}"><i class="fas fa-paperclip me-2"></i>{{ $name }}</a>
                                         </div>
                                         
                                         @endif
                                     @endforeach
                                     
-                                    <div class="text-gray-400 @if($reply->user->roles->first()->name == "admin") text-end @endif mt-2 fs-8">{{ $reply->created_at->format("d M Y, g:i A") }}</div>
+                                    <div class="text-gray-400 @if(isset($reply->user->roles)) @if($reply->user->roles->first()->name == "admin") text-end @endif @endif mt-2 fs-8">{{ $reply->created_at->format("d M Y, g:i A") }}</div>
                                 </div>
                                 @endforeach
 

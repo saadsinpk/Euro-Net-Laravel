@@ -21,10 +21,10 @@ return [
     'user_verify_mail_to_user_button' => 'Verify Me',
 
     'repair_publish_mail_to_admin_title' => 'New Repair Request',
-    'repair_publish_mail_to_admin_description' => 'There is a new repair request from client',
+    'repair_publish_mail_to_admin_description' => 'There is a new repair request from {user}',
     'repair_publish_mail_to_admin_button' => 'View request repair',
     'repair_publish_mail_to_user_title' => 'Your repair request is processed',
-    'repair_publish_mail_to_user_description' => 'Please wait for technician to respond to your request',
+    'repair_publish_mail_to_user_description' => 'Please wait for one of our technicians to respond to your request',
     'repair_publish_mail_to_user_button' => 'View repair request',
 
     'repair_status_update_mail_to_user_title' => 'New Message',
@@ -39,8 +39,15 @@ return [
     'repair_send_payment_bank_mail_to_user_description' => 'Our technicians updated your ticket and the amount of {amount} has to be paid to continue the repair process, please login to your ticket and pay the open bill.',
     'repair_send_payment_bank_mail_to_user_button' => 'View repair request',
 
-    'payment_paid_to_admin_title' => 'Hey Admin! User have paid',
+    'payment_paid_to_admin_title' => 'Hey Admin! {user} have paid',
     'payment_paid_to_admin_description' => 'User have paid {amount} you can view on dashboard',
     'payment_paid_to_admin_button' => 'View request repair',
 
+    'user_reset_mail_to_user_title' => 'You have requested to reset the password',
+    'user_reset_mail_to_user_description' => 'Please click the below button to change password',
+    'user_reset_mail_to_user_button' => 'Create password',
+
+    'user_reset_successfully_mail_to_user_title' => 'Your password change successfully',
+    'user_reset_successfully_mail_to_user_description' => 'Congrats your password is changed successfully',
+    'user_reset_successfully_mail_to_user_button' => 'Login',
 ];

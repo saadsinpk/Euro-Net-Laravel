@@ -32,7 +32,7 @@ class EmailTicket extends Mailable
     public function build()
     {
         return $this->markdown('Email.ticketEmail')
-                    ->from($address = 'noreply@euronetsupport.com', $name = 'Euronet Support Center')
+                    ->from($address = 'noreply@www.euronetsupport.com', $name = 'Euronet Support Center')
                     ->subject('Euronet Support Center')
                     ->with([
                         'data' => $this->mailData

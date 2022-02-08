@@ -81994,3 +81994,11 @@ body {
   width: 100% !important;
   height: auto !important;
 }
+.user_main_background {
+  background: url(main_background.jpg);
+  background-repeat: no-repeat;
+  background-size: 100%;
+}
+.grayClass {
+  background: lightgray;
+}

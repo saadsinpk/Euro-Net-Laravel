@@ -7,6 +7,7 @@ use App\Http\Requests\Auth\LoginRequest;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\AdminLog;
 
 class AuthenticatedSessionController extends Controller
 {
@@ -35,6 +36,8 @@ class AuthenticatedSessionController extends Controller
 
         if($user->verify == 1) {
             if($user->hasRole('superAdmin') || $user->hasRole("admin")){
+                $message = 'Login from IP:'.\Request::ip().' at '.date("F j, Y, g:i a");
+                AdminLog::create(["admin_id"=>$user->id,"message"=>$message,"status"=>"success"]);
                 return response()->json("200");
             } else {
                 return response()->json("201");

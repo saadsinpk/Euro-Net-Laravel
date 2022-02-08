@@ -28,15 +28,25 @@
                 <div class="card-toolbar">
                     <!--begin::Toolbar-->
                     <div class="d-flex justify-content-end" data-kt-admin-table-toolbar="base">
-                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#kt_modal_add">{{__('form.Add a Bitmain') }}</button>
+                        @if(isset($admin_access['add_bitmain']))
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#kt_modal_add">{{__('form.Add a Bitmain') }}</button>
+                        @endif
                     </div>
                     <!--end::Toolbar-->
                     <!--begin::Group actions-->
-                    <div class="d-flex justify-content-end align-items-center d-none" data-kt-admin-table-toolbar="selected">
-                        <div class="fw-bolder me-5">
-                        <span class="me-2" data-kt-admin-table-select="selected_count"></span>{{__('form.Selected') }}</div>
-                        <button type="button" class="btn btn-danger" data-kt-admin-table-select="delete_selected">{{__('form.Delete Selected') }}</button>
-                    </div>
+                    @if(isset($admin_access['delete_bitmain']))
+                        <div class="d-flex justify-content-end align-items-center d-none" data-kt-admin-table-toolbar="selected">
+                            <div class="fw-bolder me-5">
+                            <span class="me-2" data-kt-admin-table-select="selected_count"></span>{{__('form.Selected') }}</div>
+                            <button type="button" class="btn btn-danger" data-kt-admin-table-select="delete_selected">{{__('form.Delete Selected') }}</button>
+                        </div>
+                    @else
+                        <div class="d-flex justify-content-end align-items-center d-none" data-kt-admin-table-toolbar="selected">
+                            <div class="fw-bolder me-5">
+                            <span class="me-2" data-kt-admin-table-select="selected_count"></span>{{__('form.Selected') }}</div>
+                            <button type="button" class="btn btn-danger" data-kt-admin-table-select="delete_selected">{{__('form.You are not allow to Delete Selected') }}</button>
+                        </div>
+                    @endif
                     <!--end::Group actions-->
                 </div>
                 <!--end::Card toolbar-->

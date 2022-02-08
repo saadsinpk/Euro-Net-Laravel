@@ -12,6 +12,8 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\EmailTicket;
+use App\Models\AdminFeature;
+use App\Models\Tracking;
 
 class RepairPaymentController extends Controller
 {
@@ -52,9 +54,18 @@ class RepairPaymentController extends Controller
         $payment->serial_num = $request->serial_num;
         $payment->problem = $request->problem;
         $payment->bitmain_id = $request->bitmain_id;
-        $payment->address = $request->address;
+        $payment->street = $request->street;
+        $payment->city = $request->city;
+        $payment->country = $request->country;
+        $payment->postalcode = $request->postalcode;
         $payment->payment_method = $request->payment_method;
-        $payment->verify = 2;
+
+        if(auth()->user()) {
+            $payment->verify = 1;
+        } else {
+            $payment->verify = 2;
+        }
+        
         $payment->status = 1;
 
         if(auth()->user()) {
@@ -68,6 +79,7 @@ class RepairPaymentController extends Controller
         $random_key = $requests->count() + 1;
 
         $payment->number = 'REP' . '-' . date("mdY") . str_pad($random_key, 2, "0", STR_PAD_LEFT);
+        $payment->selected_lang = app()->getLocale();
         $payment->save();
         $paymentId = $payment->id;
 
@@ -76,13 +88,18 @@ class RepairPaymentController extends Controller
             if($admin_users->count()) {
                 foreach ($admin_users as $adminkey => $adminvalue) {
                     // Send to Admin
-                    $mailData = [
-                        'title' => trans('email.repair_publish_mail_to_admin_title'),
-                        'description' => trans('email.repair_publish_mail_to_admin_description'),
-                        'button' => trans('email.repair_publish_mail_to_admin_button'),
-                        'url' => 'http://euronetsupport.com/admin/repair/payment'
-                    ];
-                    Mail::to($adminvalue->email)->send(new EmailTicket($mailData));
+                    $AdminFeature = AdminFeature::where("admin_id", "=", $adminvalue->id)->where("feature", "=", "receive_customer_reply_mail")->first();
+                    if(!empty($AdminFeature)) {
+                        $mailData = [
+                            'title' => trans('email.repair_publish_mail_to_admin_title'),
+                            'description' => str_replace('{user}',$request->name,trans('email.repair_publish_mail_to_admin_description')),
+                            'description' => trans('email.repair_publish_mail_to_admin_description'),
+                            'button' => trans('email.repair_publish_mail_to_admin_button'),
+                            'url' => 'http://euronetsupport.com/admin/repair/payment'
+                        ];
+                        Mail::to($adminvalue->email)->send(new EmailTicket($mailData));
+                        Tracking::create(["email"=>$adminvalue->email,"button"=>json_encode($mailData)]);
+                    }
                 }
             }
 
@@ -95,8 +112,7 @@ class RepairPaymentController extends Controller
             ];
 
             Mail::to(auth()->user()->email)->send(new EmailTicket($mailData));
-            $payment->verify = 1;
-        $payment->save();
+                        Tracking::create(["email"=>auth()->user()->email,"button"=>json_encode($mailData)]);
         } else {
             $mailData = [
                 'title' => trans('email.user_verify_mail_to_user_title'),
@@ -106,14 +122,64 @@ class RepairPaymentController extends Controller
             ];
 
             Mail::to($request->email)->send(new EmailTicket($mailData));
+                        Tracking::create(["email"=>$request->email,"button"=>json_encode($mailData)]);
         }
 
         return response()->json($payment->id);
     }
 
+    public function shipping_history()
+    {
+        $requests = RepairPayment::orderBy("last_admin_reply_date", "DESC")->with('repairStatus')->where("user_id", "=", auth()->user()->id)->where("status","=","7")->orWhere(function($query) {
+                $query->where('user_id', '=', auth()->user()->id)
+                      ->where('status', '=', 2);
+            })->get();
+        if (request()->ajax()) {
+            return DataTables::of($requests)
+            ->addColumn('action', function ($data) {
+                if($data->status == '2') {
+                    $action = '<a href="'.url("/user/repair_payment/view/$data->id").'" class="btn btn-light btn-sm">Add shipping detail</a>';
+                } elseif($data->status == '7') {
+                    $action = '<a href="'.url("/user/repair_payment/view/$data->id").'" class="btn btn-light btn-sm">View shipping detail</a>';
+                }
+
+                return $action;
+            })
+            ->addColumn('tracking_number', function ($data) {
+                if($data->status == '2') {
+                    $tracking_number = $data->tracking_number;
+                } elseif($data->status == '7') {
+                    $tracking_number = $data->return_tracking_number;
+                }
+                if(empty($tracking_number)) {
+                    $tracking_number = '-';
+                }
+                return $tracking_number;
+            })
+            ->addColumn('shipping_company', function ($data) {
+                if($data->status == '2') {
+                    $shipping_company = $data->shipping_company;
+                } elseif($data->status == '7') {
+                    $shipping_company = $data->return_shipping_company;
+                }
+                if(empty($shipping_company)) {
+                    $shipping_company = '-';
+                }
+                return $shipping_company;
+            })
+            ->addColumn('label', function ($data) {
+                $label = '<a href="'.url('label/download/'.$data->number).'"  target="_blank">Download Label</a>';
+                return $label;
+            })
+            ->rawColumns(['action', 'tracking_number', 'shipping_company', 'label', 'pdf'])
+            ->addIndexColumn()
+            ->make(true);
+        }
+        return '';
+    }
     public function history() 
     {
-        $requests = RepairPayment::orderBy("created_at", "DESC")->with('repairStatus')->where("user_id", "=", auth()->user()->id)->get();
+        $requests = RepairPayment::orderBy("last_admin_reply_date", "DESC")->with('repairStatus')->where("user_id", "=", auth()->user()->id)->get();
         if (request()->ajax()) {
             return DataTables::of($requests)
             ->addColumn('created_at', function ($data) {
@@ -135,12 +201,31 @@ class RepairPaymentController extends Controller
             ->make(true);
         }
     }
+    public function download_pdf(Request $request, $id)
+    {
+        echo 'test';
+        exit();
+    }
 
-    public function detail($id)
+    public function detail(Request $request, $id)
+    {
+        if(isset($_POST['update_shipping'])) {
+            RepairPayment::where("id", "=", $id)->update(["shipping_company"=>$request->shipping_company,"tracking_number"=>$request->tracking_number,"ship_attach"=>$request->file_name]);
+        }
+        if(!auth()->user()) {
+            return redirect('/login');
+        }
+        $rPayment = RepairPayment::with("request")->with('reply')->with('repairStatus')->with('bitmain')->where("id", "=", $id)->first();
+        $rPayment->last_admin_reply = 2;
+        $rPayment->save();
+        return view("user.rPayment__detail", compact("rPayment"));
+    }
+
+    public function detail_pay($id, $payid)
     {
         $rPayment = RepairPayment::with("request")->with('reply')->with('repairStatus')->with('bitmain')->where("id", "=", $id)->first();
 
-        return view("user.rPayment_detail", compact("rPayment"));
+        return view("user.rPayment_pay_detail", compact("rPayment", "payid"));
     }
 
     public function reply(Request $request)
@@ -156,14 +241,19 @@ class RepairPaymentController extends Controller
         $admin_users = User::role('admin')->where("verify", "=", "1")->get();
         if($admin_users->count()) {
             foreach ($admin_users as $adminkey => $adminvalue) {
-                // Send to Admin
-                $mailData = [
-                    'title' => trans('email.user_send_reply_repair_to_admin_title'),
-                    'description' => $request->description,
-                    'button' => trans('email.user_send_reply_repair_to_admin_button_label'),
-                    'url' => 'https://euronetsupport.com/admin/reapir/view/'.$repair_id
-                ];
-                Mail::to($adminvalue->email)->send(new EmailTicket($mailData)); 
+                $AdminFeature = AdminFeature::where("admin_id", "=", $adminvalue->id)->where("feature", "=", "receive_customer_reply_mail")->first();
+                if(!empty($AdminFeature)) {
+
+                    // Send to Admin
+                    $mailData = [
+                        'title' => trans('email.user_send_reply_repair_to_admin_title'),
+                        'description' => $request->description,
+                        'button' => trans('email.user_send_reply_repair_to_admin_button_label'),
+                        'url' => 'https://euronetsupport.com/admin/reapir/view/'.$repair_id
+                    ];
+                    Mail::to($adminvalue->email)->send(new EmailTicket($mailData)); 
+                        Tracking::create(["email"=>$adminvalue->email,"button"=>json_encode($mailData)]);
+                }
             }
         }
 
@@ -176,6 +266,7 @@ class RepairPaymentController extends Controller
         }
         
         $repair_reply->save();
+        $rPayment->selected_lang = app()->getLocale();
         $rPayment->save();
         
         return response()->json(200);

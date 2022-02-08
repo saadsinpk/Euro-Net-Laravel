@@ -16,6 +16,8 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use App\Models\RepairPayment;
 use App\Mail\EmailTicket;
+use App\Models\AdminFeature;
+use App\Models\Tracking;
 
 class TicketController extends Controller
 {
@@ -26,6 +28,95 @@ class TicketController extends Controller
         $categories = Category::all();
         $bitmain = BitMain::all();
         return view("user.ticket", compact("categories", 'bitmain'));
+    }
+
+    public function verification(Request $request) {
+        $message_to_display = '';
+        if(isset($_POST['email'])) {
+            $user = User::where("email", $_POST['email'])->where("verify", "!=", 1)->first();
+            if(!empty($user)) {
+                $user = $user->toArray();
+                $message_to_display = 'pass';
+
+                $mailData = [
+                    'title' => trans('email.user_verify_mail_to_user_title'),
+                    'description' => trans('email.user_verify_mail_to_user_description'),
+                    'button' => trans('email.user_verify_mail_to_user_button'),
+                    'url' => 'http://euronetsupport.com/login/'.$user['verify_token'].'/'
+                ];
+
+                Mail::to($user['email'])->send(new EmailTicket($mailData));
+                Tracking::create(["email"=>$user['email'],"button"=>json_encode($mailData)]);
+            } else {
+                $message_to_display = 'fail';
+            }
+                return response()->json(200);
+        }
+        return view("auth.verification", compact("message_to_display"));
+    }
+
+    public function reset(Request $request) {
+        $message_to_display = '';
+        if(isset($_POST['email'])) {
+            $user = User::where("email", $_POST['email'])->where("verify", "!=", 1)->first();
+            $token = sha1(mt_rand(1, 90000) . 'SALT');
+
+            if(!empty($user)) {
+                $user = $user->toArray();
+                $message_to_display = 'pass';
+
+                $mailData = [
+                    'title' => trans('email.user_reset_mail_to_user_title'),
+                    'description' => trans('email.user_reset_mail_to_user_description'),
+                    'button' => trans('email.user_reset_mail_to_user_button'),
+                    'url' => 'http://euronetsupport.com/reset_password/'.$token.'/'
+                ];
+
+                Mail::to($user['email'])->send(new EmailTicket($mailData));
+                Tracking::create(["email"=>$user['email'],"button"=>json_encode($mailData)]);
+                $user->reset_token = $token;
+                $user->save();
+
+            } else {
+                $message_to_display = 'fail';
+            }
+                return response()->json(200);
+        }
+        return view("auth.reset", compact("message_to_display"));
+    }
+
+    public function reset_password(Request $request, $id) {
+        $message_to_display = '';
+        if(isset($_POST['password'])) {
+            if(!empty($id)) {
+                $user = User::where("token", $id)->first();
+                $token = sha1(mt_rand(1, 90000) . 'SALT');
+
+                if(!empty($user)) {
+                    $message_to_display = 'pass';
+                    $user->password =  Hash::make($request->password);
+
+                    $mailData = [
+                        'title' => trans('email.user_reset_successfully_mail_to_user_title'),
+                        'description' => trans('email.user_reset_successfully_mail_to_user_description'),
+                        'button' => trans('email.user_reset_successfully_mail_to_user_button'),
+                        'url' => 'http://euronetsupport.com/login'
+                    ];
+
+                    Mail::to($user['email'])->send(new EmailTicket($mailData));
+                    Tracking::create(["email"=>$user['email'],"button"=>json_encode($mailData)]);
+                    $user->reset_token = '';
+                    $user->save();
+
+                } else {
+                    $message_to_display = 'fail';
+                }
+            } else {
+                $message_to_display = 'fail';
+            }
+            return response()->json(200);
+        }
+        return view("auth.reset_password", compact("message_to_display", "id"));
     }
 
     public function verifyuser($id) {
@@ -46,14 +137,17 @@ class TicketController extends Controller
                     $admin_users = User::role('admin')->where("verify", "=", "1")->get();
                     if($admin_users->count()) {
                         foreach ($admin_users as $adminkey => $adminvalue) {
-                            // Send to Admin
-                            $mailData = [
-                                'title' => trans('email.ticket_publish_mail_to_admin_title'),
-                                'description' => str_replace('{user}',$user->name,trans('email.ticket_publish_mail_to_admin_description')),
-                                'button' => trans('email.ticket_publish_mail_to_admin_button'),
-                                'url' => 'https://euronetsupport.com/admin/ticket/view/'.$ticket_id
-                            ];
-                            Mail::to($adminvalue->email)->send(new EmailTicket($mailData));
+                            $AdminFeature = AdminFeature::where("admin_id", "=", $adminvalue->id)->where("feature", "=", "receive_customer_reply_mail")->first();
+                            if(!empty($AdminFeature)) {
+                                $mailData = [
+                                    'title' => trans('email.ticket_publish_mail_to_admin_title'),
+                                    'description' => str_replace('{user}',$user->name,trans('email.ticket_publish_mail_to_admin_description')),
+                                    'button' => trans('email.ticket_publish_mail_to_admin_button'),
+                                    'url' => 'https://euronetsupport.com/admin/ticket/view/'.$ticket_id
+                                ];
+                                Mail::to($adminvalue->email)->send(new EmailTicket($mailData));
+                                Tracking::create(["email"=>$adminvalue->email,"button"=>json_encode($mailData)]);
+                            }
                         }
                     }
 
@@ -66,11 +160,13 @@ class TicketController extends Controller
                     ];
 
                     Mail::to($user->email)->send(new EmailTicket($mailData));
+                   Tracking::create(["email"=>$user->email,"button"=>json_encode($mailData)]);
                 }
 
                 $ticket = RepairPayment::where("user_id", "=", $user->id)->first();
                 if(!empty($ticket)) {
                     $ticket->verify = 1;
+                    $ticket->selected_lang = app()->getLocale();
                     $ticket->save();
 
                     $ticket_id = $ticket->id;
@@ -80,13 +176,17 @@ class TicketController extends Controller
                     if($admin_users->count()) {
                         foreach ($admin_users as $adminkey => $adminvalue) {
                             // Send to Admin
-                            $mailData = [
-                                'title' => trans('email.repair_publish_mail_to_admin_title'),
-                                'description' => trans('email.repair_publish_mail_to_admin_description'),
-                                'button' => trans('email.ticket_publish_mail_to_admin_button'),
-                                'url' => 'http://euronetsupport.com/admin/repair/payment'
-                            ];
-                            Mail::to($adminvalue->email)->send(new EmailTicket($mailData));
+                            $AdminFeature = AdminFeature::where("admin_id", "=", $adminvalue->id)->where("feature", "=", "receive_customer_reply_mail")->first();
+                            if(!empty($AdminFeature)) {
+                                $mailData = [
+                                    'title' => trans('email.repair_publish_mail_to_admin_title'),
+                                    'description' => str_replace('{user}',$user->name,trans('email.repair_publish_mail_to_admin_description')),
+                                    'button' => trans('email.ticket_publish_mail_to_admin_button'),
+                                    'url' => 'http://euronetsupport.com/admin/repair/payment'
+                                ];
+                                Mail::to($adminvalue->email)->send(new EmailTicket($mailData));
+                                Tracking::create(["email"=>$adminvalue->email,"button"=>json_encode($mailData)]);
+                            }
                         }
                     }
 
@@ -99,6 +199,7 @@ class TicketController extends Controller
                     ];
 
                     Mail::to($user->email)->send(new EmailTicket($mailData));
+                                Tracking::create(["email"=>$user->email,"button"=>json_encode($mailData)]);
                 }
 
                 $message_to_display = 'pass';
@@ -172,7 +273,7 @@ class TicketController extends Controller
         if($request->file_name) {
             $ticket->file_name = implode(",", $request->file_name); 
         } 
-
+        $ticket->selected_lang = app()->getLocale();
         $ticket->save();
         $ticket_id = $ticket->id;
         $ticket_number = $ticket->number;
@@ -182,13 +283,17 @@ class TicketController extends Controller
             if($admin_users->count()) {
                 foreach ($admin_users as $adminkey => $adminvalue) {
                     // Send to Admin
-                    $mailData = [
-                        'title' => trans('email.ticket_publish_mail_to_admin_title'),
-                        'description' => str_replace('{user}',auth()->user()->name,trans('email.ticket_publish_mail_to_admin_description')),
-                        'button' => trans('email.ticket_publish_mail_to_admin_button'),
-                        'url' => 'https://euronetsupport.com/admin/ticket/view/'.$ticket_id
-                    ];
-                    Mail::to($adminvalue->email)->send(new EmailTicket($mailData));
+                    $AdminFeature = AdminFeature::where("admin_id", "=", $adminvalue->id)->where("feature", "=", "receive_customer_reply_mail")->first();
+                    if(!empty($AdminFeature)) {
+                        $mailData = [
+                            'title' => trans('email.ticket_publish_mail_to_admin_title'),
+                            'description' => str_replace('{user}',auth()->user()->name,trans('email.ticket_publish_mail_to_admin_description')),
+                            'button' => trans('email.ticket_publish_mail_to_admin_button'),
+                            'url' => 'https://euronetsupport.com/admin/ticket/view/'.$ticket_id
+                        ];
+                        Mail::to($adminvalue->email)->send(new EmailTicket($mailData));
+                                Tracking::create(["email"=>$adminvalue->email,"button"=>json_encode($mailData)]);
+                    }
                 }
             }
 
@@ -201,6 +306,7 @@ class TicketController extends Controller
             ];
 
             Mail::to(auth()->user()->email)->send(new EmailTicket($mailData));
+                                Tracking::create(["email"=>auth()->user()->email,"button"=>json_encode($mailData)]);
         } else {
             $mailData = [
                 'title' => trans('email.user_verify_mail_to_user_title'),
@@ -210,6 +316,7 @@ class TicketController extends Controller
             ];
 
             Mail::to($request->email)->send(new EmailTicket($mailData));
+                                Tracking::create(["email"=>$request->email,"button"=>json_encode($mailData)]);
         }
         
 
@@ -220,8 +327,8 @@ class TicketController extends Controller
     public function tickethistory() 
     {
         if(auth()->user()) {
-            $tickets = Ticket::orderBy("created_at", "DESC")->with("ticket_status")->where("user_id", "=", auth()->user()->id)->get();
-    
+            $tickets = Ticket::orderBy("last_admin_reply_date", "DESC")->with("ticket_status")->where("user_id", "=", auth()->user()->id)->get();
+
             if (request()->ajax()) {
                 return DataTables::of($tickets)
                 ->addColumn('status', function($data){
@@ -254,7 +361,10 @@ class TicketController extends Controller
     public function ticketDetail($id) {
         if(isset(auth()->user()->id)) {
             $ticket = Ticket::with("category")->with("reply")->where("id", "=", $id)->where("user_id","=", auth()->user()->id)->first();
-            if($ticket) {
+            if(!empty($ticket)) {
+                $ticket->last_admin_reply = 2;
+                $ticket->save();
+
                 return view("user.ticket_detail", compact("ticket"));
             } else {
                 return abort('404');
@@ -276,13 +386,17 @@ class TicketController extends Controller
         if($admin_users->count()) {
             foreach ($admin_users as $adminkey => $adminvalue) {
                 // Send to Admin
-                $mailData = [
-                    'title' => trans('email.user_send_reply_to_admin_title'),
-                    'description' => $request->description,
-                    'button' => trans('email.user_send_reply_to_admin_button_label'),
-                    'url' => 'https://euronetsupport.com/admin/ticket/view/'.$ticket_id
-                ];
-                Mail::to($adminvalue->email)->send(new EmailTicket($mailData)); 
+                $AdminFeature = AdminFeature::where("admin_id", "=", $adminvalue->id)->where("feature", "=", "receive_customer_reply_mail")->first();
+                if(!empty($AdminFeature)) {
+                    $mailData = [
+                        'title' => trans('email.user_send_reply_to_admin_title'),
+                        'description' => $request->description,
+                        'button' => trans('email.user_send_reply_to_admin_button_label'),
+                        'url' => 'https://euronetsupport.com/admin/ticket/view/'.$ticket_id
+                    ];
+                    Mail::to($adminvalue->email)->send(new EmailTicket($mailData)); 
+                                Tracking::create(["email"=>$adminvalue->email,"button"=>json_encode($mailData)]);
+                }
             }
         }
 

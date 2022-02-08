@@ -6,14 +6,59 @@ var KTModalNewPayment = function() {
     var validator;
     var form;
     var datatable;
-    var table
+    var table;
+    var table_2;
     var validator2;
     var validator1;
 
     var database = function() {
         // Set date data order
+        var url = "/user/repair_shipping/"
+        datatable = $(table_2).DataTable({
+            processing: true,
+            serverSide: true,
+            ajax: {
+                url: url
+            },
+            columns: [{
+                    data: 'number',
+                    name: 'number',
+                },
+                {
+                    data: 'tracking_number',
+                    name: 'tracking_number',
+                },
+                {
+                    data: 'shipping_company',
+                    name: 'shipping_company',
+                },
+                {
+                    data: 'label',
+                    name: 'label',
+                },
+                {
+                    data: 'action',
+                    name: 'action',
+                    class: 'text-end'
+                },
+            ],
+            "info": false,
+            'order': [],
+
+            'columnDefs': []
+        });
+
+        datatable.on('draw', function() {
+            dropdownInstance();
+        });
+
         var url = "/user/repair_payment/"
         datatable = $(table).DataTable({
+            createdRow: function( row, data, dataIndex){
+                if( data['last_admin_reply'] ==  `1`){
+                    $(row).addClass('grayClass');
+                }
+            },
             processing: true,
             serverSide: true,
             ajax: {
@@ -30,6 +75,10 @@ var KTModalNewPayment = function() {
                 {
                     data: 'status',
                     name: 'status',
+                },
+                {
+                    data: 'payment_method',
+                    name: 'payment_method',
                 },
                 {
                     data: 'created_at',
@@ -67,10 +116,17 @@ var KTModalNewPayment = function() {
         validator2 = FormValidation.formValidation(
             form, {
                 fields: {
+                    'phone': {
+                        validators: {
+                            notEmpty: {
+                                message: 'Phone is required'
+                            }
+                        }
+                    },
                     'bitmain_id': {
                         validators: {
                             notEmpty: {
-                                message: 'Category is required'
+                                message: 'Bitmain is required'
                             }
                         }
                     },
@@ -88,6 +144,41 @@ var KTModalNewPayment = function() {
                             }
                         }
                     },
+                    'street': {
+                        validators: {
+                            notEmpty: {
+                                message: 'Street is required'
+                            }
+                        }
+                    },
+                    'city': {
+                        validators: {
+                            notEmpty: {
+                                message: 'City is required'
+                            }
+                        }
+                    },
+                    'country': {
+                        validators: {
+                            notEmpty: {
+                                message: 'Country is required'
+                            }
+                        }
+                    },
+                    'postalcode': {
+                        validators: {
+                            notEmpty: {
+                                message: 'Postalcode is required'
+                            }
+                        }
+                    },
+                    'payment_method': {
+                        validators: {
+                            notEmpty: {
+                                message: 'Payment method is required'
+                            }
+                        }
+                    }
                 },
                 plugins: {
                     trigger: new FormValidation.plugins.Trigger(),
@@ -106,7 +197,7 @@ var KTModalNewPayment = function() {
                     'bitmain_id': {
                         validators: {
                             notEmpty: {
-                                message: 'Category is required'
+                                message: 'Bitmain is required'
                             }
                         }
                     },
@@ -142,18 +233,28 @@ var KTModalNewPayment = function() {
                             regexp: {
                                 message: 'The phone number can only contain the digits, spaces, -, (, ), + and .',
                                 regexp: /^[0-9\s\-()+\.]+$/
-                            },
-                            stringLength: {
-                                min: 11,
-                                max: 11,
-                                message: 'The message must be 11 characters'
                             }
                         }
                     },
+                    'address': {
+                        validators: {
+                            notEmpty: {
+                                message: 'Address is required'
+                            }
+                        }
+                    },
+
                     'serial_num': {
                         validators: {
                             notEmpty: {
                                 message: 'Name is required'
+                            }
+                        }
+                    },
+                    'payment_method': {
+                        validators: {
+                            notEmpty: {
+                                message: 'Payment method is required'
                             }
                         }
                     },
@@ -314,6 +415,7 @@ var KTModalNewPayment = function() {
         init: function() {
 
             table = document.querySelector('#repair_payment_table');
+            table_2 = document.querySelector('#repair_shipping_table');
 
             if ($("#user_id").val()) {
                 database();

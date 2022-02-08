@@ -1,0 +1,619 @@
+Booting Linux on physical CPU 0x0
+Linux version 4.6.0-xilinx-gff8137b-dirty (lzq@armdev2) (gcc version 4.8.3 20140320 (prerelease) (Sourcery CodeBench Lite 2014.05-23) ) #25 SMP PREEMPT Fri Nov 23 15:30:52 CST 2018
+CPU: ARMv7 Processor [413fc090] revision 0 (ARMv7), cr=18c5387d
+CPU: PIPT / VIPT nonaliasing data cache, VIPT aliasing instruction cache
+Machine model: Xilinx Zynq
+cma: Reserved 16 MiB at 0x0e000000
+Memory policy: Data cache writealloc
+On node 0 totalpages: 61440
+free_area_init_node: node 0, pgdat c0b39280, node_mem_map cde10000
+  Normal zone: 480 pages used for memmap
+  Normal zone: 0 pages reserved
+  Normal zone: 61440 pages, LIFO batch:15
+percpu: Embedded 12 pages/cpu @cddf1000 s19776 r8192 d21184 u49152
+pcpu-alloc: s19776 r8192 d21184 u49152 alloc=12*4096
+pcpu-alloc: [0] 0 [0] 1 
+Built 1 zonelists in Zone order, mobility grouping on.  Total pages: 60960
+Kernel command line: mem=240M console=ttyPS0,115200 ramdisk_size=33554432 root=/dev/ram rw earlyprintk
+PID hash table entries: 1024 (order: 0, 4096 bytes)
+Dentry cache hash table entries: 32768 (order: 5, 131072 bytes)
+Inode-cache hash table entries: 16384 (order: 4, 65536 bytes)
+Memory: 195704K/245760K available (6345K kernel code, 231K rwdata, 1896K rodata, 1024K init, 223K bss, 33672K reserved, 16384K cma-reserved, 0K highmem)
+Virtual kernel memory layout:
+    vector  : 0xffff0000 - 0xffff1000   (   4 kB)
+    fixmap  : 0xffc00000 - 0xfff00000   (3072 kB)
+    vmalloc : 0xcf800000 - 0xff800000   ( 768 MB)
+    lowmem  : 0xc0000000 - 0xcf000000   ( 240 MB)
+    pkmap   : 0xbfe00000 - 0xc0000000   (   2 MB)
+    modules : 0xbf000000 - 0xbfe00000   (  14 MB)
+      .text : 0xc0008000 - 0xc090c424   (9234 kB)
+      .init : 0xc0a00000 - 0xc0b00000   (1024 kB)
+      .data : 0xc0b00000 - 0xc0b39fe0   ( 232 kB)
+       .bss : 0xc0b39fe0 - 0xc0b71c28   ( 224 kB)
+Preemptible hierarchical RCU implementation.
+	Build-time adjustment of leaf fanout to 32.
+	RCU restricting CPUs from NR_CPUS=4 to nr_cpu_ids=2.
+RCU: Adjusting geometry for rcu_fanout_leaf=32, nr_cpu_ids=2
+NR_IRQS:16 nr_irqs:16 16
+efuse mapped to cf800000
+ps7-slcr mapped to cf802000
+L2C: platform modifies aux control register: 0x72360000 -> 0x72760000
+L2C: DT/platform modifies aux control register: 0x72360000 -> 0x72760000
+L2C-310 erratum 769419 enabled
+L2C-310 enabling early BRESP for Cortex-A9
+L2C-310 full line of zeros enabled for Cortex-A9
+L2C-310 ID prefetch enabled, offset 1 lines
+L2C-310 dynamic clock gating enabled, standby mode enabled
+L2C-310 cache controller enabled, 8 ways, 512 kB
+L2C-310: CACHE_ID 0x410000c8, AUX_CTRL 0x76760001
+zynq_clock_init: clkc starts at cf802100
+Zynq clock init
+sched_clock: 64 bits at 333MHz, resolution 3ns, wraps every 4398046511103ns
+clocksource: arm_global_timer: mask: 0xffffffffffffffff max_cycles: 0x4ce07af025, max_idle_ns: 440795209040 ns
+Switching to timer-based delay loop, resolution 3ns
+clocksource: ttc_clocksource: mask: 0xffff max_cycles: 0xffff, max_idle_ns: 537538477 ns
+ps7-ttc #0 at cf80a000, irq=18
+Console: colour dummy device 80x30
+Calibrating delay loop (skipped), value calculated using timer frequency.. 666.66 BogoMIPS (lpj=3333333)
+pid_max: default: 32768 minimum: 301
+Mount-cache hash table entries: 1024 (order: 0, 4096 bytes)
+Mountpoint-cache hash table entries: 1024 (order: 0, 4096 bytes)
+CPU: Testing write buffer coherency: ok
+CPU0: thread -1, cpu 0, socket 0, mpidr 80000000
+Setting up static identity map for 0x100000 - 0x100058
+CPU1: failed to boot: -1
+Brought up 1 CPUs
+SMP: Total of 1 processors activated (666.66 BogoMIPS).
+CPU: All CPU(s) started in SVC mode.
+devtmpfs: initialized
+VFP support v0.3: implementor 41 architecture 3 part 30 variant 9 rev 4
+clocksource: jiffies: mask: 0xffffffff max_cycles: 0xffffffff, max_idle_ns: 19112604462750000 ns
+pinctrl core: initialized pinctrl subsystem
+NET: Registered protocol family 16
+DMA: preallocated 256 KiB pool for atomic coherent allocations
+cpuidle: using governor menu
+hw-breakpoint: found 5 (+1 reserved) breakpoint and 1 watchpoint registers.
+hw-breakpoint: maximum watchpoint size is 4 bytes.
+zynq-ocm f800c000.ps7-ocmc: ZYNQ OCM pool: 256 KiB @ 0xcf880000
+vgaarb: loaded
+SCSI subsystem initialized
+usbcore: registered new interface driver usbfs
+usbcore: registered new interface driver hub
+usbcore: registered new device driver usb
+media: Linux media interface: v0.10
+Linux video capture interface: v2.00
+pps_core: LinuxPPS API ver. 1 registered
+pps_core: Software ver. 5.3.6 - Copyright 2005-2007 Rodolfo Giometti <giometti@linux.it>
+PTP clock support registered
+EDAC MC: Ver: 3.0.0
+Advanced Linux Sound Architecture Driver Initialized.
+clocksource: Switched to clocksource arm_global_timer
+NET: Registered protocol family 2
+TCP established hash table entries: 2048 (order: 1, 8192 bytes)
+TCP bind hash table entries: 2048 (order: 2, 16384 bytes)
+TCP: Hash tables configured (established 2048 bind 2048)
+UDP hash table entries: 256 (order: 1, 8192 bytes)
+UDP-Lite hash table entries: 256 (order: 1, 8192 bytes)
+NET: Registered protocol family 1
+RPC: Registered named UNIX socket transport module.
+RPC: Registered udp transport module.
+RPC: Registered tcp transport module.
+RPC: Registered tcp NFSv4.1 backchannel transport module.
+PCI: CLS 0 bytes, default 64
+Trying to unpack rootfs image as initramfs...
+rootfs image is not initramfs (no cpio magic); looks like an initrd
+Freeing initrd memory: 20632K (cc6db000 - cdb01000)
+hw perfevents: enabled with armv7_cortex_a9 PMU driver, 7 counters available
+futex hash table entries: 512 (order: 3, 32768 bytes)
+workingset: timestamp_bits=28 max_order=16 bucket_order=0
+jffs2: version 2.2. (NAND) (SUMMARY)  © 2001-2006 Red Hat, Inc.
+io scheduler noop registered
+io scheduler deadline registered
+io scheduler cfq registered (default)
+dma-pl330 f8003000.ps7-dma: Loaded driver for PL330 DMAC-241330
+dma-pl330 f8003000.ps7-dma: 	DBUFF-128x8bytes Num_Chans-8 Num_Peri-4 Num_Events-16
+e0000000.serial: ttyPS0 at MMIO 0xe0000000 (irq = 158, base_baud = 6249999) is a xuartps
+console [ttyPS0] enabled
+xdevcfg f8007000.ps7-dev-cfg: ioremap 0xf8007000 to cf86e000
+[drm] Initialized drm 1.1.0 20060810
+brd: module loaded
+loop: module loaded
+CAN device driver interface
+gpiod_set_value: invalid GPIO
+libphy: MACB_mii_bus: probed
+macb e000b000.ethernet eth0: Cadence GEM rev 0x00020118 at 0xe000b000 irq 31 (00:0a:35:00:00:00)
+Generic PHY e000b000.etherne:00: attached PHY driver [Generic PHY] (mii_bus:phy_addr=e000b000.etherne:00, irq=-1)
+e1000e: Intel(R) PRO/1000 Network Driver - 3.2.6-k
+e1000e: Copyright(c) 1999 - 2015 Intel Corporation.
+ehci_hcd: USB 2.0 'Enhanced' Host Controller (EHCI) Driver
+ehci-pci: EHCI PCI platform driver
+usbcore: registered new interface driver usb-storage
+mousedev: PS/2 mouse device common for all mice
+i2c /dev entries driver
+Xilinx Zynq CpuIdle Driver started
+sdhci: Secure Digital Host Controller Interface driver
+sdhci: Copyright(c) Pierre Ossman
+sdhci-pltfm: SDHCI platform and OF driver helper
+mmc0: SDHCI controller on e0100000.ps7-sdio [e0100000.ps7-sdio] using ADMA
+ledtrig-cpu: registered to indicate activity on CPUs
+usbcore: registered new interface driver usbhid
+usbhid: USB HID core driver
+nand: device found, Manufacturer ID: 0x2c, Chip ID: 0xda
+nand: Micron MT29F2G08ABAEAWP
+nand: 256 MiB, SLC, erase size: 128 KiB, page size: 2048, OOB size: 64
+nand: WARNING: pl35x-nand: the ECC used on your system is too weak compared to the one required by the NAND chip
+Bad block table found at page 131008, version 0x01
+Bad block table found at page 130944, version 0x01
+nand_read_bbt: bad block at 0x000002420000
+nand_read_bbt: bad block at 0x000002440000
+nand_read_bbt: bad block at 0x000002460000
+6 ofpart partitions found on MTD device pl35x-nand
+Creating 6 MTD partitions on "pl35x-nand":
+0x000000000000-0x000002800000 : "BOOT.bin-env-dts-kernel"
+0x000002800000-0x000004800000 : "ramfs"
+0x000004800000-0x000005000000 : "configs"
+0x000005000000-0x000006000000 : "reserve"
+0x000006000000-0x000008000000 : "ramfs-bak"
+0x000008000000-0x000010000000 : "reserve1"
+NET: Registered protocol family 10
+sit: IPv6 over IPv4 tunneling driver
+NET: Registered protocol family 17
+can: controller area network core (rev 20120528 abi 9)
+NET: Registered protocol family 29
+can: raw protocol (rev 20120528)
+can: broadcast manager protocol (rev 20120528 t)
+can: netlink gateway (rev 20130117) max_hops=1
+zynq_pm_ioremap: no compatible node found for 'xlnx,zynq-ddrc-a05'
+zynq_pm_late_init: Unable to map DDRC IO memory.
+Registering SWP/SWPB emulation handler
+hctosys: unable to open rtc device (rtc0)
+ALSA device list:
+  No soundcards found.
+RAMDISK: gzip image found at block 0
+EXT4-fs (ram0): couldn't mount as ext3 due to feature incompatibilities
+EXT4-fs (ram0): mounted filesystem without journal. Opts: (null)
+VFS: Mounted root (ext4 filesystem) on device 1:0.
+devtmpfs: mounted
+Freeing unused kernel memory: 1024K (c0a00000 - c0b00000)
+EXT4-fs (ram0): re-mounted. Opts: block_validity,delalloc,barrier,user_xattr
+random: dd urandom read with 0 bits of entropy available
+ubi0: attaching mtd2
+ubi0: scanning is finished
+ubi0: attached mtd2 (name "configs", size 8 MiB)
+ubi0: PEB size: 131072 bytes (128 KiB), LEB size: 126976 bytes
+ubi0: min./max. I/O unit sizes: 2048/2048, sub-page size 2048
+ubi0: VID header offset: 2048 (aligned 2048), data offset: 4096
+ubi0: good PEBs: 64, bad PEBs: 0, corrupted PEBs: 0
+ubi0: user volume: 1, internal volumes: 1, max. volumes count: 128
+ubi0: max/mean erase counter: 1/0, WL threshold: 4096, image sequence number: 807918737
+ubi0: available PEBs: 0, total reserved PEBs: 64, PEBs reserved for bad PEB handling: 40
+ubi0: background thread "ubi_bgt0d" started, PID 708
+UBIFS (ubi0:0): background thread "ubifs_bgt0_0" started, PID 711
+UBIFS (ubi0:0): recovery needed
+UBIFS (ubi0:0): recovery completed
+UBIFS (ubi0:0): UBIFS: mounted UBI device 0, volume 0, name "configs"
+UBIFS (ubi0:0): LEB size: 126976 bytes (124 KiB), min./max. I/O unit sizes: 2048 bytes/2048 bytes
+UBIFS (ubi0:0): FS size: 1396736 bytes (1 MiB, 11 LEBs), journal size 888833 bytes (0 MiB, 5 LEBs)
+UBIFS (ubi0:0): reserved for root: 65970 bytes (64 KiB)
+UBIFS (ubi0:0): media format: w4/r0 (latest is w4/r0), UUID B2CBAC6D-1F22-456A-AD1D-94CBFFBF74A6, small LPT model
+ubi1: attaching mtd5
+ubi1: scanning is finished
+ubi1: attached mtd5 (name "reserve1", size 128 MiB)
+ubi1: PEB size: 131072 bytes (128 KiB), LEB size: 126976 bytes
+ubi1: min./max. I/O unit sizes: 2048/2048, sub-page size 2048
+ubi1: VID header offset: 2048 (aligned 2048), data offset: 4096
+ubi1: good PEBs: 1020, bad PEBs: 4, corrupted PEBs: 0
+ubi1: user volume: 1, internal volumes: 1, max. volumes count: 128
+ubi1: max/mean erase counter: 1/0, WL threshold: 4096, image sequence number: 1556500396
+ubi1: available PEBs: 0, total reserved PEBs: 1020, PEBs reserved for bad PEB handling: 36
+ubi1: background thread "ubi_bgt1d" started, PID 720
+UBIFS (ubi1:0): background thread "ubifs_bgt1_0" started, PID 723
+UBIFS (ubi1:0): recovery needed
+UBIFS (ubi1:0): recovery completed
+UBIFS (ubi1:0): UBIFS: mounted UBI device 1, volume 0, name "reserve1"
+UBIFS (ubi1:0): LEB size: 126976 bytes (124 KiB), min./max. I/O unit sizes: 2048 bytes/2048 bytes
+UBIFS (ubi1:0): FS size: 123039744 bytes (117 MiB, 969 LEBs), journal size 6221824 bytes (5 MiB, 49 LEBs)
+UBIFS (ubi1:0): reserved for root: 4952683 bytes (4836 KiB)
+UBIFS (ubi1:0): media format: w4/r0 (latest is w4/r0), UUID 515B1804-6C11-4FAF-9730-645BD74FE68A, small LPT model
+IPv6: ADDRCONF(NETDEV_UP): eth0: link is not ready
+IPv6: ADDRCONF(NETDEV_UP): eth0: link is not ready
+macb e000b000.ethernet eth0: unable to generate target frequency: 25000000 Hz
+macb e000b000.ethernet eth0: link up (100/Full)
+IPv6: ADDRCONF(NETDEV_CHANGE): eth0: link becomes ready
+In axi fpga driver!
+request_mem_region OK!
+AXI fpga dev virtual address is 0xcfb54000
+*base_vir_addr = 0xb023
+In fpga mem driver!
+request_mem_region OK!
+fpga mem virtual address is 0xd2000000
+random: nonblocking pool is initialized
+2021-11-17 10:01:01:thread.c:1555:create_bitmain_soc_init_thread: create thread
+2021-11-17 10:01:01:driver-btm-api.c:682:init_freq_mode: This is scan-user version
+2021-11-17 10:01:01:driver-btm-api.c:2518:bitmain_soc_init: Miner compile time: Fri Jan  8 22:35:06 CST 2021 type: Antminer T17e
+2021-11-17 10:01:01:driver-btm-api.c:2519:bitmain_soc_init: commit version: 37668c9 2021-01-08 18:20:11, build by: jenkins 2021-01-08 22:39:58
+2021-11-17 10:01:01:driver-btm-api.c:2520:bitmain_soc_init: opt_multi_version     = 1
+2021-11-17 10:01:01:driver-btm-api.c:2521:bitmain_soc_init: opt_bitmain_ab        = 1
+2021-11-17 10:01:01:driver-btm-api.c:2522:bitmain_soc_init: mid_auto_gen          = 0
+2021-11-17 10:01:01:driver-btm-api.c:2523:bitmain_soc_init: work_mode             = 0
+2021-11-17 10:01:01:driver-btm-api.c:2524:bitmain_soc_init: power_feedback_en     = true
+2021-11-17 10:01:01:driver-btm-api.c:2067:show_sn: no SN got, please write SN to /config/sn
+2021-11-17 10:01:01:driver-btm-api.c:1384:miner_device_init: Detect 256MB control board of XILINX
+2021-11-17 10:01:01:driver-btm-api.c:1325:init_fan_parameter: fan_eft : 0  fan_pwm : 0
+2021-11-17 10:01:07:driver-btm-api.c:1309:init_miner_version: miner ID : 815ccd0c2b10481c
+2021-11-17 10:01:07:driver-btm-api.c:1315:init_miner_version: FPGA Version = 0xB023
+2021-11-17 10:01:13:auto_adapt.c:100:_get_board_info: chain[0] board bin: 1, chip bin: 1, chip ft: A4V41, chip version: AB
+2021-11-17 10:01:13:auto_adapt.c:100:_get_board_info: chain[1] board bin: 1, chip bin: 1, chip ft: A4V41, chip version: AB
+2021-11-17 10:01:13:auto_adapt.c:100:_get_board_info: chain[2] board bin: 1, chip bin: 1, chip ft: A4V41, chip version: AB
+2021-11-17 10:01:13:auto_adapt.c:273:is_sweep_failed_before: open sweep tag failed
+voltage_ref = 1840
+2100  2100  2100  2100  2100  2100  
+2100  2100  2100  2100  2100  2100  
+2100  2100  2100  2100  2100  2100  
+2100  2100  2100  2100  2100  2060  
+2100  2100  2100  2100  2070  2020  
+2070  2060  2060  2050  2020  1970  
+2020  2010  2010  2000  1980  1920  
+1980  1970  1960  1950  1910  1860  
+1980  1970  1960  1950  1910  1860  
+
+2021-11-17 10:01:13:thread.c:1523:create_read_nonce_reg_thread: create thread
+2021-11-17 10:01:13:driver-btm-api.c:698:dump_pcb_bom_version: Chain [0] PCB Version: 0x010a
+2021-11-17 10:01:13:driver-btm-api.c:699:dump_pcb_bom_version: Chain [0] BOM Version: 0x0100
+2021-11-17 10:01:13:driver-btm-api.c:698:dump_pcb_bom_version: Chain [1] PCB Version: 0x010a
+2021-11-17 10:01:13:driver-btm-api.c:699:dump_pcb_bom_version: Chain [1] BOM Version: 0x0100
+2021-11-17 10:01:13:driver-btm-api.c:698:dump_pcb_bom_version: Chain [2] PCB Version: 0x010a
+2021-11-17 10:01:13:driver-btm-api.c:699:dump_pcb_bom_version: Chain [2] BOM Version: 0x0100
+2021-11-17 10:01:19:driver-btm-api.c:2344:bitmain_board_init: Fan check passed.
+2021-11-17 10:01:20:board.c:81:jump_and_app_check_restore_pic: chain[0] PIC jump to app
+2021-11-17 10:01:23:board.c:94:jump_and_app_check_restore_pic: Check chain[0] PIC fw version=0x88
+2021-11-17 10:01:24:board.c:81:jump_and_app_check_restore_pic: chain[1] PIC jump to app
+2021-11-17 10:01:26:board.c:94:jump_and_app_check_restore_pic: Check chain[1] PIC fw version=0x88
+2021-11-17 10:01:27:board.c:81:jump_and_app_check_restore_pic: chain[2] PIC jump to app
+2021-11-17 10:01:29:board.c:94:jump_and_app_check_restore_pic: Check chain[2] PIC fw version=0x88
+2021-11-17 10:01:29:thread.c:1518:create_pic_heart_beat_thread: create thread
+2021-11-17 10:01:30:power_api.c:241:power_init: power type version: 0x0042
+2021-11-17 10:01:32:power_api.c:259:power_init: Power init:
+2021-11-17 10:01:32:power_api.c:260:power_init: current_voltage_raw     = 2136
+2021-11-17 10:01:32:power_api.c:261:power_init: highest_voltage_raw     = 2000
+2021-11-17 10:01:32:power_api.c:262:power_init: working_voltage_raw     = 1800
+2021-11-17 10:01:32:power_api.c:263:power_init: higher_voltage_raw      = 1850
+2021-11-17 10:01:32:power_api.c:264:power_init: check_asic_voltage_raw  = 1800
+2021-11-17 10:01:32:driver-btm-api.c:2354:bitmain_board_init: Enter 60s sleep to make sure power release finish.
+2021-11-17 10:02:34:driver-btm-api.c:1123:check_asic_number_until_volt_balance: THIS is No.1 time boost asic:
+2021-11-17 10:02:34:power_api.c:334:modify_check_asic_voltage: check_asic_voltage_raw  = 1800
+2021-11-17 10:02:37:power_api.c:298:set_to_check_asic_voltage_by_steps: Set to voltage raw 1800, step by step.
+2021-11-17 10:02:58:uart.c:69:set_baud: set UART baud to 115200
+chain 0, IO_DRIVE_STRENGTH_CONFIGURATION reg = 0x 7777777
+2021-11-17 10:03:03:driver-btm-api.c:1035:check_asic_number_with_power_on: Chain[0]: find 78 asic, times 0
+chain 1, IO_DRIVE_STRENGTH_CONFIGURATION reg = 0x 7777777
+2021-11-17 10:03:08:driver-btm-api.c:1035:check_asic_number_with_power_on: Chain[1]: find 59 asic, times 0
+2021-11-17 10:03:09:board.c:81:jump_and_app_check_restore_pic: chain[1] PIC jump to app
+2021-11-17 10:03:11:board.c:94:jump_and_app_check_restore_pic: Check chain[1] PIC fw version=0x88
+2021-11-17 10:03:11:power_api.c:334:modify_check_asic_voltage: check_asic_voltage_raw  = 1900
+2021-11-17 10:03:11:power_api.c:298:set_to_check_asic_voltage_by_steps: Set to voltage raw 1900, step by step.
+chain 1, IO_DRIVE_STRENGTH_CONFIGURATION reg = 0x 7777777
+2021-11-17 10:03:29:driver-btm-api.c:1035:check_asic_number_with_power_on: Chain[1]: find 59 asic, times 1
+2021-11-17 10:03:30:board.c:81:jump_and_app_check_restore_pic: chain[1] PIC jump to app
+2021-11-17 10:03:32:board.c:94:jump_and_app_check_restore_pic: Check chain[1] PIC fw version=0x88
+2021-11-17 10:03:32:power_api.c:334:modify_check_asic_voltage: check_asic_voltage_raw  = 2000
+2021-11-17 10:03:32:power_api.c:298:set_to_check_asic_voltage_by_steps: Set to voltage raw 2000, step by step.
+chain 1, IO_DRIVE_STRENGTH_CONFIGURATION reg = 0x 7777777
+2021-11-17 10:03:50:driver-btm-api.c:1035:check_asic_number_with_power_on: Chain[1]: find 59 asic, times 2
+2021-11-17 10:03:51:board.c:81:jump_and_app_check_restore_pic: chain[1] PIC jump to app
+2021-11-17 10:03:53:board.c:94:jump_and_app_check_restore_pic: Check chain[1] PIC fw version=0x88
+2021-11-17 10:03:53:power_api.c:334:modify_check_asic_voltage: check_asic_voltage_raw  = 2100
+2021-11-17 10:03:53:power_api.c:298:set_to_check_asic_voltage_by_steps: Set to voltage raw 2100, step by step.
+chain 1, IO_DRIVE_STRENGTH_CONFIGURATION reg = 0x 7777777
+2021-11-17 10:04:10:driver-btm-api.c:1035:check_asic_number_with_power_on: Chain[1]: find 59 asic, times 3
+2021-11-17 10:04:11:board.c:81:jump_and_app_check_restore_pic: chain[1] PIC jump to app
+2021-11-17 10:04:13:board.c:94:jump_and_app_check_restore_pic: Check chain[1] PIC fw version=0x88
+2021-11-17 10:04:13:power_api.c:334:modify_check_asic_voltage: check_asic_voltage_raw  = 1800
+2021-11-17 10:04:13:power_api.c:298:set_to_check_asic_voltage_by_steps: Set to voltage raw 1800, step by step.
+2021-11-17 10:04:33:driver-btm-api.c:1217:check_asic_number: Chain 1 only find 59 asic, will power off hash board 1
+chain 2, IO_DRIVE_STRENGTH_CONFIGURATION reg = 0x 7777777
+2021-11-17 10:04:38:driver-btm-api.c:1035:check_asic_number_with_power_on: Chain[2]: find 0 asic, times 0
+2021-11-17 10:04:39:board.c:81:jump_and_app_check_restore_pic: chain[2] PIC jump to app
+2021-11-17 10:04:41:board.c:94:jump_and_app_check_restore_pic: Check chain[2] PIC fw version=0x88
+2021-11-17 10:04:41:power_api.c:334:modify_check_asic_voltage: check_asic_voltage_raw  = 1900
+2021-11-17 10:04:41:power_api.c:298:set_to_check_asic_voltage_by_steps: Set to voltage raw 1900, step by step.
+chain 2, IO_DRIVE_STRENGTH_CONFIGURATION reg = 0x 7777777
+2021-11-17 10:04:56:driver-btm-api.c:1035:check_asic_number_with_power_on: Chain[2]: find 0 asic, times 1
+2021-11-17 10:04:57:board.c:81:jump_and_app_check_restore_pic: chain[2] PIC jump to app
+2021-11-17 10:04:59:board.c:94:jump_and_app_check_restore_pic: Check chain[2] PIC fw version=0x88
+2021-11-17 10:04:59:power_api.c:334:modify_check_asic_voltage: check_asic_voltage_raw  = 2000
+2021-11-17 10:04:59:power_api.c:298:set_to_check_asic_voltage_by_steps: Set to voltage raw 2000, step by step.
+chain 2, IO_DRIVE_STRENGTH_CONFIGURATION reg = 0x 7777777
+2021-11-17 10:05:13:driver-btm-api.c:1035:check_asic_number_with_power_on: Chain[2]: find 0 asic, times 2
+2021-11-17 10:05:14:board.c:81:jump_and_app_check_restore_pic: chain[2] PIC jump to app
+2021-11-17 10:05:16:board.c:94:jump_and_app_check_restore_pic: Check chain[2] PIC fw version=0x88
+2021-11-17 10:05:16:power_api.c:334:modify_check_asic_voltage: check_asic_voltage_raw  = 2100
+2021-11-17 10:05:16:power_api.c:298:set_to_check_asic_voltage_by_steps: Set to voltage raw 2100, step by step.
+chain 2, IO_DRIVE_STRENGTH_CONFIGURATION reg = 0x 7777777
+2021-11-17 10:05:31:driver-btm-api.c:1035:check_asic_number_with_power_on: Chain[2]: find 0 asic, times 3
+2021-11-17 10:05:32:board.c:81:jump_and_app_check_restore_pic: chain[2] PIC jump to app
+2021-11-17 10:05:34:board.c:94:jump_and_app_check_restore_pic: Check chain[2] PIC fw version=0x88
+2021-11-17 10:05:34:power_api.c:334:modify_check_asic_voltage: check_asic_voltage_raw  = 1800
+2021-11-17 10:05:34:power_api.c:298:set_to_check_asic_voltage_by_steps: Set to voltage raw 1800, step by step.
+2021-11-17 10:05:52:driver-btm-api.c:1217:check_asic_number: Chain 2 only find 0 asic, will power off hash board 2
+2021-11-17 10:05:53:driver-btm-api.c:1163:check_asic_number_until_volt_balance: PASS: volt balance at No.1 time boost asic.
+2021-11-17 10:05:53:power_api.c:364:set_to_highest_voltage_by_steps: Set to voltage raw 2000, step by step.
+2021-11-17 10:06:07:driver-hash-chip.c:876:set_uart_relay: set uart relay to 0x330003
+2021-11-17 10:06:08:driver-hash-chip.c:1264:set_ldo_ctrl: Set LDO to 0x2000203
+2021-11-17 10:06:08:driver-hash-chip.c:737:dump_adc_voltage_v2: get ADC_DATAOUT from chain 0 with 0 regs timeout.
+chain 0 domain  0:   d0 0.390,   d1 0.382,   d2 0.378,   d3 0.347,   sum = 1.497009
+chain 0 domain  1:   d0 0.404,   d1 0.398,   d2 0.403,   d3 0.401,   sum = 1.606201
+chain 0 domain  2:   d0 0.383,   d1 0.376,   d2 0.384,   d3 0.354,   sum = 1.496155
+chain 0 domain  3:   d0 0.398,   d1 0.404,   d2 0.401,   d3 0.401,   sum = 1.604858
+chain 0 domain  4:   d0 0.398,   d1 0.402,   d2 0.392,   d3 0.397,   sum = 1.588745
+chain 0 domain  5:   d0 0.371,   d1 0.366,   d2 0.376,   d3 0.378,   sum = 1.491394
+chain 0 domain  6:   d0 0.365,   d1 0.365,   d2 0.360,   d3 0.334,   sum = 1.424133
+chain 0 domain  7:   d0 0.400,   d1 0.401,   d2 0.382,   d3 0.394,   sum = 1.576904
+chain 0 domain  8:   d0 0.379,   d1 0.378,   d2 0.374,   d3 0.360,   sum = 1.490967
+chain 0 domain  9:   d0 0.386,   d1 0.377,   d2 0.378,   d3 0.354,   sum = 1.493958
+chain 0 domain 10:   d0 0.375,   d1 0.379,   d2 0.372,   d3 0.352,   sum = 1.478760
+chain 0 domain 11:   d0 0.395,   d1 0.392,   d2 0.375,   d3 0.387,   sum = 1.548950
+chain 0 domain 12:   d0 0.373,   d1 0.370,   d2 0.366,   d3 0.359,   sum = 1.467529
+2021-11-17 10:06:08:driver-hash-chip.c:493:check_adc_voltage: PASS domainn volt check: request 0.800 (index 0, open_core)
+2021-11-17 10:06:09:temperature.c:272:calibrate_temp_sensor_one_chain: chain 0 temp sensor NCT218
+2021-11-17 10:06:15:driver-btm-api.c:311:check_bringup_temp: Bring up temperature is 26
+2021-11-17 10:06:15:uart.c:69:set_baud: set UART baud to 3000000
+2021-11-17 10:06:15 voltage[0] = 1840
+2021-11-17 10:06:15:power_api.c:272:set_working_voltage_raw: working_voltage_raw = 1840
+2021-11-17 10:06:15:thread.c:1538:create_check_miner_status_thread: create thread
+2021-11-17 10:06:15:thread.c:1528:create_show_miner_status_thread: create thread
+2021-11-17 10:06:15:thread.c:1503:create_temperature_monitor_thread: create thread
+2021-11-17 10:06:15:thread.c:1580:create_fan_monitor_thread: create thread
+2021-11-17 10:06:15:frequency.c:578:inc_freq_with_fixed_vco: chain = 255, freq = 560, is_higher_voltage = true
+2021-11-17 10:06:21:frequency.c:623:inc_freq_with_fixed_vco: get pcb 25 ~ 27, chip_temp 31 ~ 33, now 6.0s, target 34.0
+2021-11-17 10:06:22:frequency.c:623:inc_freq_with_fixed_vco: get pcb 25 ~ 27, chip_temp 32 ~ 35, now 7.0s, target 34.2
+2021-11-17 10:06:22:frequency.c:644:inc_freq_with_fixed_vco: heat speed too fast! current_temp 35 > 34.2 target_temp.
+2021-11-17 10:06:28:frequency.c:623:inc_freq_with_fixed_vco: get pcb 26 ~ 28, chip_temp 31 ~ 32, now 13.0s, target 35.2
+2021-11-17 10:06:28:frequency.c:657:inc_freq_with_fixed_vco: [0] _POSTDIV1 = 7, _POSTDIV2 = 7, USER_DIV = 1, freq = 57
+2021-11-17 10:06:28:frequency.c:665:inc_freq_with_fixed_vco: set to 57M, get pcb 26 ~ 28, chip_temp 31 ~ 32
+2021-11-17 10:06:28:power_api.c:376:set_to_voltage_by_steps: Set to voltage raw 2100, step by step.
+2021-11-17 10:06:37:frequency.c:671:inc_freq_with_fixed_vco: freq_mode 1=1 FREQ_MODE_USER, Conf.Check_Clock_Cnt=0
+2021-11-17 10:06:37:driver-btm-api.c:1941:check_clock_counter_domain_last_core: freq 57 clock_counter_limit 6, no check, skip.
+2021-11-17 10:06:45:frequency.c:623:inc_freq_with_fixed_vco: get pcb 26 ~ 30, chip_temp 34 ~ 35, now 29.3s, target 37.9
+2021-11-17 10:06:45:frequency.c:657:inc_freq_with_fixed_vco: [1] _POSTDIV1 = 7, _POSTDIV2 = 6, USER_DIV = 1, freq = 66
+2021-11-17 10:06:45:frequency.c:665:inc_freq_with_fixed_vco: set to 66M, get pcb 26 ~ 30, chip_temp 34 ~ 35
+2021-11-17 10:06:45:frequency.c:671:inc_freq_with_fixed_vco: freq_mode 1=1 FREQ_MODE_USER, Conf.Check_Clock_Cnt=0
+2021-11-17 10:06:45:driver-btm-api.c:1941:check_clock_counter_domain_last_core: freq 66 clock_counter_limit 7, no check, skip.
+2021-11-17 10:06:53:frequency.c:623:inc_freq_with_fixed_vco: get pcb 27 ~ 30, chip_temp 35 ~ 38, now 37.3s, target 39.2
+2021-11-17 10:06:54:frequency.c:623:inc_freq_with_fixed_vco: get pcb 28 ~ 30, chip_temp 35 ~ 37, now 38.3s, target 39.4
+2021-11-17 10:06:54:frequency.c:657:inc_freq_with_fixed_vco: [2] _POSTDIV1 = 6, _POSTDIV2 = 6, USER_DIV = 1, freq = 77
+2021-11-17 10:06:54:frequency.c:665:inc_freq_with_fixed_vco: set to 77M, get pcb 28 ~ 30, chip_temp 35 ~ 37
+2021-11-17 10:06:54:frequency.c:671:inc_freq_with_fixed_vco: freq_mode 1=1 FREQ_MODE_USER, Conf.Check_Clock_Cnt=0
+2021-11-17 10:06:54:driver-btm-api.c:1941:check_clock_counter_domain_last_core: freq 77 clock_counter_limit 9, no check, skip.
+2021-11-17 10:07:02:frequency.c:623:inc_freq_with_fixed_vco: get pcb 29 ~ 31, chip_temp 36 ~ 39, now 46.3s, target 40.7
+2021-11-17 10:07:03:frequency.c:623:inc_freq_with_fixed_vco: get pcb 29 ~ 31, chip_temp 36 ~ 39, now 47.3s, target 40.9
+2021-11-17 10:07:04:frequency.c:623:inc_freq_with_fixed_vco: get pcb 30 ~ 31, chip_temp 36 ~ 39, now 48.3s, target 41.1
+2021-11-17 10:07:04:frequency.c:657:inc_freq_with_fixed_vco: [3] _POSTDIV1 = 7, _POSTDIV2 = 5, USER_DIV = 1, freq = 80
+2021-11-17 10:07:04:frequency.c:665:inc_freq_with_fixed_vco: set to 80M, get pcb 30 ~ 31, chip_temp 36 ~ 39
+2021-11-17 10:07:04:frequency.c:671:inc_freq_with_fixed_vco: freq_mode 1=1 FREQ_MODE_USER, Conf.Check_Clock_Cnt=0
+2021-11-17 10:07:04:driver-btm-api.c:1941:check_clock_counter_domain_last_core: freq 80 clock_counter_limit 9, no check, skip.
+2021-11-17 10:07:12:frequency.c:623:inc_freq_with_fixed_vco: get pcb 30 ~ 32, chip_temp 38 ~ 39, now 56.3s, target 42.4
+2021-11-17 10:07:12:frequency.c:657:inc_freq_with_fixed_vco: [4] _POSTDIV1 = 6, _POSTDIV2 = 5, USER_DIV = 1, freq = 93
+2021-11-17 10:07:12:frequency.c:665:inc_freq_with_fixed_vco: set to 93M, get pcb 30 ~ 32, chip_temp 38 ~ 39
+2021-11-17 10:07:12:frequency.c:671:inc_freq_with_fixed_vco: freq_mode 1=1 FREQ_MODE_USER, Conf.Check_Clock_Cnt=0
+2021-11-17 10:07:12:driver-btm-api.c:1941:check_clock_counter_domain_last_core: freq 93 clock_counter_limit 11, no check, skip.
+2021-11-17 10:07:20:frequency.c:623:inc_freq_with_fixed_vco: get pcb 31 ~ 33, chip_temp 39 ~ 40, now 64.3s, target 43.7
+2021-11-17 10:07:20:frequency.c:657:inc_freq_with_fixed_vco: [5] _POSTDIV1 = 7, _POSTDIV2 = 4, USER_DIV = 1, freq = 100
+2021-11-17 10:07:20:frequency.c:665:inc_freq_with_fixed_vco: set to 100M, get pcb 31 ~ 33, chip_temp 39 ~ 40
+2021-11-17 10:07:20:frequency.c:671:inc_freq_with_fixed_vco: freq_mode 1=1 FREQ_MODE_USER, Conf.Check_Clock_Cnt=0
+2021-11-17 10:07:20:driver-btm-api.c:1941:check_clock_counter_domain_last_core: freq 100 clock_counter_limit 13, no check, skip.
+2021-11-17 10:07:28:frequency.c:623:inc_freq_with_fixed_vco: get pcb 31 ~ 35, chip_temp 40 ~ 42, now 72.3s, target 45.1
+2021-11-17 10:07:28:frequency.c:657:inc_freq_with_fixed_vco: [6] _POSTDIV1 = 5, _POSTDIV2 = 5, USER_DIV = 1, freq = 112
+2021-11-17 10:07:28:frequency.c:665:inc_freq_with_fixed_vco: set to 112M, get pcb 31 ~ 35, chip_temp 40 ~ 42
+2021-11-17 10:07:28:frequency.c:671:inc_freq_with_fixed_vco: freq_mode 1=1 FREQ_MODE_USER, Conf.Check_Clock_Cnt=0
+2021-11-17 10:07:28:driver-btm-api.c:1941:check_clock_counter_domain_last_core: freq 112 clock_counter_limit 14, no check, skip.
+2021-11-17 10:07:36:frequency.c:623:inc_freq_with_fixed_vco: get pcb 32 ~ 35, chip_temp 41 ~ 43, now 80.4s, target 46.4
+2021-11-17 10:07:36:frequency.c:657:inc_freq_with_fixed_vco: [7] _POSTDIV1 = 6, _POSTDIV2 = 4, USER_DIV = 1, freq = 116
+2021-11-17 10:07:36:frequency.c:665:inc_freq_with_fixed_vco: set to 116M, get pcb 32 ~ 35, chip_temp 41 ~ 43
+2021-11-17 10:07:36:frequency.c:671:inc_freq_with_fixed_vco: freq_mode 1=1 FREQ_MODE_USER, Conf.Check_Clock_Cnt=0
+2021-11-17 10:07:36:driver-btm-api.c:1941:check_clock_counter_domain_last_core: freq 116 clock_counter_limit 15, no check, skip.
+2021-11-17 10:07:44:frequency.c:623:inc_freq_with_fixed_vco: get pcb 31 ~ 37, chip_temp 43 ~ 44, now 88.4s, target 47.7
+2021-11-17 10:07:44:frequency.c:657:inc_freq_with_fixed_vco: [8] _POSTDIV1 = 7, _POSTDIV2 = 3, USER_DIV = 1, freq = 133
+2021-11-17 10:07:44:frequency.c:665:inc_freq_with_fixed_vco: set to 133M, get pcb 31 ~ 37, chip_temp 43 ~ 44
+2021-11-17 10:07:44:frequency.c:671:inc_freq_with_fixed_vco: freq_mode 1=1 FREQ_MODE_USER, Conf.Check_Clock_Cnt=0
+2021-11-17 10:07:44:driver-btm-api.c:1941:check_clock_counter_domain_last_core: freq 133 clock_counter_limit 18, no check, skip.
+2021-11-17 10:07:52:frequency.c:623:inc_freq_with_fixed_vco: get pcb 31 ~ 38, chip_temp 44 ~ 47, now 96.4s, target 49.1
+2021-11-17 10:07:52:frequency.c:657:inc_freq_with_fixed_vco: [9] _POSTDIV1 = 5, _POSTDIV2 = 4, USER_DIV = 1, freq = 140
+2021-11-17 10:07:52:frequency.c:665:inc_freq_with_fixed_vco: set to 140M, get pcb 31 ~ 38, chip_temp 44 ~ 47
+2021-11-17 10:07:52:frequency.c:671:inc_freq_with_fixed_vco: freq_mode 1=1 FREQ_MODE_USER, Conf.Check_Clock_Cnt=0
+2021-11-17 10:07:52:driver-btm-api.c:1941:check_clock_counter_domain_last_core: freq 140 clock_counter_limit 19, no check, skip.
+2021-11-17 10:08:00:frequency.c:623:inc_freq_with_fixed_vco: get pcb 32 ~ 39, chip_temp 45 ~ 48, now 104.4s, target 50.4
+2021-11-17 10:08:00:frequency.c:657:inc_freq_with_fixed_vco: [10] _POSTDIV1 = 6, _POSTDIV2 = 3, USER_DIV = 1, freq = 155
+2021-11-17 10:08:00:frequency.c:665:inc_freq_with_fixed_vco: set to 155M, get pcb 32 ~ 39, chip_temp 45 ~ 48
+2021-11-17 10:08:00:frequency.c:671:inc_freq_with_fixed_vco: freq_mode 1=1 FREQ_MODE_USER, Conf.Check_Clock_Cnt=0
+2021-11-17 10:08:00:driver-btm-api.c:1941:check_clock_counter_domain_last_core: freq 155 clock_counter_limit 21, no check, skip.
+2021-11-17 10:08:08:frequency.c:623:inc_freq_with_fixed_vco: get pcb 32 ~ 40, chip_temp 47 ~ 50, now 112.4s, target 51.7
+2021-11-17 10:08:09:frequency.c:623:inc_freq_with_fixed_vco: get pcb 32 ~ 41, chip_temp 47 ~ 50, now 113.4s, target 51.9
+2021-11-17 10:08:10:frequency.c:623:inc_freq_with_fixed_vco: get pcb 32 ~ 41, chip_temp 47 ~ 51, now 114.4s, target 52.1
+2021-11-17 10:08:11:frequency.c:623:inc_freq_with_fixed_vco: get pcb 32 ~ 41, chip_temp 47 ~ 51, now 115.4s, target 52.2
+2021-11-17 10:08:12:frequency.c:623:inc_freq_with_fixed_vco: get pcb 33 ~ 41, chip_temp 47 ~ 51, now 116.4s, target 52.4
+2021-11-17 10:08:13:frequency.c:623:inc_freq_with_fixed_vco: get pcb 33 ~ 42, chip_temp 46 ~ 51, now 117.4s, target 52.6
+2021-11-17 10:08:14:frequency.c:623:inc_freq_with_fixed_vco: get pcb 32 ~ 41, chip_temp 48 ~ 51, now 118.4s, target 52.7
+2021-11-17 10:08:15:frequency.c:623:inc_freq_with_fixed_vco: get pcb 34 ~ 42, chip_temp 46 ~ 51, now 119.4s, target 52.9
+2021-11-17 10:08:16:frequency.c:623:inc_freq_with_fixed_vco: get pcb 33 ~ 42, chip_temp 46 ~ 52, now 120.4s, target 53.1
+2021-11-17 10:08:17:frequency.c:623:inc_freq_with_fixed_vco: get pcb 34 ~ 42, chip_temp 47 ~ 51, now 121.4s, target 53.2
+2021-11-17 10:08:17:frequency.c:657:inc_freq_with_fixed_vco: [11] _POSTDIV1 = 5, _POSTDIV2 = 3, USER_DIV = 1, freq = 186
+2021-11-17 10:08:17:frequency.c:665:inc_freq_with_fixed_vco: set to 186M, get pcb 34 ~ 42, chip_temp 47 ~ 51
+2021-11-17 10:08:17:frequency.c:671:inc_freq_with_fixed_vco: freq_mode 1=1 FREQ_MODE_USER, Conf.Check_Clock_Cnt=0
+2021-11-17 10:08:17:driver-btm-api.c:1941:check_clock_counter_domain_last_core: freq 186 clock_counter_limit 26, no check, skip.
+2021-11-17 10:08:25:frequency.c:623:inc_freq_with_fixed_vco: get pcb 35 ~ 44, chip_temp 47 ~ 54, now 129.4s, target 54.6
+2021-11-17 10:08:26:frequency.c:623:inc_freq_with_fixed_vco: get pcb 35 ~ 44, chip_temp 47 ~ 54, now 130.4s, target 54.7
+2021-11-17 10:08:27:frequency.c:623:inc_freq_with_fixed_vco: get pcb 35 ~ 44, chip_temp 50 ~ 55, now 131.4s, target 54.9
+2021-11-17 10:08:27:frequency.c:644:inc_freq_with_fixed_vco: heat speed too fast! current_temp 55 > 54.9 target_temp.
+2021-11-17 10:08:33:frequency.c:623:inc_freq_with_fixed_vco: get pcb 33 ~ 45, chip_temp 50 ~ 57, now 137.4s, target 55.9
+2021-11-17 10:08:33:frequency.c:644:inc_freq_with_fixed_vco: heat speed too fast! current_temp 57 > 55.9 target_temp.
+2021-11-17 10:08:39:frequency.c:623:inc_freq_with_fixed_vco: get pcb 34 ~ 46, chip_temp 51 ~ 58, now 143.4s, target 56.9
+2021-11-17 10:08:39:frequency.c:644:inc_freq_with_fixed_vco: heat speed too fast! current_temp 58 > 56.9 target_temp.
+2021-11-17 10:08:45:frequency.c:623:inc_freq_with_fixed_vco: get pcb 34 ~ 48, chip_temp 52 ~ 59, now 149.4s, target 57.9
+2021-11-17 10:08:45:frequency.c:644:inc_freq_with_fixed_vco: heat speed too fast! current_temp 59 > 57.9 target_temp.
+2021-11-17 10:08:51:frequency.c:623:inc_freq_with_fixed_vco: get pcb 37 ~ 48, chip_temp 50 ~ 61, now 155.4s, target 58.9
+2021-11-17 10:08:51:frequency.c:644:inc_freq_with_fixed_vco: heat speed too fast! current_temp 61 > 58.9 target_temp.
+2021-11-17 10:08:57:frequency.c:623:inc_freq_with_fixed_vco: get pcb 36 ~ 49, chip_temp 52 ~ 62, now 161.4s, target 59.9
+2021-11-17 10:08:57:frequency.c:644:inc_freq_with_fixed_vco: heat speed too fast! current_temp 62 > 59.9 target_temp.
+2021-11-17 10:09:03:frequency.c:623:inc_freq_with_fixed_vco: get pcb 35 ~ 52, chip_temp 51 ~ 63, now 167.4s, target 60.9
+2021-11-17 10:09:03:frequency.c:644:inc_freq_with_fixed_vco: heat speed too fast! current_temp 63 > 60.9 target_temp.
+2021-11-17 10:09:09:frequency.c:623:inc_freq_with_fixed_vco: get pcb 37 ~ 52, chip_temp 51 ~ 65, now 173.4s, target 61.9
+2021-11-17 10:09:09:frequency.c:644:inc_freq_with_fixed_vco: heat speed too fast! current_temp 65 > 61.9 target_temp.
+2021-11-17 10:09:15:frequency.c:623:inc_freq_with_fixed_vco: get pcb 35 ~ 52, chip_temp 50 ~ 65, now 179.4s, target 62.9
+2021-11-17 10:09:15:frequency.c:644:inc_freq_with_fixed_vco: heat speed too fast! current_temp 65 > 62.9 target_temp.
+2021-11-17 10:09:21:frequency.c:623:inc_freq_with_fixed_vco: get pcb 34 ~ 51, chip_temp 50 ~ 65, now 185.4s, target 63.9
+2021-11-17 10:09:21:frequency.c:644:inc_freq_with_fixed_vco: heat speed too fast! current_temp 65 > 63.9 target_temp.
+2021-11-17 10:09:27:frequency.c:623:inc_freq_with_fixed_vco: get pcb 36 ~ 53, chip_temp 50 ~ 65, now 191.4s, target 64.9
+2021-11-17 10:09:27:frequency.c:644:inc_freq_with_fixed_vco: heat speed too fast! current_temp 65 > 64.9 target_temp.
+2021-11-17 10:09:33:frequency.c:623:inc_freq_with_fixed_vco: get pcb 33 ~ 52, chip_temp 48 ~ 66, now 197.4s, target 65.9
+2021-11-17 10:09:33:frequency.c:644:inc_freq_with_fixed_vco: heat speed too fast! current_temp 66 > 65.9 target_temp.
+2021-11-17 10:09:39:frequency.c:623:inc_freq_with_fixed_vco: get pcb 35 ~ 53, chip_temp 48 ~ 64, now 203.4s, target 66.9
+2021-11-17 10:09:39:frequency.c:657:inc_freq_with_fixed_vco: [12] _POSTDIV1 = 7, _POSTDIV2 = 2, USER_DIV = 1, freq = 200
+2021-11-17 10:09:39:frequency.c:665:inc_freq_with_fixed_vco: set to 200M, get pcb 35 ~ 53, chip_temp 48 ~ 64
+2021-11-17 10:09:39:frequency.c:671:inc_freq_with_fixed_vco: freq_mode 1=1 FREQ_MODE_USER, Conf.Check_Clock_Cnt=0
+2021-11-17 10:09:39:driver-btm-api.c:1941:check_clock_counter_domain_last_core: freq 200 clock_counter_limit 29, no check, skip.
+2021-11-17 10:09:47:frequency.c:623:inc_freq_with_fixed_vco: get pcb 32 ~ 52, chip_temp 48 ~ 65, now 211.4s, target 68.2
+2021-11-17 10:09:47:frequency.c:657:inc_freq_with_fixed_vco: [13] _POSTDIV1 = 6, _POSTDIV2 = 2, USER_DIV = 1, freq = 233
+2021-11-17 10:09:47:frequency.c:665:inc_freq_with_fixed_vco: set to 233M, get pcb 32 ~ 52, chip_temp 48 ~ 65
+2021-11-17 10:09:47:frequency.c:671:inc_freq_with_fixed_vco: freq_mode 1=1 FREQ_MODE_USER, Conf.Check_Clock_Cnt=0
+2021-11-17 10:09:47:driver-btm-api.c:1941:check_clock_counter_domain_last_core: freq 233 clock_counter_limit 34, no check, skip.
+2021-11-17 10:09:55:frequency.c:623:inc_freq_with_fixed_vco: get pcb 32 ~ 51, chip_temp 50 ~ 66, now 219.4s, target 69.6
+2021-11-17 10:09:55:frequency.c:657:inc_freq_with_fixed_vco: [14] _POSTDIV1 = 5, _POSTDIV2 = 2, USER_DIV = 1, freq = 280
+2021-11-17 10:09:55:frequency.c:665:inc_freq_with_fixed_vco: set to 280M, get pcb 32 ~ 51, chip_temp 50 ~ 66
+2021-11-17 10:09:55:frequency.c:671:inc_freq_with_fixed_vco: freq_mode 1=1 FREQ_MODE_USER, Conf.Check_Clock_Cnt=0
+2021-11-17 10:09:55:driver-btm-api.c:1941:check_clock_counter_domain_last_core: freq 280 clock_counter_limit 41, no check, skip.
+2021-11-17 10:10:03:frequency.c:623:inc_freq_with_fixed_vco: get pcb 34 ~ 52, chip_temp 51 ~ 67, now 227.5s, target 70.9
+2021-11-17 10:10:03:frequency.c:657:inc_freq_with_fixed_vco: [15] _POSTDIV1 = 7, _POSTDIV2 = 1, USER_DIV = 1, freq = 400
+2021-11-17 10:10:03:frequency.c:665:inc_freq_with_fixed_vco: set to 400M, get pcb 34 ~ 52, chip_temp 51 ~ 67
+2021-11-17 10:10:03:power_api.c:376:set_to_voltage_by_steps: Set to voltage raw 2060, step by step.
+2021-11-17 10:10:08:driver-hash-chip.c:737:dump_adc_voltage_v2: get ADC_DATAOUT from chain 0 with 0 regs timeout.
+chain 0 domain  0:   d0 0.400,   d1 0.395,   d2 0.407,   d3 0.401,   sum = 1.603455
+chain 0 domain  1:   d0 0.412,   d1 0.399,   d2 0.415,   d3 0.409,   sum = 1.634644
+chain 0 domain  2:   d0 0.392,   d1 0.383,   d2 0.382,   d3 0.386,   sum = 1.542480
+chain 0 domain  3:   d0 0.405,   d1 0.403,   d2 0.384,   d3 0.397,   sum = 1.588623
+chain 0 domain  4:   d0 0.402,   d1 0.397,   d2 0.396,   d3 0.398,   sum = 1.593628
+chain 0 domain  5:   d0 0.398,   d1 0.402,   d2 0.400,   d3 0.400,   sum = 1.598572
+chain 0 domain  6:   d0 0.391,   d1 0.385,   d2 0.387,   d3 0.388,   sum = 1.550537
+chain 0 domain  7:   d0 0.402,   d1 0.406,   d2 0.409,   d3 0.406,   sum = 1.622437
+chain 0 domain  8:   d0 0.387,   d1 0.385,   d2 0.395,   d3 0.389,   sum = 1.556641
+chain 0 domain  9:   d0 0.392,   d1 0.390,   d2 0.405,   d3 0.395,   sum = 1.582214
+chain 0 domain 10:   d0 0.385,   d1 0.378,   d2 0.382,   d3 0.354,   sum = 1.498474
+chain 0 domain 11:   d0 0.397,   d1 0.390,   d2 0.397,   d3 0.395,   sum = 1.579041
+chain 0 domain 12:   d0 0.385,   d1 0.381,   d2 0.380,   d3 0.352,   sum = 1.497314
+2021-11-17 10:10:08:driver-hash-chip.c:493:check_adc_voltage: PASS domainn volt check: request 0.800 (index 0, open_core)
+2021-11-17 10:10:08:frequency.c:671:inc_freq_with_fixed_vco: freq_mode 1=1 FREQ_MODE_USER, Conf.Check_Clock_Cnt=0
+2021-11-17 10:10:08:driver-btm-api.c:1941:check_clock_counter_domain_last_core: freq 400 clock_counter_limit 61, no check, skip.
+2021-11-17 10:10:11:driver-hash-chip.c:737:dump_adc_voltage_v2: get ADC_DATAOUT from chain 0 with 0 regs timeout.
+chain 0 domain  0:   d0 0.406,   d1 0.394,   d2 0.393,   d3 0.398,   sum = 1.591370
+chain 0 domain  1:   d0 0.401,   d1 0.406,   d2 0.385,   d3 0.397,   sum = 1.588196
+chain 0 domain  2:   d0 0.394,   d1 0.396,   d2 0.384,   d3 0.391,   sum = 1.566040
+chain 0 domain  3:   d0 0.400,   d1 0.402,   d2 0.386,   d3 0.396,   sum = 1.583984
+chain 0 domain  4:   d0 0.401,   d1 0.395,   d2 0.405,   d3 0.400,   sum = 1.601074
+chain 0 domain  5:   d0 0.398,   d1 0.392,   d2 0.395,   d3 0.395,   sum = 1.580505
+chain 0 domain  6:   d0 0.393,   d1 0.387,   d2 0.389,   d3 0.389,   sum = 1.557617
+chain 0 domain  7:   d0 0.404,   d1 0.404,   d2 0.388,   d3 0.398,   sum = 1.594482
+chain 0 domain  8:   d0 0.385,   d1 0.387,   d2 0.386,   d3 0.386,   sum = 1.545227
+chain 0 domain  9:   d0 0.400,   d1 0.391,   d2 0.381,   d3 0.391,   sum = 1.562500
+chain 0 domain 10:   d0 0.386,   d1 0.373,   d2 0.370,   d3 0.362,   sum = 1.491150
+chain 0 domain 11:   d0 0.396,   d1 0.389,   d2 0.390,   d3 0.392,   sum = 1.566406
+chain 0 domain 12:   d0 0.384,   d1 0.380,   d2 0.379,   d3 0.353,   sum = 1.497070
+2021-11-17 10:10:11:driver-hash-chip.c:493:check_adc_voltage: PASS domainn volt check: request 0.800 (index 0, open_core)
+2021-11-17 10:10:17:frequency.c:623:inc_freq_with_fixed_vco: get pcb 33 ~ 51, chip_temp 55 ~ 67, now 241.4s, target 73.2
+2021-11-17 10:10:17:frequency.c:657:inc_freq_with_fixed_vco: [16] _POSTDIV1 = 6, _POSTDIV2 = 1, USER_DIV = 1, freq = 466
+2021-11-17 10:10:17:frequency.c:665:inc_freq_with_fixed_vco: set to 466M, get pcb 33 ~ 51, chip_temp 55 ~ 67
+2021-11-17 10:10:17:power_api.c:376:set_to_voltage_by_steps: Set to voltage raw 1970, step by step.
+2021-11-17 10:10:24:driver-hash-chip.c:737:dump_adc_voltage_v2: get ADC_DATAOUT from chain 0 with 0 regs timeout.
+chain 0 domain  0:   d0 0.384,   d1 0.389,   d2 0.363,   d3 0.359,   sum = 1.495972
+chain 0 domain  1:   d0 0.392,   d1 0.379,   d2 0.383,   d3 0.385,   sum = 1.539001
+chain 0 domain  2:   d0 0.374,   d1 0.368,   d2 0.365,   d3 0.374,   sum = 1.480652
+chain 0 domain  3:   d0 0.384,   d1 0.377,   d2 0.379,   d3 0.358,   sum = 1.497437
+chain 0 domain  4:   d0 0.382,   d1 0.378,   d2 0.380,   d3 0.355,   sum = 1.494507
+chain 0 domain  5:   d0 0.380,   d1 0.380,   d2 0.377,   d3 0.357,   sum = 1.494141
+chain 0 domain  6:   d0 0.375,   d1 0.370,   d2 0.369,   d3 0.366,   sum = 1.480347
+chain 0 domain  7:   d0 0.385,   d1 0.389,   d2 0.372,   d3 0.382,   sum = 1.527649
+chain 0 domain  8:   d0 0.376,   d1 0.376,   d2 0.368,   d3 0.371,   sum = 1.491150
+chain 0 domain  9:   d0 0.381,   d1 0.379,   d2 0.376,   d3 0.359,   sum = 1.494263
+chain 0 domain 10:   d0 0.363,   d1 0.358,   d2 0.376,   d3 0.362,   sum = 1.458557
+chain 0 domain 11:   d0 0.378,   d1 0.371,   d2 0.374,   d3 0.366,   sum = 1.488892
+chain 0 domain 12:   d0 0.367,   d1 0.364,   d2 0.363,   d3 0.361,   sum = 1.454956
+2021-11-17 10:10:24:driver-hash-chip.c:493:check_adc_voltage: PASS domainn volt check: request 0.800 (index 0, open_core)
+2021-11-17 10:10:24:frequency.c:671:inc_freq_with_fixed_vco: freq_mode 1=1 FREQ_MODE_USER, Conf.Check_Clock_Cnt=0
+2021-11-17 10:10:24:driver-btm-api.c:1941:check_clock_counter_domain_last_core: freq 466 clock_counter_limit 71, no check, skip.
+2021-11-17 10:10:26:driver-hash-chip.c:737:dump_adc_voltage_v2: get ADC_DATAOUT from chain 0 with 0 regs timeout.
+chain 0 domain  0:   d0 0.384,   d1 0.379,   d2 0.379,   d3 0.355,   sum = 1.496338
+chain 0 domain  1:   d0 0.386,   d1 0.391,   d2 0.378,   d3 0.378,   sum = 1.533142
+chain 0 domain  2:   d0 0.374,   d1 0.370,   d2 0.363,   d3 0.377,   sum = 1.484680
+chain 0 domain  3:   d0 0.384,   d1 0.380,   d2 0.378,   d3 0.357,   sum = 1.498169
+chain 0 domain  4:   d0 0.387,   d1 0.378,   d2 0.375,   d3 0.356,   sum = 1.495605
+chain 0 domain  5:   d0 0.381,   d1 0.374,   d2 0.377,   d3 0.363,   sum = 1.495789
+chain 0 domain  6:   d0 0.375,   d1 0.371,   d2 0.370,   d3 0.366,   sum = 1.482300
+chain 0 domain  7:   d0 0.387,   d1 0.367,   d2 0.375,   d3 0.365,   sum = 1.494873
+chain 0 domain  8:   d0 0.369,   d1 0.375,   d2 0.360,   d3 0.369,   sum = 1.472351
+chain 0 domain  9:   d0 0.379,   d1 0.381,   d2 0.376,   d3 0.346,   sum = 1.482544
+chain 0 domain 10:   d0 0.362,   d1 0.368,   d2 0.351,   d3 0.356,   sum = 1.437500
+chain 0 domain 11:   d0 0.379,   d1 0.373,   d2 0.369,   d3 0.366,   sum = 1.487305
+chain 0 domain 12:   d0 0.367,   d1 0.364,   d2 0.362,   d3 0.362,   sum = 1.454834
+2021-11-17 10:10:26:driver-hash-chip.c:493:check_adc_voltage: PASS domainn volt check: request 0.800 (index 0, open_core)
+2021-11-17 10:10:32:frequency.c:623:inc_freq_with_fixed_vco: get pcb 31 ~ 50, chip_temp 57 ~ 67, now 257.1s, target 71.9
+2021-11-17 10:10:32:frequency.c:657:inc_freq_with_fixed_vco: [17] _POSTDIV1 = 5, _POSTDIV2 = 1, USER_DIV = 1, freq = 560
+2021-11-17 10:10:32:frequency.c:665:inc_freq_with_fixed_vco: set to 560M, get pcb 31 ~ 50, chip_temp 57 ~ 67
+2021-11-17 10:10:32:power_api.c:376:set_to_voltage_by_steps: Set to voltage raw 1910, step by step.
+2021-11-17 10:10:39:driver-hash-chip.c:737:dump_adc_voltage_v2: get ADC_DATAOUT from chain 0 with 0 regs timeout.
+chain 0 domain  0:   d0 0.373,   d1 0.371,   d2 0.363,   d3 0.374,   sum = 1.480835
+chain 0 domain  1:   d0 0.371,   d1 0.385,   d2 0.355,   d3 0.365,   sum = 1.475708
+chain 0 domain  2:   d0 0.362,   d1 0.368,   d2 0.363,   d3 0.357,   sum = 1.449646
+chain 0 domain  3:   d0 0.372,   d1 0.368,   d2 0.366,   d3 0.369,   sum = 1.473877
+chain 0 domain  4:   d0 0.373,   d1 0.366,   d2 0.379,   d3 0.352,   sum = 1.471191
+chain 0 domain  5:   d0 0.370,   d1 0.365,   d2 0.363,   d3 0.370,   sum = 1.468567
+chain 0 domain  6:   d0 0.365,   d1 0.361,   d2 0.358,   d3 0.358,   sum = 1.441223
+chain 0 domain  7:   d0 0.376,   d1 0.361,   d2 0.388,   d3 0.350,   sum = 1.474915
+chain 0 domain  8:   d0 0.366,   d1 0.347,   d2 0.362,   d3 0.351,   sum = 1.425659
+chain 0 domain  9:   d0 0.368,   d1 0.359,   d2 0.355,   d3 0.352,   sum = 1.434509
+chain 0 domain 10:   d0 0.351,   d1 0.361,   d2 0.357,   d3 0.340,   sum = 1.407593
+chain 0 domain 11:   d0 0.366,   d1 0.374,   d2 0.365,   d3 0.361,   sum = 1.465210
+chain 0 domain 12:   d0 0.356,   d1 0.353,   d2 0.352,   d3 0.351,   sum = 1.411865
+2021-11-17 10:10:39:driver-hash-chip.c:493:check_adc_voltage: PASS domainn volt check: request 0.800 (index 0, open_core)
+2021-11-17 10:10:39:frequency.c:671:inc_freq_with_fixed_vco: freq_mode 1=1 FREQ_MODE_USER, Conf.Check_Clock_Cnt=0
+2021-11-17 10:10:39:driver-btm-api.c:1941:check_clock_counter_domain_last_core: freq 560 clock_counter_limit 86, no check, skip.
+2021-11-17 10:10:42:driver-hash-chip.c:737:dump_adc_voltage_v2: get ADC_DATAOUT from chain 0 with 0 regs timeout.
+chain 0 domain  0:   d0 0.371,   d1 0.368,   d2 0.369,   d3 0.366,   sum = 1.474182
+chain 0 domain  1:   d0 0.371,   d1 0.376,   d2 0.375,   d3 0.354,   sum = 1.476501
+chain 0 domain  2:   d0 0.363,   d1 0.357,   d2 0.361,   d3 0.345,   sum = 1.425842
+chain 0 domain  3:   d0 0.371,   d1 0.366,   d2 0.368,   d3 0.366,   sum = 1.471558
+chain 0 domain  4:   d0 0.369,   d1 0.365,   d2 0.368,   d3 0.377,   sum = 1.478088
+chain 0 domain  5:   d0 0.369,   d1 0.365,   d2 0.365,   d3 0.366,   sum = 1.465088
+chain 0 domain  6:   d0 0.364,   d1 0.361,   d2 0.360,   d3 0.357,   sum = 1.442200
+chain 0 domain  7:   d0 0.374,   d1 0.361,   d2 0.369,   d3 0.355,   sum = 1.459351
+chain 0 domain  8:   d0 0.360,   d1 0.355,   d2 0.360,   d3 0.370,   sum = 1.445129
+chain 0 domain  9:   d0 0.365,   d1 0.357,   d2 0.379,   d3 0.340,   sum = 1.441467
+chain 0 domain 10:   d0 0.350,   d1 0.349,   d2 0.366,   d3 0.329,   sum = 1.394470
+chain 0 domain 11:   d0 0.372,   d1 0.358,   d2 0.366,   d3 0.354,   sum = 1.449341
+chain 0 domain 12:   d0 0.356,   d1 0.353,   d2 0.352,   d3 0.351,   sum = 1.410950
+2021-11-17 10:10:42:driver-hash-chip.c:493:check_adc_voltage: PASS domainn volt check: request 0.800 (index 0, open_core)
+2021-11-17 10:10:42:power_api.c:376:set_to_voltage_by_steps: Set to voltage raw 1860, step by step.
+2021-11-17 10:10:50:driver-hash-chip.c:737:dump_adc_voltage_v2: get ADC_DATAOUT from chain 0 with 0 regs timeout.
+chain 0 domain  0:   d0 0.360,   d1 0.359,   d2 0.358,   d3 0.357,   sum = 1.435547
+chain 0 domain  1:   d0 0.364,   d1 0.362,   d2 0.364,   d3 0.348,   sum = 1.437988
+chain 0 domain  2:   d0 0.353,   d1 0.350,   d2 0.342,   d3 0.352,   sum = 1.396423
+chain 0 domain  3:   d0 0.361,   d1 0.357,   d2 0.359,   d3 0.354,   sum = 1.430664
+chain 0 domain  4:   d0 0.359,   d1 0.364,   d2 0.351,   d3 0.352,   sum = 1.425049
+chain 0 domain  5:   d0 0.360,   d1 0.355,   d2 0.356,   d3 0.359,   sum = 1.429626
+chain 0 domain  6:   d0 0.355,   d1 0.352,   d2 0.350,   d3 0.346,   sum = 1.403137
+chain 0 domain  7:   d0 0.364,   d1 0.354,   d2 0.361,   d3 0.348,   sum = 1.425903
+chain 0 domain  8:   d0 0.349,   d1 0.360,   d2 0.344,   d3 0.366,   sum = 1.418640
+chain 0 domain  9:   d0 0.354,   d1 0.365,   d2 0.347,   d3 0.337,   sum = 1.402954
+chain 0 domain 10:   d0 0.339,   d1 0.356,   d2 0.343,   d3 0.331,   sum = 1.369446
+chain 0 domain 11:   d0 0.355,   d1 0.359,   d2 0.342,   d3 0.367,   sum = 1.422607
+chain 0 domain 12:   d0 0.346,   d1 0.344,   d2 0.342,   d3 0.341,   sum = 1.373291
+2021-11-17 10:10:50:driver-hash-chip.c:493:check_adc_voltage: PASS domainn volt check: request 0.800 (index 0, open_core)
+2021-11-17 10:10:50:frequency.c:442:inc_asic_diff_freq_by_steps: chain = 0, start = 560, freq_step = 5
+2021-11-17 10:10:58:driver-btm-api.c:666:set_timeout: freq = 620, percent = 90, hcn = 707788, timeout = 1140
+2021-11-17 10:10:58:power_api.c:353:set_to_working_voltage_by_steps: Set to voltage raw 1840, step by step.
+2021-11-17 10:11:03:thread.c:1533:create_check_system_status_thread: create thread
+2021-11-17 10:11:03:thread.c:1508:create_asic_status_monitor_thread: create thread
+2021-11-17 10:11:04:driver-btm-api.c:2599:bitmain_soc_init: Init done!
+2021-11-17 10:11:09:driver-btm-api.c:247:set_miner_status: STATUS_OKAY
+2021-11-17 10:11:10:frequency.c:107:get_ideal_hash_rate_GH: ideal_hash_rate = 17879
+2021-11-17 10:11:10:frequency.c:128:get_sale_hash_rate_GH: sale_hash_rate = 16000
+2021-11-17 10:11:15:driver-btm-api.c:1634:dhash_chip_send_job: Version num 8
+2021-11-17 10:11:15:driver-btm-api.c:1778:dhash_chip_send_job: stime.tv_sec 1637143875, block_ntime 1637143874

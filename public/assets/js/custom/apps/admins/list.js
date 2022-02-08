@@ -348,7 +348,7 @@ var KTModalAdmins = function() {
                             });
 
                             $.ajax({
-                                url: `/admin/admins/user/delete/${id}`,
+                                url: `/admin/admins/delete/${id}`,
                                 method: "get",
                                 dataType: "JSON",
                                 success: function() {
@@ -434,7 +434,7 @@ var KTModalAdmins = function() {
                     });
 
                     $.ajax({
-                        url: `/admin/admins/user/delete-rows`,
+                        url: `/admin/admins/delete-rows`,
                         data: { ids: ids.substr(1) },
                         method: "post",
                         dataType: "JSON",

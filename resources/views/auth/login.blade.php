@@ -58,6 +58,9 @@
                             <!--begin::Actions-->
                             <div class="text-center">
                                 <!--begin::Submit button-->
+                                <a href="{{ url('verification') }}">{{__('auth.Resend Verification Mail') }}</a><br>
+                                <a href="{{ url('reset') }}">{{__('auth.Reset your password') }}</a>
+
                                 <button type="button" id="kt_sign_in_submit" class="btn btn-lg btn-primary w-100 mb-5">
                                     <span class="indicator-label">{{__('form.Continue') }}</span>
                                     <span class="indicator-progress">{{__('form.Please wait...') }}

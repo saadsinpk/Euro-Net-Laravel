@@ -64,7 +64,9 @@
                                     <td class="vertical-align-end text-end px-5" style="vertical-align: baseline">
                                         <div>
                                             <a href="{{ url("admin/ticket/view/".$ticket->id."") }}" class="btn btn-color-gray-400 btn-active-color-primary p-0 fw-bolder">{{__('form.Reply') }}</a>|
+                                            @if(isset($admin_access['delete_ticket']))
                                             <a href="{{ url("admin/ticket/delete/".$ticket->id."") }}" class="btn btn-color-gray-400 btn-active-color-primary p-0 fw-bolder delete_this">{{__('form.Delete') }}</a>
+                                            @endif
                                         </div>
                                         <div class="badge badge-light-danger mt-10" style="top: -1rem; left: 1rem;">{{ $ticket->ticket_status->option }}</div>
                                         <div>
@@ -93,7 +95,7 @@
     var datatable = $("#ticket_table").DataTable({
         "info": false,
         'order': [],
-        'pageLength': 5,
+        'pageLength': 10,
     });
 
     const filterSearch = document.querySelector('[data-kt-table-filter="search"]');

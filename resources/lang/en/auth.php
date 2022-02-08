@@ -22,4 +22,10 @@ return [
     'Logout' => 'Logout',
     'You are verified! you can login now' => 'You are verified! you can login now',
     'Your link is wrong or expired' => 'Your link is wrong or expired',
+    'Resend Verification Link' => 'Resend Verification Link',
+    'Verificaiton mail is send' => 'Verificaiton mail is send',
+    'There is no data for given email address' => 'There is no data for given email address',
+    'Check your inbox'=>'Check your inbox',
+    'Resend Verification Mail'=>'Resend Verification Mail',
+    'Reset your password'=>'Reset your password',
 ];

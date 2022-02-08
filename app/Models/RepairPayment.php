@@ -18,11 +18,15 @@ class RepairPayment extends Model
     }
 
     public function user() {
-        return $this->belongsTo(User::class, 'user_id');
+        return $this->belongsTo(User::class, 'user_id')->where("verify", '1');
     }
 
     public function reply() {
         return $this->hasMany(RepairReply::class, 'repair_id');
+    }
+
+    public function notes() {
+        return $this->hasMany(RepairNotes::class, 'repair_id');
     }
 
     public function bitmain() {

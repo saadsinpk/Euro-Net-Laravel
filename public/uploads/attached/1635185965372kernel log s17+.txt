@@ -1,0 +1,533 @@
+
+
+Booting Linux on physical CPU 0x0
+Linux version 4.6.0-xilinx-gff8137b-dirty (lzq@armdev2) (gcc version 4.8.3 20140320 (prerelease) (Sourcery CodeBench Lite 2014.05-23) ) #25 SMP PREEMPT Fri Nov 23 15:30:52 CST 2018
+CPU: ARMv7 Processor [413fc090] revision 0 (ARMv7), cr=18c5387d
+CPU: PIPT / VIPT nonaliasing data cache, VIPT aliasing instruction cache
+Machine model: Xilinx Zynq
+cma: Reserved 16 MiB at 0x0e000000
+Memory policy: Data cache writealloc
+On node 0 totalpages: 61440
+free_area_init_node: node 0, pgdat c0b39280, node_mem_map cde10000
+  Normal zone: 480 pages used for memmap
+  Normal zone: 0 pages reserved
+  Normal zone: 61440 pages, LIFO batch:15
+percpu: Embedded 12 pages/cpu @cddf1000 s19776 r8192 d21184 u49152
+pcpu-alloc: s19776 r8192 d21184 u49152 alloc=12*4096
+pcpu-alloc: [0] 0 [0] 1 
+Built 1 zonelists in Zone order, mobility grouping on.  Total pages: 60960
+Kernel command line: mem=240M console=ttyPS0,115200 ramdisk_size=33554432 root=/dev/ram rw earlyprintk
+PID hash table entries: 1024 (order: 0, 4096 bytes)
+Dentry cache hash table entries: 32768 (order: 5, 131072 bytes)
+Inode-cache hash table entries: 16384 (order: 4, 65536 bytes)
+Memory: 203444K/245760K available (6345K kernel code, 231K rwdata, 1896K rodata, 1024K init, 223K bss, 25932K reserved, 16384K cma-reserved, 0K highmem)
+Virtual kernel memory layout:
+    vector  : 0xffff0000 - 0xffff1000   (   4 kB)
+    fixmap  : 0xffc00000 - 0xfff00000   (3072 kB)
+    vmalloc : 0xcf800000 - 0xff800000   ( 768 MB)
+    lowmem  : 0xc0000000 - 0xcf000000   ( 240 MB)
+    pkmap   : 0xbfe00000 - 0xc0000000   (   2 MB)
+    modules : 0xbf000000 - 0xbfe00000   (  14 MB)
+      .text : 0xc0008000 - 0xc090c424   (9234 kB)
+      .init : 0xc0a00000 - 0xc0b00000   (1024 kB)
+      .data : 0xc0b00000 - 0xc0b39fe0   ( 232 kB)
+       .bss : 0xc0b39fe0 - 0xc0b71c28   ( 224 kB)
+Preemptible hierarchical RCU implementation.
+	Build-time adjustment of leaf fanout to 32.
+	RCU restricting CPUs from NR_CPUS=4 to nr_cpu_ids=2.
+RCU: Adjusting geometry for rcu_fanout_leaf=32, nr_cpu_ids=2
+NR_IRQS:16 nr_irqs:16 16
+efuse mapped to cf800000
+ps7-slcr mapped to cf802000
+L2C: platform modifies aux control register: 0x72360000 -> 0x72760000
+L2C: DT/platform modifies aux control register: 0x72360000 -> 0x72760000
+L2C-310 erratum 769419 enabled
+L2C-310 enabling early BRESP for Cortex-A9
+L2C-310 full line of zeros enabled for Cortex-A9
+L2C-310 ID prefetch enabled, offset 1 lines
+L2C-310 dynamic clock gating enabled, standby mode enabled
+L2C-310 cache controller enabled, 8 ways, 512 kB
+L2C-310: CACHE_ID 0x410000c8, AUX_CTRL 0x76760001
+zynq_clock_init: clkc starts at cf802100
+Zynq clock init
+sched_clock: 64 bits at 333MHz, resolution 3ns, wraps every 4398046511103ns
+clocksource: arm_global_timer: mask: 0xffffffffffffffff max_cycles: 0x4ce07af025, max_idle_ns: 440795209040 ns
+Switching to timer-based delay loop, resolution 3ns
+clocksource: ttc_clocksource: mask: 0xffff max_cycles: 0xffff, max_idle_ns: 537538477 ns
+ps7-ttc #0 at cf80a000, irq=18
+Console: colour dummy device 80x30
+Calibrating delay loop (skipped), value calculated using timer frequency.. 666.66 BogoMIPS (lpj=3333333)
+pid_max: default: 32768 minimum: 301
+Mount-cache hash table entries: 1024 (order: 0, 4096 bytes)
+Mountpoint-cache hash table entries: 1024 (order: 0, 4096 bytes)
+CPU: Testing write buffer coherency: ok
+CPU0: thread -1, cpu 0, socket 0, mpidr 80000000
+Setting up static identity map for 0x100000 - 0x100058
+CPU1: failed to boot: -1
+Brought up 1 CPUs
+SMP: Total of 1 processors activated (666.66 BogoMIPS).
+CPU: All CPU(s) started in SVC mode.
+devtmpfs: initialized
+VFP support v0.3: implementor 41 architecture 3 part 30 variant 9 rev 4
+clocksource: jiffies: mask: 0xffffffff max_cycles: 0xffffffff, max_idle_ns: 19112604462750000 ns
+pinctrl core: initialized pinctrl subsystem
+NET: Registered protocol family 16
+DMA: preallocated 256 KiB pool for atomic coherent allocations
+cpuidle: using governor menu
+hw-breakpoint: found 5 (+1 reserved) breakpoint and 1 watchpoint registers.
+hw-breakpoint: maximum watchpoint size is 4 bytes.
+zynq-ocm f800c000.ps7-ocmc: ZYNQ OCM pool: 256 KiB @ 0xcf880000
+vgaarb: loaded
+SCSI subsystem initialized
+usbcore: registered new interface driver usbfs
+usbcore: registered new interface driver hub
+usbcore: registered new device driver usb
+media: Linux media interface: v0.10
+Linux video capture interface: v2.00
+pps_core: LinuxPPS API ver. 1 registered
+pps_core: Software ver. 5.3.6 - Copyright 2005-2007 Rodolfo Giometti <giometti@linux.it>
+PTP clock support registered
+EDAC MC: Ver: 3.0.0
+Advanced Linux Sound Architecture Driver Initialized.
+clocksource: Switched to clocksource arm_global_timer
+NET: Registered protocol family 2
+TCP established hash table entries: 2048 (order: 1, 8192 bytes)
+TCP bind hash table entries: 2048 (order: 2, 16384 bytes)
+TCP: Hash tables configured (established 2048 bind 2048)
+UDP hash table entries: 256 (order: 1, 8192 bytes)
+UDP-Lite hash table entries: 256 (order: 1, 8192 bytes)
+NET: Registered protocol family 1
+RPC: Registered named UNIX socket transport module.
+RPC: Registered udp transport module.
+RPC: Registered tcp transport module.
+RPC: Registered tcp NFSv4.1 backchannel transport module.
+PCI: CLS 0 bytes, default 64
+Trying to unpack rootfs image as initramfs...
+rootfs image is not initramfs (no cpio magic); looks like an initrd
+Freeing initrd memory: 12892K (cce6a000 - cdb01000)
+hw perfevents: enabled with armv7_cortex_a9 PMU driver, 7 counters available
+futex hash table entries: 512 (order: 3, 32768 bytes)
+workingset: timestamp_bits=28 max_order=16 bucket_order=0
+jffs2: version 2.2. (NAND) (SUMMARY)  © 2001-2006 Red Hat, Inc.
+io scheduler noop registered
+io scheduler deadline registered
+io scheduler cfq registered (default)
+dma-pl330 f8003000.ps7-dma: Loaded driver for PL330 DMAC-241330
+dma-pl330 f8003000.ps7-dma: 	DBUFF-128x8bytes Num_Chans-8 Num_Peri-4 Num_Events-16
+e0000000.serial: ttyPS0 at MMIO 0xe0000000 (irq = 158, base_baud = 6249999) is a xuartps
+console [ttyPS0] enabled
+xdevcfg f8007000.ps7-dev-cfg: ioremap 0xf8007000 to cf86e000
+[drm] Initialized drm 1.1.0 20060810
+brd: module loaded
+loop: module loaded
+CAN device driver interface
+gpiod_set_value: invalid GPIO
+libphy: MACB_mii_bus: probed
+macb e000b000.ethernet eth0: Cadence GEM rev 0x00020118 at 0xe000b000 irq 31 (00:0a:35:00:00:00)
+Generic PHY e000b000.etherne:00: attached PHY driver [Generic PHY] (mii_bus:phy_addr=e000b000.etherne:00, irq=-1)
+e1000e: Intel(R) PRO/1000 Network Driver - 3.2.6-k
+e1000e: Copyright(c) 1999 - 2015 Intel Corporation.
+ehci_hcd: USB 2.0 'Enhanced' Host Controller (EHCI) Driver
+ehci-pci: EHCI PCI platform driver
+usbcore: registered new interface driver usb-storage
+mousedev: PS/2 mouse device common for all mice
+i2c /dev entries driver
+Xilinx Zynq CpuIdle Driver started
+sdhci: Secure Digital Host Controller Interface driver
+sdhci: Copyright(c) Pierre Ossman
+sdhci-pltfm: SDHCI platform and OF driver helper
+mmc0: SDHCI controller on e0100000.ps7-sdio [e0100000.ps7-sdio] using ADMA
+ledtrig-cpu: registered to indicate activity on CPUs
+usbcore: registered new interface driver usbhid
+usbhid: USB HID core driver
+nand: device found, Manufacturer ID: 0x2c, Chip ID: 0xda
+nand: Micron MT29F2G08ABAEAWP
+nand: 256 MiB, SLC, erase size: 128 KiB, page size: 2048, OOB size: 64
+nand: WARNING: pl35x-nand: the ECC used on your system is too weak compared to the one required by the NAND chip
+Bad block table found at page 131008, version 0x01
+Bad block table found at page 130944, version 0x01
+6 ofpart partitions found on MTD device pl35x-nand
+Creating 6 MTD partitions on "pl35x-nand":
+0x000000000000-0x000002800000 : "BOOT.bin-env-dts-kernel"
+0x000002800000-0x000004800000 : "ramfs"
+0x000004800000-0x000005000000 : "configs"
+0x000005000000-0x000006000000 : "reserve"
+0x000006000000-0x000008000000 : "ramfs-bak"
+0x000008000000-0x000010000000 : "reserve1"
+NET: Registered protocol family 10
+sit: IPv6 over IPv4 tunneling driver
+NET: Registered protocol family 17
+can: controller area network core (rev 20120528 abi 9)
+NET: Registered protocol family 29
+can: raw protocol (rev 20120528)
+can: broadcast manager protocol (rev 20120528 t)
+can: netlink gateway (rev 20130117) max_hops=1
+zynq_pm_ioremap: no compatible node found for 'xlnx,zynq-ddrc-a05'
+zynq_pm_late_init: Unable to map DDRC IO memory.
+Registering SWP/SWPB emulation handler
+hctosys: unable to open rtc device (rtc0)
+ALSA device list:
+  No soundcards found.
+RAMDISK: gzip image found at block 0
+EXT4-fs (ram0): couldn't mount as ext3 due to feature incompatibilities
+EXT4-fs (ram0): mounted filesystem without journal. Opts: (null)
+VFS: Mounted root (ext4 filesystem) on device 1:0.
+devtmpfs: mounted
+Freeing unused kernel memory: 1024K (c0a00000 - c0b00000)
+EXT4-fs (ram0): re-mounted. Opts: block_validity,delalloc,barrier,user_xattr
+random: dd urandom read with 0 bits of entropy available
+ubi0: attaching mtd2
+ubi0: scanning is finished
+ubi0: attached mtd2 (name "configs", size 8 MiB)
+ubi0: PEB size: 131072 bytes (128 KiB), LEB size: 126976 bytes
+ubi0: min./max. I/O unit sizes: 2048/2048, sub-page size 2048
+ubi0: VID header offset: 2048 (aligned 2048), data offset: 4096
+ubi0: good PEBs: 64, bad PEBs: 0, corrupted PEBs: 0
+ubi0: user volume: 1, internal volumes: 1, max. volumes count: 128
+ubi0: max/mean erase counter: 17/8, WL threshold: 4096, image sequence number: 385662122
+ubi0: available PEBs: 0, total reserved PEBs: 64, PEBs reserved for bad PEB handling: 40
+ubi0: background thread "ubi_bgt0d" started, PID 708
+UBIFS (ubi0:0): background thread "ubifs_bgt0_0" started, PID 711
+UBIFS (ubi0:0): UBIFS: mounted UBI device 0, volume 0, name "configs"
+UBIFS (ubi0:0): LEB size: 126976 bytes (124 KiB), min./max. I/O unit sizes: 2048 bytes/2048 bytes
+UBIFS (ubi0:0): FS size: 1396736 bytes (1 MiB, 11 LEBs), journal size 888833 bytes (0 MiB, 5 LEBs)
+UBIFS (ubi0:0): reserved for root: 65970 bytes (64 KiB)
+UBIFS (ubi0:0): media format: w4/r0 (latest is w4/r0), UUID 96E975B5-D709-4F7A-91F3-63688D81218B, small LPT model
+ubi1: attaching mtd5
+ubi1: scanning is finished
+ubi1: attached mtd5 (name "reserve1", size 128 MiB)
+ubi1: PEB size: 131072 bytes (128 KiB), LEB size: 126976 bytes
+ubi1: min./max. I/O unit sizes: 2048/2048, sub-page size 2048
+ubi1: VID header offset: 2048 (aligned 2048), data offset: 4096
+ubi1: good PEBs: 1020, bad PEBs: 4, corrupted PEBs: 0
+ubi1: user volume: 1, internal volumes: 1, max. volumes count: 128
+ubi1: max/mean erase counter: 4115/820, WL threshold: 4096, image sequence number: 770410698
+ubi1: available PEBs: 0, total reserved PEBs: 1020, PEBs reserved for bad PEB handling: 36
+ubi1: background thread "ubi_bgt1d" started, PID 720
+UBIFS (ubi1:0): background thread "ubifs_bgt1_0" started, PID 723
+UBIFS (ubi1:0): UBIFS: mounted UBI device 1, volume 0, name "reserve1"
+UBIFS (ubi1:0): LEB size: 126976 bytes (124 KiB), min./max. I/O unit sizes: 2048 bytes/2048 bytes
+UBIFS (ubi1:0): FS size: 123039744 bytes (117 MiB, 969 LEBs), journal size 6221824 bytes (5 MiB, 49 LEBs)
+UBIFS (ubi1:0): reserved for root: 4952683 bytes (4836 KiB)
+UBIFS (ubi1:0): media format: w4/r0 (latest is w4/r0), UUID 2ED272CE-54AF-4265-9559-65B9A89C2067, small LPT model
+IPv6: ADDRCONF(NETDEV_UP): eth0: link is not ready
+IPv6: ADDRCONF(NETDEV_UP): eth0: link is not ready
+macb e000b000.ethernet eth0: unable to generate target frequency: 25000000 Hz
+macb e000b000.ethernet eth0: link up (100/Full)
+IPv6: ADDRCONF(NETDEV_CHANGE): eth0: link becomes ready
+In axi fpga driver!
+request_mem_region OK!
+AXI fpga dev virtual address is 0xcfb34000
+*base_vir_addr = 0xb023
+In fpga mem driver!
+request_mem_region OK!
+fpga mem virtual address is 0xd2000000
+random: nonblocking pool is initialized
+2021-10-24 19:08:55 driver-btm-api.c:741:init_freq_mode: This is scan-user version
+2021-10-24 19:08:55 driver-btm-api.c:2413:bitmain_soc_init: opt_multi_version     = 1
+2021-10-24 19:08:55 driver-btm-api.c:2414:bitmain_soc_init: opt_bitmain_ab        = 1
+2021-10-24 19:08:55 driver-btm-api.c:2415:bitmain_soc_init: opt_bitmain_work_mode = 0
+2021-10-24 19:08:55 driver-btm-api.c:2416:bitmain_soc_init: Miner compile time: Tue Apr  7 14:11:08 CST 2020 type: Antminer S17+
+2021-10-24 19:08:55 driver-btm-api.c:2417:bitmain_soc_init: commit version: 0fa7066 2020-04-06 22:14:32, build by: lol 2020-04-07 14:17:53
+2021-10-24 19:08:55 driver-btm-api.c:2045:show_sn: len:16, 80146cc42b104814
+2021-10-24 19:08:55 driver-btm-api.c:2423:bitmain_soc_init: show sn return 1
+2021-10-24 19:08:55 driver-btm-api.c:2065:handle_sn_for_factory_mode: show sn return 1
+2021-10-24 19:08:55 driver-btm-api.c:2103:handle_sn_for_factory_mode: read sn success, 80146cc42b104814
+2021-10-24 19:08:55 fan.c:279:front_fan_power_on: Note: front fan is power on!
+2021-10-24 19:08:55 fan.c:291:rear_fan_power_on: Note: rear fan is power on!
+2021-10-24 19:08:55 driver-btm-api.c:1276:miner_device_init: Detect 256MB control board of XILINX
+2021-10-24 19:08:55 driver-btm-api.c:1217:init_fan_parameter: fan_eft : 1  fan_pwm : 100
+2021-10-24 19:09:01 driver-btm-api.c:1201:init_miner_version: miner ID : 80146cc42b104814
+2021-10-24 19:09:01 driver-btm-api.c:1207:init_miner_version: FPGA Version = 0xB023
+2021-10-24 19:09:06 driver-btm-api.c:799:get_product_id: product_id[0] = 0
+2021-10-24 19:09:06 driver-btm-api.c:799:get_product_id: product_id[1] = 0
+2021-10-24 19:09:06 driver-btm-api.c:799:get_product_id: product_id[2] = 0
+2021-10-24 19:09:06 driver-btm-api.c:2196:update_conf_by_power_feedback: Power feedback is disabled
+2021-10-24 19:09:06 driver-btm-api.c:2200:update_conf_by_power_feedback: get_calibration_voltage, vol:1970.
+2021-10-24 19:09:06 frequency.c:1366:adjust_higer_max_vol_table: adjust_higer_max_vol_table, adjust_vol = 0
+2021-10-24 19:09:06 thread.c:1066:create_read_nonce_reg_thread: create thread
+2021-10-24 19:09:12 driver-btm-api.c:1201:init_miner_version: miner ID : 80146cc42b104814
+2021-10-24 19:09:12 driver-btm-api.c:1207:init_miner_version: FPGA Version = 0xB023
+2021-10-24 19:09:18 driver-btm-api.c:799:get_product_id: product_id[0] = 0
+2021-10-24 19:09:18 driver-btm-api.c:799:get_product_id: product_id[1] = 0
+2021-10-24 19:09:18 driver-btm-api.c:799:get_product_id: product_id[2] = 0
+2021-10-24 19:09:18 driver-btm-api.c:754:_set_project_type: project:0
+2021-10-24 19:09:18 driver-btm-api.c:775:_set_project_type: Project type: Antminer S17+
+2021-10-24 19:09:18 driver-btm-api.c:786:dump_pcb_bom_version: Chain [0] PCB Version: 0x0100
+2021-10-24 19:09:18 driver-btm-api.c:787:dump_pcb_bom_version: Chain [0] BOM Version: 0x0100
+2021-10-24 19:09:18 driver-btm-api.c:786:dump_pcb_bom_version: Chain [1] PCB Version: 0x0100
+2021-10-24 19:09:18 driver-btm-api.c:787:dump_pcb_bom_version: Chain [1] BOM Version: 0x0100
+2021-10-24 19:09:18 driver-btm-api.c:786:dump_pcb_bom_version: Chain [2] PCB Version: 0x0100
+2021-10-24 19:09:18 driver-btm-api.c:787:dump_pcb_bom_version: Chain [2] BOM Version: 0x0100
+2021-10-24 19:09:20 driver-btm-api.c:2334:bitmain_board_init: Fan check passed.
+2021-10-24 19:09:21 board.c:36:jump_and_app_check_restore_pic: chain[0] PIC jump to app
+2021-10-24 19:09:23 board.c:40:jump_and_app_check_restore_pic: Check chain[0] PIC fw version=0x88
+2021-10-24 19:09:24 board.c:36:jump_and_app_check_restore_pic: chain[1] PIC jump to app
+2021-10-24 19:09:26 board.c:40:jump_and_app_check_restore_pic: Check chain[1] PIC fw version=0x88
+2021-10-24 19:09:27 board.c:36:jump_and_app_check_restore_pic: chain[2] PIC jump to app
+2021-10-24 19:09:29 board.c:40:jump_and_app_check_restore_pic: Check chain[2] PIC fw version=0x88
+2021-10-24 19:09:29 thread.c:1061:create_pic_heart_beat_thread: create thread
+2021-10-24 19:09:29 power_api.c:213:power_init: Power init:
+2021-10-24 19:09:29 power_api.c:214:power_init: current_voltage_raw = 0
+2021-10-24 19:09:29 power_api.c:215:power_init: highest_voltage_raw = 2100
+2021-10-24 19:09:29 power_api.c:216:power_init: working_voltage_raw = 1950
+2021-10-24 19:09:29 power_api.c:217:power_init: higher_voltage_raw  = 2040
+2021-10-24 19:09:29 power_api.c:218:power_init: check_asic_voltage_raw  = 2100
+2021-10-24 19:09:29 driver-btm-api.c:2344:bitmain_board_init: Enter 30s sleep to make sure power release finish.
+2021-10-24 19:09:29 power_api.c:186:power_off: init gpio907
+2021-10-24 19:10:01 power_api.c:324:set_to_highest_voltage_by_steps: Set to voltage raw 2100, step by step.
+2021-10-24 19:10:27 power_api.c:85:check_voltage_multi: retry time: 0
+2021-10-24 19:10:28 power_api.c:40:_get_avg_voltage: chain = 0, voltage = 21.205357
+2021-10-24 19:10:29 power_api.c:40:_get_avg_voltage: chain = 1, voltage = 21.148666
+2021-10-24 19:10:30 power_api.c:40:_get_avg_voltage: chain = 2, voltage = 21.103053
+2021-10-24 19:10:30 power_api.c:53:_get_avg_voltage: average_voltage = 21.152359
+2021-10-24 19:10:30 power_api.c:71:check_voltage: target_vol = 21.00, actural_vol = 21.15, check voltage passed.
+2021-10-24 19:10:30 uart.c:72:set_baud: set fpga_baud to 115200
+2021-10-24 19:10:41 driver-btm-api.c:1096:check_asic_number_with_power_on: Chain[0]: find 65 asic, times 0
+2021-10-24 19:10:52 driver-btm-api.c:1096:check_asic_number_with_power_on: Chain[1]: find 0 asic, times 0
+2021-10-24 19:11:03 driver-btm-api.c:1096:check_asic_number_with_power_on: Chain[1]: find 0 asic, times 1
+2021-10-24 19:11:13 driver-btm-api.c:1096:check_asic_number_with_power_on: Chain[1]: find 0 asic, times 2
+2021-10-24 19:11:13 power_api.c:380:modify_check_asic_voltage: check_asic_voltage_raw  = 2100
+chain 1, IO_DRIVE_STRENGTH_CONFIGURATION reg = 0x f1fffff
+2021-10-24 19:11:22 driver-btm-api.c:1119:check_asic_number_with_power_on: Chain[1]: find 0 asic, times 3
+2021-10-24 19:11:22 power_api.c:380:modify_check_asic_voltage: check_asic_voltage_raw  = 2050
+2021-10-24 19:11:22 power_api.c:364:set_to_check_asic_voltage_by_steps: Set to voltage raw 2050, step by step.
+2021-10-24 19:11:25 power_api.c:85:check_voltage_multi: retry time: 0
+2021-10-24 19:11:27 power_api.c:40:_get_avg_voltage: chain = 0, voltage = 20.621657
+2021-10-24 19:11:28 power_api.c:40:_get_avg_voltage: chain = 1, voltage = 20.591370
+2021-10-24 19:11:29 power_api.c:40:_get_avg_voltage: chain = 2, voltage = 20.595419
+2021-10-24 19:11:29 power_api.c:53:_get_avg_voltage: average_voltage = 20.602815
+2021-10-24 19:11:29 power_api.c:71:check_voltage: target_vol = 20.50, actural_vol = 20.60, check voltage passed.
+chain 1, IO_DRIVE_STRENGTH_CONFIGURATION reg = 0x f1fffff
+2021-10-24 19:11:38 driver-btm-api.c:1119:check_asic_number_with_power_on: Chain[1]: find 0 asic, times 4
+2021-10-24 19:11:38 power_api.c:380:modify_check_asic_voltage: check_asic_voltage_raw  = 2000
+2021-10-24 19:11:38 power_api.c:364:set_to_check_asic_voltage_by_steps: Set to voltage raw 2000, step by step.
+2021-10-24 19:11:41 power_api.c:85:check_voltage_multi: retry time: 0
+2021-10-24 19:11:42 power_api.c:40:_get_avg_voltage: chain = 0, voltage = 20.111959
+2021-10-24 19:11:43 power_api.c:40:_get_avg_voltage: chain = 1, voltage = 20.109136
+2021-10-24 19:11:44 power_api.c:40:_get_avg_voltage: chain = 2, voltage = 20.111959
+2021-10-24 19:11:44 power_api.c:53:_get_avg_voltage: average_voltage = 20.111018
+2021-10-24 19:11:44 power_api.c:71:check_voltage: target_vol = 20.00, actural_vol = 20.11, check voltage passed.
+chain 1, IO_DRIVE_STRENGTH_CONFIGURATION reg = 0x f1fffff
+2021-10-24 19:11:53 driver-btm-api.c:1119:check_asic_number_with_power_on: Chain[1]: find 0 asic, times 5
+2021-10-24 19:11:53 power_api.c:380:modify_check_asic_voltage: check_asic_voltage_raw  = 2100
+2021-10-24 19:11:53 power_api.c:364:set_to_check_asic_voltage_by_steps: Set to voltage raw 2100, step by step.
+2021-10-24 19:11:58 power_api.c:85:check_voltage_multi: retry time: 0
+2021-10-24 19:12:00 power_api.c:40:_get_avg_voltage: chain = 0, voltage = 21.129937
+2021-10-24 19:12:01 power_api.c:40:_get_avg_voltage: chain = 1, voltage = 21.124524
+2021-10-24 19:12:02 power_api.c:40:_get_avg_voltage: chain = 2, voltage = 21.103053
+2021-10-24 19:12:02 power_api.c:53:_get_avg_voltage: average_voltage = 21.119171
+2021-10-24 19:12:02 power_api.c:71:check_voltage: target_vol = 21.00, actural_vol = 21.12, check voltage passed.
+2021-10-24 19:12:02 driver-btm-api.c:1155:check_asic_number: Chain 1 only find 0 asic, will power off hash board 1
+2021-10-24 19:12:03 driver-btm-api.c:1157:check_asic_number: Chain 1 voltage: an0 = 2.822581, an2 2.822581, an6 2.541935.
+2021-10-24 19:12:15 driver-btm-api.c:1096:check_asic_number_with_power_on: Chain[2]: find 65 asic, times 0
+2021-10-24 19:12:21 driver-hash-chip.c:266:set_uart_relay: set uart relay to 0x330003
+2021-10-24 19:12:21 driver-btm-api.c:397:set_order_clock: chain[0]: set order clock, stragegy 3
+2021-10-24 19:12:21 driver-btm-api.c:397:set_order_clock: chain[2]: set order clock, stragegy 3
+2021-10-24 19:12:21 driver-hash-chip.c:502:set_clock_delay_control: core_data = 0x34
+2021-10-24 19:12:21 driver-btm-api.c:1854:check_clock_counter: freq 50 clock_counter_limit 6
+2021-10-24 19:12:22 voltage[0] = 1960
+2021-10-24 19:12:22 voltage[2] = 1960
+2021-10-24 19:12:22 power_api.c:226:set_working_voltage_raw: working_voltage_raw = 1960
+2021-10-24 19:12:23 temperature.c:340:calibrate_temp_sensor_one_chain: chain 0 temp sensor NCT218
+2021-10-24 19:12:24 temperature.c:340:calibrate_temp_sensor_one_chain: chain 2 temp sensor NCT218
+2021-10-24 19:12:24 uart.c:72:set_baud: set fpga_baud to 12000000
+2021-10-24 19:12:25 driver-btm-api.c:264:check_bringup_temp: Bring up temperature is 32
+2021-10-24 19:12:25 thread.c:1081:create_check_miner_status_thread: create thread
+2021-10-24 19:12:25 thread.c:1071:create_show_miner_status_thread: create thread
+2021-10-24 19:12:25 thread.c:1051:create_temperature_monitor_thread: create thread
+2021-10-24 19:12:25 freq_tuning.c:183:freq_tuning_get_max_freq: Max freq of tuning is 650
+2021-10-24 19:12:25 driver-btm-api.c:1727:send_null_work: [DEBUG] Send null work.
+2021-10-24 19:12:25 thread.c:1041:create_asic_status_monitor_thread: create thread
+2021-10-24 19:12:25 frequency.c:1019:inc_freq_with_fixed_vco: chain = 255, freq = 520, is_higher_voltage = true
+2021-10-24 19:12:25 power_api.c:352:set_to_voltage_by_steps: Set to voltage raw 2090, step by step.
+2021-10-24 19:12:27 power_api.c:85:check_voltage_multi: retry time: 0
+2021-10-24 19:12:28 power_api.c:40:_get_avg_voltage: chain = 0, voltage = 20.982188
+2021-10-24 19:12:29 power_api.c:40:_get_avg_voltage: chain = 2, voltage = 20.955528
+2021-10-24 19:12:29 power_api.c:53:_get_avg_voltage: average_voltage = 20.968858
+2021-10-24 19:12:29 power_api.c:71:check_voltage: target_vol = 20.90, actural_vol = 20.97, check voltage passed.
+2021-10-24 19:12:49 power_api.c:352:set_to_voltage_by_steps: Set to voltage raw 2080, step by step.
+2021-10-24 19:12:51 power_api.c:85:check_voltage_multi: retry time: 0
+2021-10-24 19:12:52 power_api.c:40:_get_avg_voltage: chain = 0, voltage = 20.837149
+2021-10-24 19:12:53 power_api.c:40:_get_avg_voltage: chain = 2, voltage = 20.812976
+2021-10-24 19:12:53 power_api.c:53:_get_avg_voltage: average_voltage = 20.825063
+2021-10-24 19:12:53 power_api.c:71:check_voltage: target_vol = 20.80, actural_vol = 20.83, check voltage passed.
+2021-10-24 19:12:53 frequency.c:1090:inc_asic_diff_freq_by_steps: chain = 0, start = 520, freq_step = 5
+2021-10-24 19:13:02 frequency.c:1090:inc_asic_diff_freq_by_steps: chain = 2, start = 520, freq_step = 5
+2021-10-24 19:13:11 driver-btm-api.c:727:set_timeout: freq = 580, percent = 90, hcn = 44236, timeout = 76
+2021-10-24 19:13:11 power_api.c:310:set_to_working_voltage_by_steps: Set to voltage raw 1960, step by step.
+2021-10-24 19:13:16 power_api.c:85:check_voltage_multi: retry time: 0
+2021-10-24 19:13:17 power_api.c:40:_get_avg_voltage: chain = 0, voltage = 19.677708
+2021-10-24 19:13:18 power_api.c:40:_get_avg_voltage: chain = 2, voltage = 19.603558
+2021-10-24 19:13:18 power_api.c:53:_get_avg_voltage: average_voltage = 19.640633
+2021-10-24 19:13:18 power_api.c:71:check_voltage: target_vol = 19.60, actural_vol = 19.64, check voltage passed.
+2021-10-24 19:13:18 thread.c:1076:create_check_system_status_thread: create thread
+2021-10-24 19:13:18 driver-btm-api.c:2577:bitmain_soc_init: Init done!
+2021-10-24 19:13:18 driver-btm-api.c:216:set_miner_status: STATUS_INIT
+2021-10-24 19:13:23 driver-btm-api.c:216:set_miner_status: STATUS_OKAY
+2021-10-24 19:13:24 frequency.c:205:get_ideal_hash_rate_GH: ideal_hash_rate = 48378
+2021-10-24 19:13:24 frequency.c:223:get_sale_hash_rate_GH: sale_hash_rate = 46000
+2021-10-24 19:13:28 driver-btm-api.c:1458:dhash_chip_send_job: Version num 4.
+2021-10-24 19:13:28 driver-btm-api.c:1606:dhash_chip_send_job: stime.tv_sec 1635102808, block_ntime 1635102799
+2021-10-24 19:39:50 register.c:313:get_register: !!! REG_TYPE = 1. 716833794
+2021-10-24 19:39:50 register.c:313:get_register: !!! REG_TYPE = 1. 566035458
+2021-10-24 19:39:50 register.c:313:get_register: !!! REG_TYPE = 1. 1052771330
+2021-10-24 19:39:51 thread.c:976:asic_status_monitor_thread: ERROR: chain 2 get hashrate_reg_counter 63, require 65, failed times 1: ooooo ooooo ooooo ooooo ooooo ooooo ooooo ooooo ooooo ooooo ooooo ooooo xxooo
+2021-10-24 19:39:53 thread.c:996:asic_status_monitor_thread: chain 2 can't get enough hashrate reg val for 0 times.
+2021-10-24 19:39:53 thread.c:976:asic_status_monitor_thread: ERROR: chain 2 get hashrate_reg_counter 63, require 65, failed times 1: ooooo ooooo ooooo ooooo ooooo ooooo ooooo ooooo ooooo ooooo ooooo ooooo xxooo
+2021-10-24 19:39:55 thread.c:996:asic_status_monitor_thread: chain 2 can't get enough hashrate reg val for 1 times.
+2021-10-24 19:39:55 thread.c:976:asic_status_monitor_thread: ERROR: chain 2 get hashrate_reg_counter 63, require 65, failed times 1: ooooo ooooo ooooo ooooo ooooo ooooo ooooo ooooo ooooo ooooo ooooo ooooo xxooo
+2021-10-24 19:39:57 thread.c:996:asic_status_monitor_thread: chain 2 can't get enough hashrate reg val for 2 times.
+2021-10-24 19:39:57 thread.c:976:asic_status_monitor_thread: ERROR: chain 2 get hashrate_reg_counter 63, require 65, failed times 1: ooooo ooooo ooooo ooooo ooooo ooooo ooooo ooooo ooooo ooooo ooooo ooooo xxooo
+2021-10-24 19:39:59 thread.c:996:asic_status_monitor_thread: chain 2 can't get enough hashrate reg val for 3 times.
+2021-10-24 19:39:59 thread.c:976:asic_status_monitor_thread: ERROR: chain 2 get hashrate_reg_counter 63, require 65, failed times 1: ooooo ooooo ooooo ooooo ooooo ooooo ooooo ooooo ooooo ooooo ooooo ooooo xxooo
+2021-10-24 19:40:01 thread.c:996:asic_status_monitor_thread: chain 2 can't get enough hashrate reg val for 4 times.
+2021-10-24 19:40:01 thread.c:976:asic_status_monitor_thread: ERROR: chain 2 get hashrate_reg_counter 63, require 65, failed times 1: ooooo ooooo ooooo ooooo ooooo ooooo ooooo ooooo ooooo ooooo ooooo ooooo xxooo
+2021-10-24 19:40:03 thread.c:996:asic_status_monitor_thread: chain 2 can't get enough hashrate reg val for 5 times.
+2021-10-24 19:40:03 thread.c:976:asic_status_monitor_thread: ERROR: chain 2 get hashrate_reg_counter 63, require 65, failed times 1: ooooo ooooo ooooo ooooo ooooo ooooo ooooo ooooo ooooo ooooo ooooo ooooo xxooo
+2021-10-24 19:40:05 thread.c:996:asic_status_monitor_thread: chain 2 can't get enough hashrate reg val for 6 times.
+2021-10-24 19:40:05 thread.c:976:asic_status_monitor_thread: ERROR: chain 2 get hashrate_reg_counter 63, require 65, failed times 1: ooooo ooooo ooooo ooooo ooooo ooooo ooooo ooooo ooooo ooooo ooooo ooooo xxooo
+2021-10-24 19:40:07 thread.c:996:asic_status_monitor_thread: chain 2 can't get enough hashrate reg val for 7 times.
+2021-10-24 19:40:07 thread.c:976:asic_status_monitor_thread: ERROR: chain 2 get hashrate_reg_counter 63, require 65, failed times 1: ooooo ooooo ooooo ooooo ooooo ooooo ooooo ooooo ooooo ooooo ooooo ooooo xxooo
+2021-10-24 19:40:09 thread.c:996:asic_status_monitor_thread: chain 2 can't get enough hashrate reg val for 8 times.
+2021-10-24 19:40:09 thread.c:976:asic_status_monitor_thread: ERROR: chain 2 get hashrate_reg_counter 63, require 65, failed times 1: ooooo ooooo ooooo ooooo ooooo ooooo ooooo ooooo ooooo ooooo ooooo ooooo xxooo
+2021-10-24 19:40:11 thread.c:996:asic_status_monitor_thread: chain 2 can't get enough hashrate reg val for 9 times.
+2021-10-24 19:40:11 thread.c:976:asic_status_monitor_thread: ERROR: chain 2 get hashrate_reg_counter 63, require 65, failed times 1: ooooo ooooo ooooo ooooo ooooo ooooo ooooo ooooo ooooo ooooo ooooo ooooo xxooo
+2021-10-24 19:40:13 thread.c:996:asic_status_monitor_thread: chain 2 can't get enough hashrate reg val for 10 times.
+2021-10-24 19:40:13 thread.c:976:asic_status_monitor_thread: ERROR: chain 2 get hashrate_reg_counter 63, require 65, failed times 1: ooooo ooooo ooooo ooooo ooooo ooooo ooooo ooooo ooooo ooooo ooooo ooooo xxooo
+2021-10-24 19:40:15 thread.c:996:asic_status_monitor_thread: chain 2 can't get enough hashrate reg val for 11 times.
+2021-10-24 19:40:15 thread.c:976:asic_status_monitor_thread: ERROR: chain 2 get hashrate_reg_counter 63, require 65, failed times 1: ooooo ooooo ooooo ooooo ooooo ooooo ooooo ooooo ooooo ooooo ooooo ooooo xxooo
+2021-10-24 19:40:17 thread.c:996:asic_status_monitor_thread: chain 2 can't get enough hashrate reg val for 12 times.
+2021-10-24 19:40:17 thread.c:976:asic_status_monitor_thread: ERROR: chain 2 get hashrate_reg_counter 63, require 65, failed times 1: ooooo ooooo ooooo ooooo ooooo ooooo ooooo ooooo ooooo ooooo ooooo ooooo xxooo
+2021-10-24 19:40:19 thread.c:996:asic_status_monitor_thread: chain 2 can't get enough hashrate reg val for 13 times.
+2021-10-24 19:40:19 thread.c:976:asic_status_monitor_thread: ERROR: chain 2 get hashrate_reg_counter 63, require 65, failed times 1: ooooo ooooo ooooo ooooo ooooo ooooo ooooo ooooo ooooo ooooo ooooo ooooo xxooo
+2021-10-24 19:40:21 thread.c:996:asic_status_monitor_thread: chain 2 can't get enough hashrate reg val for 14 times.
+2021-10-24 19:40:21 thread.c:976:asic_status_monitor_thread: ERROR: chain 2 get hashrate_reg_counter 63, require 65, failed times 1: ooooo ooooo ooooo ooooo ooooo ooooo ooooo ooooo ooooo ooooo ooooo ooooo xxooo
+2021-10-24 19:40:23 thread.c:996:asic_status_monitor_thread: chain 2 can't get enough hashrate reg val for 15 times.
+2021-10-24 19:40:23 thread.c:976:asic_status_monitor_thread: ERROR: chain 2 get hashrate_reg_counter 63, require 65, failed times 1: ooooo ooooo ooooo ooooo ooooo ooooo ooooo ooooo ooooo ooooo ooooo ooooo xxooo
+2021-10-24 19:40:25 thread.c:996:asic_status_monitor_thread: chain 2 can't get enough hashrate reg val for 16 times.
+2021-10-24 19:40:25 thread.c:976:asic_status_monitor_thread: ERROR: chain 2 get hashrate_reg_counter 63, require 65, failed times 1: ooooo ooooo ooooo ooooo ooooo ooooo ooooo ooooo ooooo ooooo ooooo ooooo xxooo
+2021-10-24 19:40:27 thread.c:996:asic_status_monitor_thread: chain 2 can't get enough hashrate reg val for 17 times.
+2021-10-24 19:40:27 thread.c:976:asic_status_monitor_thread: ERROR: chain 2 get hashrate_reg_counter 63, require 65, failed times 1: ooooo ooooo ooooo ooooo ooooo ooooo ooooo ooooo ooooo ooooo ooooo ooooo xxooo
+2021-10-24 19:40:29 thread.c:996:asic_status_monitor_thread: chain 2 can't get enough hashrate reg val for 18 times.
+2021-10-24 19:40:29 thread.c:976:asic_status_monitor_thread: ERROR: chain 2 get hashrate_reg_counter 63, require 65, failed times 1: ooooo ooooo ooooo ooooo ooooo ooooo ooooo ooooo ooooo ooooo ooooo ooooo xxooo
+2021-10-24 19:40:31 thread.c:996:asic_status_monitor_thread: chain 2 can't get enough hashrate reg val for 19 times.
+2021-10-24 19:40:31 thread.c:976:asic_status_monitor_thread: ERROR: chain 2 get hashrate_reg_counter 63, require 65, failed times 1: ooooo ooooo ooooo ooooo ooooo ooooo ooooo ooooo ooooo ooooo ooooo ooooo xxooo
+2021-10-24 19:40:33 thread.c:996:asic_status_monitor_thread: chain 2 can't get enough hashrate reg val for 20 times.
+2021-10-24 19:40:33 thread.c:976:asic_status_monitor_thread: ERROR: chain 2 get hashrate_reg_counter 63, require 65, failed times 1: ooooo ooooo ooooo ooooo ooooo ooooo ooooo ooooo ooooo ooooo ooooo ooooo xxooo
+2021-10-24 19:40:35 thread.c:996:asic_status_monitor_thread: chain 2 can't get enough hashrate reg val for 21 times.
+2021-10-24 19:40:35 thread.c:976:asic_status_monitor_thread: ERROR: chain 2 get hashrate_reg_counter 63, require 65, failed times 1: ooooo ooooo ooooo ooooo ooooo ooooo ooooo ooooo ooooo ooooo ooooo ooooo xxooo
+2021-10-24 19:40:37 thread.c:996:asic_status_monitor_thread: chain 2 can't get enough hashrate reg val for 22 times.
+2021-10-24 19:40:37 thread.c:976:asic_status_monitor_thread: ERROR: chain 2 get hashrate_reg_counter 63, require 65, failed times 1: ooooo ooooo ooooo ooooo ooooo ooooo ooooo ooooo ooooo ooooo ooooo ooooo xxooo
+2021-10-24 19:40:39 thread.c:996:asic_status_monitor_thread: chain 2 can't get enough hashrate reg val for 23 times.
+2021-10-24 19:40:39 thread.c:976:asic_status_monitor_thread: ERROR: chain 2 get hashrate_reg_counter 63, require 65, failed times 1: ooooo ooooo ooooo ooooo ooooo ooooo ooooo ooooo ooooo ooooo ooooo ooooo xxooo
+2021-10-24 19:40:41 thread.c:996:asic_status_monitor_thread: chain 2 can't get enough hashrate reg val for 24 times.
+2021-10-24 19:40:41 thread.c:976:asic_status_monitor_thread: ERROR: chain 2 get hashrate_reg_counter 63, require 65, failed times 1: ooooo ooooo ooooo ooooo ooooo ooooo ooooo ooooo ooooo ooooo ooooo ooooo xxooo
+2021-10-24 19:40:43 thread.c:996:asic_status_monitor_thread: chain 2 can't get enough hashrate reg val for 25 times.
+2021-10-24 19:40:43 thread.c:976:asic_status_monitor_thread: ERROR: chain 2 get hashrate_reg_counter 63, require 65, failed times 1: ooooo ooooo ooooo ooooo ooooo ooooo ooooo ooooo ooooo ooooo ooooo ooooo xxooo
+2021-10-24 19:40:45 thread.c:996:asic_status_monitor_thread: chain 2 can't get enough hashrate reg val for 26 times.
+2021-10-24 19:40:45 thread.c:976:asic_status_monitor_thread: ERROR: chain 2 get hashrate_reg_counter 63, require 65, failed times 1: ooooo ooooo ooooo ooooo ooooo ooooo ooooo ooooo ooooo ooooo ooooo ooooo xxooo
+2021-10-24 19:40:47 thread.c:996:asic_status_monitor_thread: chain 2 can't get enough hashrate reg val for 27 times.
+2021-10-24 19:40:47 thread.c:976:asic_status_monitor_thread: ERROR: chain 2 get hashrate_reg_counter 63, require 65, failed times 1: ooooo ooooo ooooo ooooo ooooo ooooo ooooo ooooo ooooo ooooo ooooo ooooo xxooo
+2021-10-24 19:40:49 thread.c:996:asic_status_monitor_thread: chain 2 can't get enough hashrate reg val for 28 times.
+2021-10-24 19:40:49 thread.c:976:asic_status_monitor_thread: ERROR: chain 2 get hashrate_reg_counter 63, require 65, failed times 1: ooooo ooooo ooooo ooooo ooooo ooooo ooooo ooooo ooooo ooooo ooooo ooooo xxooo
+2021-10-24 19:40:51 thread.c:996:asic_status_monitor_thread: chain 2 can't get enough hashrate reg val for 29 times.
+2021-10-24 19:40:51 thread.c:1000:asic_status_monitor_thread: chain 2 can't get enough hashrate reg val for 30 times, power off.
+2021-10-24 19:40:52 temperature.c:838:get_temp_info: read temp sensor failed: chain = 2, sensor = 0, chip = 14, reg = 0
+2021-10-24 19:40:52 temperature.c:838:get_temp_info: read temp sensor failed: chain = 2, sensor = 0, chip = 14, reg = 1
+2021-10-24 19:40:53 temperature.c:838:get_temp_info: read temp sensor failed: chain = 2, sensor = 1, chip = 10, reg = 0
+2021-10-24 19:40:53 temperature.c:838:get_temp_info: read temp sensor failed: chain = 2, sensor = 1, chip = 10, reg = 1
+2021-10-24 19:40:53 frequency.c:205:get_ideal_hash_rate_GH: ideal_hash_rate = 24189
+2021-10-24 19:40:53 frequency.c:223:get_sale_hash_rate_GH: sale_hash_rate = 22000
+2021-10-24 19:40:54 temperature.c:838:get_temp_info: read temp sensor failed: chain = 2, sensor = 2, chip = 54, reg = 0
+2021-10-24 19:40:54 temperature.c:838:get_temp_info: read temp sensor failed: chain = 2, sensor = 2, chip = 54, reg = 1
+2021-10-24 19:40:54 temperature.c:838:get_temp_info: read temp sensor failed: chain = 2, sensor = 3, chip = 50, reg = 0
+2021-10-24 19:40:55 temperature.c:838:get_temp_info: read temp sensor failed: chain = 2, sensor = 3, chip = 50, reg = 1
+2021-10-24 19:43:28 thread.c:257:calc_hashrate_avg: avg rate is 46283.88 in 30 mins
+2021-10-24 19:43:28 temperature.c:516:temp_statistics_show:   pcb temp 43~56  chip temp 62~73
+2021-10-24 20:13:29 thread.c:257:calc_hashrate_avg: avg rate is 24899.66 in 30 mins
+2021-10-24 20:13:29 temperature.c:516:temp_statistics_show:   pcb temp 44~55  chip temp 61~72
+2021-10-24 20:43:30 thread.c:257:calc_hashrate_avg: avg rate is 24673.38 in 30 mins
+2021-10-24 20:43:30 temperature.c:516:temp_statistics_show:   pcb temp 44~55  chip temp 61~72
+2021-10-24 21:13:31 thread.c:257:calc_hashrate_avg: avg rate is 24525.03 in 30 mins
+2021-10-24 21:13:31 temperature.c:516:temp_statistics_show:   pcb temp 43~55  chip temp 61~72
+2021-10-24 21:43:31 thread.c:257:calc_hashrate_avg: avg rate is 25000.00 in 30 mins
+2021-10-24 21:43:31 temperature.c:516:temp_statistics_show:   pcb temp 45~56  chip temp 62~73
+2021-10-24 22:13:32 thread.c:257:calc_hashrate_avg: avg rate is 24847.38 in 30 mins
+2021-10-24 22:13:32 temperature.c:516:temp_statistics_show:   pcb temp 44~56  chip temp 62~73
+2021-10-24 22:43:33 thread.c:257:calc_hashrate_avg: avg rate is 24570.21 in 30 mins
+2021-10-24 22:43:33 temperature.c:516:temp_statistics_show:   pcb temp 44~56  chip temp 62~73
+2021-10-24 23:13:34 thread.c:257:calc_hashrate_avg: avg rate is 24906.38 in 30 mins
+2021-10-24 23:13:34 temperature.c:516:temp_statistics_show:   pcb temp 44~56  chip temp 62~73
+2021-10-24 23:43:35 thread.c:257:calc_hashrate_avg: avg rate is 24727.11 in 30 mins
+2021-10-24 23:43:35 temperature.c:516:temp_statistics_show:   pcb temp 44~56  chip temp 61~73
+2021-10-25 00:13:36 thread.c:257:calc_hashrate_avg: avg rate is 24719.78 in 30 mins
+2021-10-25 00:13:36 temperature.c:516:temp_statistics_show:   pcb temp 45~56  chip temp 61~73
+2021-10-25 00:43:36 thread.c:257:calc_hashrate_avg: avg rate is 24730.16 in 30 mins
+2021-10-25 00:43:36 temperature.c:516:temp_statistics_show:   pcb temp 43~57  chip temp 61~73
+2021-10-25 01:13:37 thread.c:257:calc_hashrate_avg: avg rate is 24819.90 in 30 mins
+2021-10-25 01:13:37 temperature.c:516:temp_statistics_show:   pcb temp 44~55  chip temp 62~72
+2021-10-25 01:43:38 thread.c:257:calc_hashrate_avg: avg rate is 24804.98 in 30 mins
+2021-10-25 01:43:38 temperature.c:516:temp_statistics_show:   pcb temp 44~56  chip temp 61~73
+2021-10-25 02:13:39 thread.c:257:calc_hashrate_avg: avg rate is 24613.55 in 30 mins
+2021-10-25 02:13:39 temperature.c:516:temp_statistics_show:   pcb temp 44~56  chip temp 62~73
+2021-10-25 02:43:40 thread.c:257:calc_hashrate_avg: avg rate is 24916.97 in 30 mins
+2021-10-25 02:43:40 temperature.c:516:temp_statistics_show:   pcb temp 44~56  chip temp 62~73
+2021-10-25 03:13:41 thread.c:257:calc_hashrate_avg: avg rate is 24685.59 in 30 mins
+2021-10-25 03:13:41 temperature.c:516:temp_statistics_show:   pcb temp 45~56  chip temp 62~73
+2021-10-25 03:43:41 thread.c:257:calc_hashrate_avg: avg rate is 24553.11 in 30 mins
+2021-10-25 03:43:41 temperature.c:516:temp_statistics_show:   pcb temp 44~56  chip temp 62~73
+2021-10-25 04:13:42 thread.c:257:calc_hashrate_avg: avg rate is 24817.46 in 30 mins
+2021-10-25 04:13:42 temperature.c:516:temp_statistics_show:   pcb temp 45~56  chip temp 62~73
+2021-10-25 04:43:43 thread.c:257:calc_hashrate_avg: avg rate is 24669.99 in 30 mins
+2021-10-25 04:43:43 temperature.c:516:temp_statistics_show:   pcb temp 44~56  chip temp 62~73
+2021-10-25 05:13:44 thread.c:257:calc_hashrate_avg: avg rate is 24583.03 in 30 mins
+2021-10-25 05:13:44 temperature.c:516:temp_statistics_show:   pcb temp 44~55  chip temp 62~72
+2021-10-25 05:43:45 thread.c:257:calc_hashrate_avg: avg rate is 24415.14 in 30 mins
+2021-10-25 05:43:45 temperature.c:516:temp_statistics_show:   pcb temp 43~55  chip temp 62~72
+2021-10-25 06:13:45 thread.c:257:calc_hashrate_avg: avg rate is 24385.84 in 30 mins
+2021-10-25 06:13:45 temperature.c:516:temp_statistics_show:   pcb temp 43~55  chip temp 61~72
+2021-10-25 06:43:46 thread.c:257:calc_hashrate_avg: avg rate is 24777.78 in 30 mins
+2021-10-25 06:43:46 temperature.c:516:temp_statistics_show:   pcb temp 43~56  chip temp 61~73
+2021-10-25 07:13:47 thread.c:257:calc_hashrate_avg: avg rate is 24826.62 in 30 mins
+2021-10-25 07:13:47 temperature.c:516:temp_statistics_show:   pcb temp 43~55  chip temp 61~72
+2021-10-25 07:43:48 thread.c:257:calc_hashrate_avg: avg rate is 24818.42 in 30 mins
+2021-10-25 07:43:48 temperature.c:516:temp_statistics_show:   pcb temp 43~55  chip temp 62~72
+2021-10-25 08:13:49 thread.c:257:calc_hashrate_avg: avg rate is 24804.64 in 30 mins
+2021-10-25 08:13:49 temperature.c:516:temp_statistics_show:   pcb temp 43~55  chip temp 61~72
+2021-10-25 08:43:50 thread.c:257:calc_hashrate_avg: avg rate is 24692.31 in 30 mins
+2021-10-25 08:43:50 temperature.c:516:temp_statistics_show:   pcb temp 43~56  chip temp 61~72
+2021-10-25 09:13:50 thread.c:257:calc_hashrate_avg: avg rate is 24793.65 in 30 mins
+2021-10-25 09:13:50 temperature.c:516:temp_statistics_show:   pcb temp 43~56  chip temp 62~71
+2021-10-25 09:43:51 thread.c:257:calc_hashrate_avg: avg rate is 24443.83 in 30 mins
+2021-10-25 09:43:51 temperature.c:516:temp_statistics_show:   pcb temp 43~55  chip temp 61~72
+2021-10-25 10:13:52 thread.c:257:calc_hashrate_avg: avg rate is 24457.88 in 30 mins
+2021-10-25 10:13:52 temperature.c:516:temp_statistics_show:   pcb temp 44~55  chip temp 62~72
+2021-10-25 10:43:53 thread.c:257:calc_hashrate_avg: avg rate is 24610.12 in 30 mins
+2021-10-25 10:43:53 temperature.c:516:temp_statistics_show:   pcb temp 44~55  chip temp 61~72
+2021-10-25 11:13:54 thread.c:257:calc_hashrate_avg: avg rate is 24763.13 in 30 mins
+2021-10-25 11:13:54 temperature.c:516:temp_statistics_show:   pcb temp 44~55  chip temp 62~73
+2021-10-25 11:43:55 thread.c:257:calc_hashrate_avg: avg rate is 24713.07 in 30 mins
+2021-10-25 11:43:55 temperature.c:516:temp_statistics_show:   pcb temp 44~56  chip temp 61~73
+2021-10-25 12:13:55 thread.c:257:calc_hashrate_avg: avg rate is 24488.40 in 30 mins
+2021-10-25 12:13:55 temperature.c:516:temp_statistics_show:   pcb temp 44~55  chip temp 62~72
+2021-10-25 12:43:56 thread.c:257:calc_hashrate_avg: avg rate is 24616.00 in 30 mins
+2021-10-25 12:43:56 temperature.c:516:temp_statistics_show:   pcb temp 44~56  chip temp 62~73
+2021-10-25 13:13:57 thread.c:257:calc_hashrate_avg: avg rate is 24831.25 in 30 mins
+2021-10-25 13:13:57 temperature.c:516:temp_statistics_show:   pcb temp 43~55  chip temp 62~72
+2021-10-25 13:43:58 thread.c:257:calc_hashrate_avg: avg rate is 24792.43 in 30 mins
+2021-10-25 13:43:58 temperature.c:516:temp_statistics_show:   pcb temp 43~56  chip temp 62~72
+2021-10-25 14:13:59 thread.c:257:calc_hashrate_avg: avg rate is 24899.88 in 30 mins
+2021-10-25 14:13:59 temperature.c:516:temp_statistics_show:   pcb temp 43~55  chip temp 61~73
+2021-10-25 14:44:00 thread.c:257:calc_hashrate_avg: avg rate is 24610.50 in 30 mins
+2021-10-25 14:44:00 temperature.c:516:temp_statistics_show:   pcb temp 44~56  chip temp 61~72
+2021-10-25 15:14:00 thread.c:257:calc_hashrate_avg: avg rate is 24463.37 in 30 mins
+2021-10-25 15:14:00 temperature.c:516:temp_statistics_show:   pcb temp 44~55  chip temp 62~73
+2021-10-25 15:44:01 thread.c:257:calc_hashrate_avg: avg rate is 24880.34 in 30 mins
+2021-10-25 15:44:01 temperature.c:516:temp_statistics_show:   pcb temp 43~55  chip temp 61~73
+2021-10-25 16:14:02 thread.c:257:calc_hashrate_avg: avg rate is 24713.97 in 30 mins
+2021-10-25 16:14:02 temperature.c:516:temp_statistics_show:   pcb temp 44~55  chip temp 62~72
+2021-10-25 16:44:03 thread.c:257:calc_hashrate_avg: avg rate is 24763.13 in 30 mins
+2021-10-25 16:44:03 temperature.c:516:temp_statistics_show:   pcb temp 43~56  chip temp 61~72
+2021-10-25 17:14:04 thread.c:257:calc_hashrate_avg: avg rate is 24779.00 in 30 mins
+2021-10-25 17:14:04 temperature.c:516:temp_statistics_show:   pcb temp 43~55  chip temp 61~72

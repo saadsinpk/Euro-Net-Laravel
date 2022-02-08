@@ -22,6 +22,16 @@ return [
 
     'Repair Payments' => 'Pagos de reparación',
     'Bitmain' => 'Bit principal',
+    'All Repair Payments' => 'Todos los pagos de reparación',
+    'Incoming Repair' => 'Todos los pagos de reparación',
+    'Waiting for shipment' => 'Esperando por el envío',
+    'Pending Diagnostics' => 'Diagnóstico pendiente',
+    'Pending Client Accept' => 'Aceptación pendiente del cliente',
+    'Pending Client Payment' => 'Pago pendiente del cliente',
+    'Pending Repair' => 'Pendiente de reparación',
+    'Repair Shipped Return' => 'Reparación de devolución enviada',
+    'Canceled' => 'Cancelada',
+    'Username'=>'Nombre de usuario',
 
 ];
 

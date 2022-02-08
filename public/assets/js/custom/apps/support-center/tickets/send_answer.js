@@ -6,6 +6,7 @@ var KTTicket = function() {
     var validator;
     var form;
     var modalEl;
+    var formdata
 
     // Init form inputs
     var initForm = function() {
@@ -67,18 +68,62 @@ var KTTicket = function() {
         });
     }
 
+    const updateStatus = () => {
+        // $(document.querySelector('[name="status"]')).select2({ width: '200px' });
+        const statusButtons = document.querySelectorAll('[name="status"]');
+
+        // statusButtons.forEach(d => {
+            $(document).on("change", '[name="status"]', function(e){
+                e.preventDefault();
+                console.log("test");
+                const status = this.value;
+                const id = $(this).attr("data-id");
+                var main_this = jQuery(this);
+                console.log(status);
+                console.log(id);
+
+                Swal.fire({
+                    text: "Are you sure you want to change status?",
+                    icon: "success",
+                    buttonsStyling: false,
+                    showCancelButton: true,
+                    confirmButtonText: "Yes Change it!",
+                    cancelButtonText: "Cancel",
+                    customClass: {
+                        confirmButton: "btn btn-primary",
+                        cancelButton: "btn btn-primary"
+                    }
+                }).then(function(result) {
+                    if (result.isConfirmed) {
+                        $.ajaxSetup({
+                            headers: {
+                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                            }
+                        });
+
+                        $.ajax({
+                            url: '/admin/ticket/update-status/' + id + '/' + status + '',
+                            method: "get",
+                            data: formdata,
+                            dataType: "JSON",
+                            success: function() {
+                                jQuery(main_this).closest("tr").find(".badge.mt-3").text(jQuery(main_this).closest("tr").find('[name="status"]').find(":selected").text());
+                                jQuery(main_this).closest("tr").find(".badge.mt-3").attr("style","background:"+jQuery(main_this).closest("tr").find('[name="status"]').find(":selected").attr("data-color")+"; top: -1rem; left: 1rem;");
+                                jQuery(main_this).closest("tr").remove();
+                            }
+                        })
+                    }
+                });
+
+            })
+        // })
+    }
+
     // Handle form validation and submittion
     var handleForm = function() {
         validator = FormValidation.formValidation(
             form, {
                 fields: {
-                    description: {
-                        validators: {
-                            notEmpty: {
-                                message: 'Description is required'
-                            }
-                        }
-                    },
                 },
                 plugins: {
                     trigger: new FormValidation.plugins.Trigger(),
@@ -137,7 +182,13 @@ var KTTicket = function() {
                                     }).then(function(result) {
                                         if (result.isConfirmed) {
                                             form.reset();
-                                            window.location.reload();
+                                            if(formdata.id != '') {
+                                                var newurl=window.location.href;
+                                                var newurl_split=newurl.split('/edit')[0];
+                                                window.location = newurl_split;
+                                            } else {
+                                                window.location.reload();
+                                            }
                                         }
                                     });
                                 }, 2000);
@@ -189,6 +240,7 @@ var KTTicket = function() {
             form = document.querySelector('#ticket_reply_form');
             submitButton = form.querySelector("[type='submit']")
 
+            updateStatus();
             handleForm();
             initForm();
         }

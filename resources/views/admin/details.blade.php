@@ -378,12 +378,6 @@
                             <div class="modal-body scroll-y mx-5 mx-xl-15 my-7">
                                 <!--begin::Form-->
                                 <form id="kt_modal_update_password_form" class="form" action="{{ url('admin/admins/update') }}">
-                                    <div class="fv-row mb-7">
-                                        <label class="form-label fw-bolder text-dark fs-6">{{__('form.Current Password') }}</label>
-                                        <input id="old-password" class="form-control form-control-lg form-control-solid" type="password" placeholder="" name="old-password" autocomplete="off" />
-                                    </div>
-                                    <!--end::Input group-->
-
                                     <!--begin::Input group-->
                                     <div class="fv-row mb-7" data-kt-password-meter="true">
                                         <!--begin::Wrapper-->

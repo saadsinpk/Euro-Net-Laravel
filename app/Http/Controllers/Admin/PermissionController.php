@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Spatie\Permission\Models\Permission;
+use App\Models\AdminLog;
 
 use Illuminate\Support\Facades\Validator;
 use Artisan;

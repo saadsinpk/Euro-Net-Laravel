@@ -409,7 +409,7 @@ var KTModalCategory = function() {
                     }).catch(function(error) {
                         if (error.status == 422) {
                             Swal.fire({
-                                text: "The Category name has already been taken.",
+                                text: "Error!",
                                 icon: "error",
                                 buttonsStyling: false,
                                 confirmButtonText: "Ok, got it!",

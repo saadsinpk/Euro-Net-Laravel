@@ -20,5 +20,6 @@ return [
     'Repair Payment' => 'Nueva solicitud de reparación',
     'Create Repair Request' => 'Pago de reparación',
     'My repair payment history' => 'Mi historial de solicitudes de reparación',
+    'Shipping Detail' => 'Detalle de envio',
 
 ];

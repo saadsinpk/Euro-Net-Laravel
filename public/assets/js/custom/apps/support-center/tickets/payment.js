@@ -13,6 +13,24 @@ var KTModalPayment = function() {
     var formdata
 
     // Init form inputs
+
+    var payment_form_update = function() {
+        jQuery('#payment_update_form').click(function() {
+            Swal.fire({
+                text: "Do you want to update payment detail?",
+                icon: "success",
+                buttonsStyling: false,
+                confirmButtonText: "Yes!",
+                customClass: {
+                    confirmButton: "btn btn-primary"
+                }
+            }).then(function(result) {
+                if (result.isConfirmed) {
+                    jQuery('input[name="update_payment"]').trigger("click");
+                }
+            });
+        });
+    }
     var handleForm = function() {
         // Init form validation rules. For more info check the FormValidation plugin's official documentation:https://formvalidation.io/
         validator = FormValidation.formValidation(
@@ -81,11 +99,19 @@ var KTModalPayment = function() {
                                     }).then(function(result) {
                                         if (result.isConfirmed) {
                                             // Hide modal
+                                            form.reset();
                                             modal.hide();
 
                                             // Enable submit button after loading
                                             submitButton.disabled = false;
-                                            window.location.reload();
+
+                                            if(formdata.id != '') {
+                                                var newurl=window.location.href;
+                                                var newurl_split=newurl.split('/edit')[0];
+                                                window.location = newurl_split;
+                                            } else {
+                                                window.location.reload();
+                                            }
                                             // Redirect to Admins list page
                                         }
                                     });
@@ -216,6 +242,78 @@ var KTModalPayment = function() {
         });
     }
 
+    $(document.body).on('click', '.delete_this' ,function(e){
+        e.preventDefault();
+        var thishref = $(this).attr("href");
+        Swal.fire({
+            text: "Are you sure you want to delete?",
+            icon: "success",
+            buttonsStyling: false,
+            showCancelButton: true,
+            confirmButtonText: "Yes delete it!",
+            cancelButtonText: "Cancel",
+            customClass: {
+                confirmButton: "btn btn-primary",
+                cancelButton: "btn btn-primary"
+            }
+        }).then(function(result) {
+            if (result.isConfirmed) {
+                window.location.replace(thishref);
+            }
+        });
+        return false;
+    });
+
+    const updateStatus = () => {
+        // $(document.querySelector('[name="status"]')).select2({ width: '200px' });
+        const statusButtons = document.querySelectorAll('[name="status"]');
+
+        // statusButtons.forEach(d => {
+            $(document).on("change", '[name="status"]', function(e){
+                e.preventDefault();
+                const status = this.value;
+                const id = $(this).attr("data-id");
+                var main_this = jQuery(this);
+                console.log(status);
+                console.log(id);
+
+                Swal.fire({
+                    text: "Are you sure you want to change status?",
+                    icon: "success",
+                    buttonsStyling: false,
+                    showCancelButton: true,
+                    confirmButtonText: "Yes Change it!",
+                    cancelButtonText: "Cancel",
+                    customClass: {
+                        confirmButton: "btn btn-primary",
+                        cancelButton: "btn btn-primary"
+                    }
+                }).then(function(result) {
+                    if (result.isConfirmed) {
+                        $.ajaxSetup({
+                            headers: {
+                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                            }
+                        });
+
+                        $.ajax({
+                            url: '/admin/repair/update-status/' + id + '/' + status + '',
+                            method: "get",
+                            data: formdata,
+                            dataType: "JSON",
+                            success: function() {
+                                jQuery(main_this).closest("tr").find(".badge.mt-3").text(jQuery(main_this).closest("tr").find('[name="status"]').find(":selected").text());
+                                jQuery(main_this).closest("tr").find(".badge.mt-3").attr("style","background:"+jQuery(main_this).closest("tr").find('[name="status"]').find(":selected").attr("data-color")+"; top: -1rem; left: 1rem;");
+                                jQuery(main_this).closest("tr").remove();
+                            }
+                        })
+                    }
+                });
+
+            })
+        // })
+    }
+
     return {
         // Public functions
         init: function() {
@@ -228,9 +326,10 @@ var KTModalPayment = function() {
             closeButton = form.querySelector('[data-action="close"]');
             url = $(form).attr("action");
             handleForm();
+            payment_form_update();
             closeForm();
+            updateStatus();
             handleSendRequest();
-
         }
     };
 }();
