@@ -128,6 +128,7 @@ Route::group(['middleware' => ['auth', 'adminRole']], function () {
         Route::any("/repair/view/{id}/download_pdf", 'Admin\RepairPaymentController@download_pdf');
         Route::any("/repair/edit/{id}", 'Admin\RepairPaymentController@edit');
         Route::get("/repair/view/{id}/delete_payment/{delete_id}", 'Admin\RepairPaymentController@payment_delete');
+
         Route::any("/repair/view/{id}/edit_payment/{edit_id}", 'Admin\RepairPaymentController@edit_payment');
         Route::get("/repair/view/{id}/delete/{delete_id}", 'Admin\RepairPaymentController@reply_delete');
         Route::any("/repair/view/{id}/edit/{edit_id}", 'Admin\RepairPaymentController@reply_edit');
